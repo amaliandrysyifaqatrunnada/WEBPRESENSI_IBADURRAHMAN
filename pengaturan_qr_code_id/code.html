@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PKBM IBADURRAHMAN - Pengaturan Kode QR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#83da85",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#e0f4ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#0c7521",
+                        "surface-dim": "#c0dfee",
+                        "on-tertiary-container": "#c7ffc3",
+                        "surface": "#f4faff",
+                        "outline-variant": "#bfcaba",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#001f2a",
+                        "primary-container": "#2e7d32",
+                        "secondary-fixed": "#98f994",
+                        "outline": "#707a6c",
+                        "on-surface": "#001f2a",
+                        "primary-fixed": "#a3f69c",
+                        "surface-container": "#d9f2ff",
+                        "primary-fixed-dim": "#88d982",
+                        "inverse-surface": "#163440",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#005312",
+                        "on-tertiary-fixed-variant": "#005318",
+                        "on-secondary-fixed": "#002204",
+                        "tertiary-container": "#277d34",
+                        "on-surface-variant": "#40493d",
+                        "surface-container-high": "#ceedfd",
+                        "surface-container-highest": "#c9e7f7",
+                        "tertiary-fixed": "#9ff79f",
+                        "secondary-fixed-dim": "#7ddc7a",
+                        "on-tertiary-fixed": "#002105",
+                        "secondary-container": "#98f994",
+                        "surface-bright": "#f4faff",
+                        "on-secondary": "#ffffff",
+                        "background": "#f4faff",
+                        "on-primary-container": "#cbffc2",
+                        "surface-variant": "#c9e7f7",
+                        "on-primary-fixed": "#002204",
+                        "tertiary": "#00631e",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#005313",
+                        "primary": "#0d631b",
+                        "surface-container-low": "#e6f6ff",
+                        "surface-tint": "#1b6d24",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary": "#006e1c",
+                        "inverse-primary": "#88d982"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-gap": "24px",
+                        "gutter": "20px",
+                        "unit": "4px",
+                        "container-padding": "24px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #F7FAF7; } /* Level 0 Background */
+        .card-shadow { box-shadow: 0px 4px 20px rgba(38, 50, 56, 0.06); } /* Level 2 Ambient Shadow */
+    </style>
+</head>
+<body class="text-on-surface min-h-screen">
+<!-- SideNavBar -->
+<nav class="w-[280px] h-screen fixed left-0 top-0 bg-surface dark:bg-inverse-surface border-r border-outline-variant dark:border-outline flex flex-col h-full py-6 transition-all duration-200 ease-in-out z-20">
+<div class="px-6 mb-8">
+<img alt="PKBM IBADURRAHMAN Logo" class="h-16 w-auto object-contain mb-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV0nNKzVP0pzHkgb2NhVFMb66ftuKbqvTLaGIpUp-tIbbGlnfHsi_HaksxrG4-rJt93ylyUgSopjip-Nxq_DD03UQelKs7OviwKSgDWDziHxCjE0lrSRVHVgU4IZc7QDFTuYU6KtXkLT05u6qINsSGaBtFQ_2oWWaTXByhoE7bQwR-mu8N-36VQ46YQ7v3yxLCS4QJsSKTJyOv2ejRqZrFDgvu6ynYbSUMV5bVonF3ThuB5Ne7D3aHCwwKC5QU21yaeJQ"/>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Teacher Management</p>
+</div>
+<ul class="flex flex-col flex-grow gap-2 pr-4 font-body-md text-body-md">
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors rounded-r-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="">Dashboard</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors rounded-r-lg" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="">Teacher Data</span>
+</a>
+</li>
+<li class="">
+<!-- Active Navigation -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary border-l-4 border-primary rounded-r-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-bold">Attendance Settings</span>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors rounded-r-lg" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="">Reports</span>
+</a>
+</li>
+</ul>
+<div class="px-4 mt-auto">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors rounded-r-lg" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="ml-[280px] w-[calc(100%-280px)] min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full h-16 px-8 docked full-width top-0 sticky bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md border-b border-outline-variant dark:border-outline z-10 transition-all duration-200 ease-in-out font-label-md text-label-md">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-sm text-headline-sm font-bold text-primary dark:text-inverse-primary">PKBM IBADURRAHMAN</h2>
+</div>
+<div class="flex items-center gap-6 text-primary dark:text-inverse-primary">
+<!-- Search could go here if needed per "search_bar": "on_left" in json, but structurally putting actions right -->
+<button aria-label="Notifications" class="hover:text-primary dark:hover:text-inverse-primary transition-colors cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button aria-label="Settings" class="hover:text-primary dark:hover:text-inverse-primary transition-colors cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden cursor-pointer">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A professional administrative avatar portrait for a modern educational management dashboard. Clean, bright corporate lighting, modern minimalist style, head and shoulders framing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKIfd4YvTUDWinI4neYqAn8huQp0go_-hwq32mgfuYw-kOGQ893SKGJi2EPYN4g-1nmMoAgxBJ__1liJS6Ojp92Z-aBNTTXEn6dxKMr7ejLAeZdTMCWluAIk_Jcpwdv8fmBXyQ_icinuXKqVO48_iy5u383dywPRcMCgqcdrfXmFhXpjhaevT9wDg3t-ZjNmOXL-JCLP_hM9AspsVVzfIL047bvAk5Ycg_l-ZqD0b2zmQ3IeAZGFNVgg"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-grow p-[40px]">
+<!-- Page Header -->
+<div class="mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-background mb-stack-sm">Pengaturan Kode QR</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Atur dan buat kode QR dinamis untuk kehadiran guru harian.</p>
+</div>
+<!-- Content Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter">
+<!-- Left Column: Settings & Summary -->
+<div class="xl:col-span-5 flex flex-col gap-gutter">
+<!-- Schedule Summary Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-[24px] card-shadow">
+<h3 class="font-headline-sm text-headline-sm text-on-surface border-b border-surface-container-high pb-4 mb-4">Jadwal Kehadiran Saat Ini</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center py-2 border-b border-surface-container-low">
+<span class="font-label-md text-label-md text-on-surface-variant">Sesi</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold">Shift Pagi</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-surface-container-low">
+<span class="font-label-md text-label-md text-on-surface-variant">Waktu Check-In</span>
+<span class="font-body-md text-body-md text-on-surface">07:00 AM - 07:30 AM</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-surface-container-low">
+<span class="font-label-md text-label-md text-on-surface-variant">Batas Terlambat</span>
+<span class="font-body-md text-body-md text-on-surface">07:31 AM - 08:00 AM</span>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Status</span>
+<span class="font-label-sm text-label-sm bg-primary-container/10 text-primary-container px-2 py-1 rounded-full">Aktif</span>
+</div>
+</div>
+<div class="mt-6 flex justify-end">
+<button class="bg-[#E8F5E9] text-[#2E7D32] hover:bg-surface-container-high transition-colors px-4 py-2 rounded-lg font-label-md text-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+                                Edit Jadwal
+                            </button>
+</div>
+</div>
+<!-- Configuration Actions -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-[24px] card-shadow flex-grow flex flex-col justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface border-b border-surface-container-high pb-4 mb-4">Konfigurasi Kode</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Sesuaikan pengaturan keamanan untuk kode yang dihasilkan.</p>
+<!-- Toggle (Visual representation) -->
+<label class="flex items-center justify-between cursor-pointer mb-4">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Rotasi Dinamis</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Mengubah kode secara berkala</span>
+</div>
+<div class="relative">
+<input checked="" class="sr-only" type="checkbox"/>
+<div class="block bg-primary w-10 h-6 rounded-full"></div>
+<div class="dot absolute right-1 top-1 bg-white w-4 h-4 rounded-full transition"></div>
+</div>
+</label>
+<div class="flex flex-col">
+<label class="font-label-md text-label-md text-on-surface mb-2">Interval Pembaruan</label>
+<select class="bg-surface border border-outline-variant text-on-surface text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5">
+<option value="15">Setiap 15 Detik</option>
+<option selected="" value="30">Setiap 30 Detik</option>
+<option value="60">Setiap 1 Menit</option>
+</select>
+</div>
+</div>
+<div class="mt-8 flex gap-4">
+<button class="flex-1 bg-[#2E7D32] text-white hover:bg-primary/90 transition-colors py-3 rounded-xl font-label-md text-label-md shadow-sm">
+                                Buat Kode
+                            </button>
+<button class="flex-1 bg-[#E8F5E9] text-[#2E7D32] hover:bg-surface-container-high transition-colors py-3 rounded-xl font-label-md text-label-md border border-[#2E7D32]/20">
+                                Simpan Pengaturan
+                            </button>
+</div>
+</div>
+</div>
+<!-- Right Column: QR Code Preview (Glassmorphism inspired) -->
+<div class="xl:col-span-7 relative flex items-center justify-center p-[40px] bg-gradient-to-br from-surface-container to-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden card-shadow min-h-[500px]">
+<!-- Subtle background decoration -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/5 rounded-full blur-3xl -mr-16 -mt-16"></div>
+<div class="absolute bottom-0 left-0 w-48 h-48 bg-tertiary-fixed-dim/10 rounded-full blur-2xl -ml-12 -mb-12"></div>
+<!-- Glassmorphism Card -->
+<div class="relative z-10 flex flex-col items-center p-[40px] bg-white/80 backdrop-blur-xl border border-white/40 shadow-lg rounded-[24px] max-w-sm w-full text-center">
+<div class="w-16 h-16 bg-surface-container-low rounded-full flex items-center justify-center mb-6 shadow-sm border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="qr_code_scanner">qr_code_scanner</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Kehadiran Pagi</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-8">Pindai untuk check-in Shift Pagi</p>
+<!-- The QR Code Image Placeholder -->
+<div class="bg-white p-4 rounded-xl border-2 border-surface-container shadow-sm mb-8 w-64 h-64 flex items-center justify-center relative overflow-hidden">
+<!-- Overlay scanning effect line -->
+<div class="absolute top-1/2 left-0 w-full h-[2px] bg-primary/40 shadow-[0_0_8px_rgba(46,125,50,0.6)] animate-pulse z-20"></div>
+<img alt="Dynamic QR Code" class="w-full h-full object-contain relative z-10 opacity-90" data-alt="A clean, high-contrast, black and white square QR code centered perfectly. The QR code should look functional and standard, against a pure white background, suitable for an attendance scanning application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV9yJn6266Xmx_r7bVSQ37YoIHMy1bPm5Ds52fckr0YtD4lXdw2P5WHu6ttMkEMNTzuYEFH_C_ocjIBK1PLtbp0tXy09gQKuzcriTu8E8Fe7rEQF88egEojlXjhJagJ1VCu3BHf5xHcfZzCI98j0FyD6trSkvwIY2kNkLjsaMh6JoEB6pZ9R9lY8OuhqZTSGLUyE1QmNAB1_LEBTdvgNxLDyD1Ib1jWVGVLbSsjYRDzcLe0HJQmSXSgg"/>
+</div>
+<!-- Timer Indicator -->
+<div class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary text-sm animate-spin-slow" data-icon="sync">sync</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold tracking-wide">Perbarui Setiap 30 Detik</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<style>
+        .animate-spin-slow {
+            animation: spin 3s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</body></html>

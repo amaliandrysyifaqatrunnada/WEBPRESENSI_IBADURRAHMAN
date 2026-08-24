@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Laporan - PKBM IBADURRAHMAN</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#83da85",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#e0f4ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#0c7521",
+                        "surface-dim": "#c0dfee",
+                        "on-tertiary-container": "#c7ffc3",
+                        "surface": "#f4faff",
+                        "outline-variant": "#bfcaba",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#001f2a",
+                        "primary-container": "#2e7d32",
+                        "secondary-fixed": "#98f994",
+                        "outline": "#707a6c",
+                        "on-surface": "#001f2a",
+                        "primary-fixed": "#a3f69c",
+                        "surface-container": "#d9f2ff",
+                        "primary-fixed-dim": "#88d982",
+                        "inverse-surface": "#163440",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#005312",
+                        "on-tertiary-fixed-variant": "#005318",
+                        "on-secondary-fixed": "#002204",
+                        "tertiary-container": "#277d34",
+                        "on-surface-variant": "#40493d",
+                        "surface-container-high": "#ceedfd",
+                        "surface-container-highest": "#c9e7f7",
+                        "tertiary-fixed": "#9ff79f",
+                        "secondary-fixed-dim": "#7ddc7a",
+                        "on-tertiary-fixed": "#002105",
+                        "secondary-container": "#98f994",
+                        "surface-bright": "#f4faff",
+                        "on-secondary": "#ffffff",
+                        "background": "#f4faff",
+                        "on-primary-container": "#cbffc2",
+                        "surface-variant": "#c9e7f7",
+                        "on-primary-fixed": "#002204",
+                        "tertiary": "#00631e",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#005313",
+                        "primary": "#0d631b",
+                        "surface-container-low": "#e6f6ff",
+                        "surface-tint": "#1b6d24",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary": "#006e1c",
+                        "inverse-primary": "#88d982"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-gap": "24px",
+                        "gutter": "20px",
+                        "unit": "4px",
+                        "container-padding": "24px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #F7FAF7; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0; }
+        .icon-filled { font-variation-settings: 'FILL' 1; }
+    </style>
+</head>
+<body class="text-on-surface font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col bg-surface border-r border-outline-variant w-[280px] h-screen fixed left-0 top-0 py-6">
+<div class="px-6 mb-8 flex items-center gap-4">
+<img alt="PKBM IBADURRAHMAN Logo" class="w-10 h-10 rounded-lg object-cover" data-alt="A clean, minimalist logo for an educational institution named PKBM IBADURRAHMAN. The logo features a stylized open book combined with subtle leaf motifs in shades of deep green and crisp white. It conveys growth, learning, and professional stability suitable for a modern SaaS interface. High resolution, flat vector style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZY4BRf1NXlDBQdoO6bofOMc30ZMrAvBHciVLOG3beTS-mcVxnDoRoHUkTKmdss4Nl55xIVV5nEbH1-M4BR6d0NFkyWt-_pO3qz4ndITjKSK_nY0dqxCpN7EDkBw5EP_v6-sdyW2nLUnpjOGfSCPrOEc4yZQP8EIwLXwrgqj81dyZwKDt8cNeScREZjTIFU7VsML5Qi_4qUFUBNmMLh_uVhZJamwEP2DtwYYE-TnR-oQ3JZ2BwJzoAaLqfku3hS5sjSdU"/>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">IBADURRAHMAN</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Manajemen Guru</p>
+</div>
+</div>
+<nav class="flex-1 px-2 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                Dasbor
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                Data Guru
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Pengaturan Absensi
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container border-l-4 border-primary rounded-r-lg transition-all duration-200 ease-in-out font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined icon-filled" data-icon="assessment">assessment</span>
+                Laporan
+            </a>
+</nav>
+<div class="px-2 mt-auto">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-r-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Keluar
+            </a>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 md:ml-[280px] w-full min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="hidden md:flex justify-between items-center bg-surface/80 backdrop-blur-md w-full h-16 px-8 sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md text-on-surface placeholder-outline font-body-md w-64 outline-none" placeholder="Cari laporan..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<img alt="Admin Avatar" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A professional headshot of a school administrator, a middle-aged woman with a warm but authoritative expression, wearing a neat blouse. The lighting is soft and flattering, suitable for a corporate SaaS avatar. Clean, light background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHurqHxk2xnJCj61cGXK6HJgVDoX7TE6o64XH6UJwx-qLcXq4aLNbGvcDTYOEG48LbudyIKYkdgV0HLHSmk3izo2NZsdvkWnLRNgsvs7J4hSS_zQT2uu1IPywdD2Lz_7kNvxhip9uPdOgVz0x4YGoRrIz0CFavCuzalCcn0o2SRoN3RO-fSwVKPE0aFMxRhZt0OECGbx2yTGXoxbJt4aVvasM9NsTkX-aXZiDkLTzYrOpr1DLy6j3oNA"/>
+</div>
+</header>
+<!-- Page Content -->
+<main class="p-container-padding space-y-stack-lg max-w-7xl mx-auto w-full">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Laporan Absensi</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Gambaran komprehensif tentang absensi staf pengajar.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface border border-outline-variant text-primary font-label-md text-label-md px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+                        Ekspor PDF
+                    </button>
+<button class="bg-surface border border-outline-variant text-primary font-label-md text-label-md px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="table_view">table_view</span>
+                        Excel
+                    </button>
+<button class="bg-surface border border-outline-variant text-primary font-label-md text-label-md px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+                        CSV
+                    </button>
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-tertiary-container hover:text-on-tertiary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="print">print</span>
+                        Cetak
+                    </button>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-card-gap">
+<!-- Daily -->
+<div class="bg-surface border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-secondary-container/30 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="today">today</span>
+</div>
+<span class="text-primary font-label-md text-label-md flex items-center gap-1 bg-primary-container/10 px-2 py-1 rounded-full">+2.4%</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Absensi Harian</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mt-1">94%</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">42/45 Guru Hadir</p>
+</div>
+</div>
+<!-- Weekly -->
+<div class="bg-surface border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-secondary-container/30 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="date_range">date_range</span>
+</div>
+<span class="text-primary font-label-md text-label-md flex items-center gap-1 bg-primary-container/10 px-2 py-1 rounded-full">+1.1%</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Rata-rata Mingguan</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mt-1">92%</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">7 Hari Terakhir</p>
+</div>
+</div>
+<!-- Monthly -->
+<div class="bg-surface border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-secondary-container/30 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+</div>
+<span class="text-error font-label-md text-label-md flex items-center gap-1 bg-error-container/30 px-2 py-1 rounded-full">-0.5%</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Rata-rata Bulanan</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mt-1">95%</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Oktober 2023</p>
+</div>
+</div>
+<!-- Yearly -->
+<div class="bg-surface border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-secondary-container/30 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+</div>
+<span class="text-primary font-label-md text-label-md flex items-center gap-1 bg-primary-container/10 px-2 py-1 rounded-full">+4.2%</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Rata-rata Tahunan</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mt-1">91%</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Tahun Ajaran 23/24</p>
+</div>
+</div>
+</div>
+<!-- Filters -->
+<div class="bg-surface border border-outline-variant rounded-xl p-4 shadow-sm flex flex-wrap gap-4 items-end">
+<div class="flex-1 min-w-[200px]">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2">Guru</label>
+<div class="relative">
+<select class="w-full bg-surface border border-outline-variant rounded-lg py-2 pl-3 pr-10 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary appearance-none">
+<option>Semua Guru</option>
+<option>Ahmad Syarif</option>
+<option>Budi Santoso</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex-1 min-w-[200px]">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2">Rentang Waktu</label>
+<div class="relative">
+<input class="w-full bg-surface border border-outline-variant rounded-lg py-2 px-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary" type="date"/>
+</div>
+</div>
+<div class="flex-1 min-w-[150px]">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2">Status</label>
+<div class="relative">
+<select class="w-full bg-surface border border-outline-variant rounded-lg py-2 pl-3 pr-10 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary appearance-none">
+<option>Semua Status</option>
+<option>Hadir</option>
+<option>Terlambat</option>
+<option>Absen</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="flex-1 min-w-[150px]">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2">Metode</label>
+<div class="relative">
+<select class="w-full bg-surface border border-outline-variant rounded-lg py-2 pl-3 pr-10 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary appearance-none">
+<option>Semua Metode</option>
+<option>Biometrik</option>
+<option>Aplikasi</option>
+<option>Manual</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<button class="bg-surface-container-low border border-outline-variant text-on-surface font-label-md text-label-md px-4 py-2 rounded-lg flex items-center justify-center gap-2 hover:bg-surface-container-high transition-colors h-[42px]">
+<span class="material-symbols-outlined text-[20px]" data-icon="filter_list">filter_list</span>
+                    Terapkan
+                </button>
+</div>
+<!-- Detailed Table -->
+<div class="bg-surface border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<div class="p-6 border-b border-outline-variant bg-[#F7FAF7] flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Catatan Kehadiran Detail</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Menampilkan 1-10 dari 124 catatan</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-outline-variant">
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant font-semibold">Nama Guru</th>
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant font-semibold">Tanggal</th>
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant font-semibold">Masuk</th>
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant font-semibold">Keluar</th>
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant font-semibold">Metode</th>
+<th class="py-4 px-6 font-label-md text-label-md text-on-surface-variant font-semibold">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/50">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 text-primary flex items-center justify-center font-bold text-sm">AS</div>
+                                    Ahmad Syarif
+                                </td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface">24 Okt 2023</td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface">07:15 AM</td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface">03:30 PM</td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface">Biometrik</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-[#E8F5E9] text-[#2E7D32]">Hadir</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 text-primary flex items-center justify-center font-bold text-sm">BS</div>
+                                    Budi Santoso
+                                </td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface">24 Okt 2023</td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface">07:45 AM</td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface">03:45 PM</td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface">Aplikasi</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-[#FFF3E0] text-[#E65100]">Terlambat</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 text-primary flex items-center justify-center font-bold text-sm">CW</div>
+                                    Citra Wijaya
+                                </td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface">24 Okt 2023</td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface text-on-surface-variant italic">--:--</td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface text-on-surface-variant italic">--:--</td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface">Manual</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-[#FFEBEE] text-[#C62828]">Absen</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 text-primary flex items-center justify-center font-bold text-sm">DK</div>
+                                    Dian Kusuma
+                                </td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface">24 Okt 2023</td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface">07:10 AM</td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface">04:00 PM</td>
+<td class="py-4 px-6 font-body-md text-body-md text-on-surface">Biometrik</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full font-label-sm text-label-sm bg-[#E8F5E9] text-[#2E7D32]">Hadir</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-4 border-t border-outline-variant flex justify-between items-center bg-surface">
+<button class="px-4 py-2 text-primary font-label-md text-label-md hover:bg-surface-container-low rounded-lg transition-colors">Sebelumnya</button>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary-container text-on-primary-container font-label-md">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-on-surface hover:bg-surface-container-low font-label-md">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-on-surface hover:bg-surface-container-low font-label-md">3</button>
+<span class="w-8 h-8 flex items-center justify-center text-on-surface-variant">...</span>
+</div>
+<button class="px-4 py-2 text-primary font-label-md text-label-md hover:bg-surface-container-low rounded-lg transition-colors">Selanjutnya</button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

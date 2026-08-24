@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PKBM IBADURRAHMAN - Admin Dashboard</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Plus Jakarta Sans (Used in config) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config from Guidance -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#83da85",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#e0f4ff",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#0c7521",
+                    "surface-dim": "#c0dfee",
+                    "on-tertiary-container": "#c7ffc3",
+                    "surface": "#f4faff",
+                    "outline-variant": "#bfcaba",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#001f2a",
+                    "primary-container": "#2e7d32",
+                    "secondary-fixed": "#98f994",
+                    "outline": "#707a6c",
+                    "on-surface": "#001f2a",
+                    "primary-fixed": "#a3f69c",
+                    "surface-container": "#d9f2ff",
+                    "primary-fixed-dim": "#88d982",
+                    "inverse-surface": "#163440",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#005312",
+                    "on-tertiary-fixed-variant": "#005318",
+                    "on-secondary-fixed": "#002204",
+                    "tertiary-container": "#277d34",
+                    "on-surface-variant": "#40493d",
+                    "surface-container-high": "#ceedfd",
+                    "surface-container-highest": "#c9e7f7",
+                    "tertiary-fixed": "#9ff79f",
+                    "secondary-fixed-dim": "#7ddc7a",
+                    "on-tertiary-fixed": "#002105",
+                    "secondary-container": "#98f994",
+                    "surface-bright": "#f4faff",
+                    "on-secondary": "#ffffff",
+                    "background": "#f4faff",
+                    "on-primary-container": "#cbffc2",
+                    "surface-variant": "#c9e7f7",
+                    "on-primary-fixed": "#002204",
+                    "tertiary": "#00631e",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#005313",
+                    "primary": "#0d631b",
+                    "surface-container-low": "#e6f6ff",
+                    "surface-tint": "#1b6d24",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "secondary": "#006e1c",
+                    "inverse-primary": "#88d982"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "card-gap": "24px",
+                    "gutter": "20px",
+                    "unit": "4px",
+                    "container-padding": "24px",
+                    "stack-md": "16px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "label-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Base styles from guidance */
+        body { background-color: #F7FAF7; }
+        .card-layer-1 { background-color: #FFFFFF; border: 1px solid #E6ECE7; box-shadow: 0px 2px 8px rgba(38, 50, 56, 0.02); }
+        .card-layer-2 { background-color: #FFFFFF; border: 1px solid #E6ECE7; box-shadow: 0px 4px 20px rgba(38, 50, 56, 0.06); }
+        .btn-primary { background-color: #2E7D32; color: #FFFFFF; border-radius: 12px; }
+        .btn-secondary { background-color: #E8F5E9; color: #2E7D32; border-radius: 12px; }
+        .badge-success { background-color: rgba(46, 125, 50, 0.1); color: #2E7D32; }
+        .badge-warning { background-color: rgba(255, 152, 0, 0.1); color: #F57C00; }
+        .badge-danger { background-color: rgba(211, 47, 47, 0.1); color: #D32F2F; }
+    </style>
+</head>
+<body class="font-body-md text-body-md text-on-surface antialiased overflow-x-hidden">
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="hidden md:flex flex-col w-[280px] h-screen fixed left-0 top-0 border-r border-outline-variant bg-surface dark:bg-inverse-surface z-50">
+<div class="flex flex-col h-full py-6">
+<!-- Brand Logo Header -->
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<img alt="PKBM IBADURRAHMAN Logo" class="w-10 h-10 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuG2fB7q_0Od1ClWKBKFl5OczpJ6SLyl6gRyUZqD75pzSDX-gSwzJcDgn1cWLCsMFMgAz9i64qPSesO8tJcUFKcvYjE4bwYPe6Cip6F1GKgITqcXBOXF8mAwDVjsR_PCEqOjB4j4tDIYsOi5PLPP8Zt3Eyq4zl9uDlbg1tyiUTu968-q85EK6McyXjnYLLV2G7A1c9ug2xDgwkTa8PoRXS4W_dMwPhITNH95mymSdLxBe7GwyFHeW0BPaIoBrf1MuqKJI"/>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">IBADURRAHMAN</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Manajemen Guru</p>
+</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary border-l-4 border-primary rounded-r-lg transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-label-md">Dasbor</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors transition-all duration-200 ease-in-out rounded-r-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Data Guru</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors transition-all duration-200 ease-in-out rounded-r-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Pengaturan Kehadiran</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors transition-all duration-200 ease-in-out rounded-r-lg" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="font-label-md text-label-md">Laporan</span>
+</a>
+</nav>
+<!-- Footer Action -->
+<div class="px-4 mt-auto">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors transition-all duration-200 ease-in-out rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">Keluar</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="w-full md:ml-[280px] md:w-[calc(100%-280px)] min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full h-16 px-8 docked full-width top-0 sticky border-b border-outline-variant dark:border-outline bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md z-40">
+<!-- Mobile Brand (Visible only on mobile) -->
+<div class="md:hidden font-headline-sm text-headline-sm font-bold text-primary dark:text-inverse-primary flex items-center gap-2"><img alt="Logo" class="w-8 h-8 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvfBBIEqAvfrJaEwSpvt3fZWkWvRLtiMNK-_ndE_MyXZyVC5vb9XA9YERbOioUwBNKIu427V26E1Wu9_xGdh-BpEjPHM9ndYAFDmdO_Z7cBkOcLAFLbuXlffvgEvNhnN6j7xK6KSSax0RMlxPVszhoLhTFskVkexVEOkfhWgeqheVV54G6gKX4Xme7EmnZ1orVOR4vorWtcuto2OlNcTqC4dnU9Qx6nsEkGQlcwWD0HYqhQ16kqan8XSJWPIP-ripJ3BQ"/>
+<span class="material-symbols-outlined">menu</span>
+                 PKBM IBADURRAHMAN
+            </div>
+<!-- Desktop Product Name -->
+<div class="hidden md:flex items-center gap-2 font-headline-sm text-headline-sm font-bold text-primary dark:text-inverse-primary"><img alt="Logo" class="w-8 h-8 rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBf5eCUveDfSx4pZHD8CY7gDcEcRfC_k9JTsij6xkq7b3hwQS8NsBb2LpXVCqIY96CSKEkDa5mAUK_YoI8FPrnqjpa60SWUqfp2o8oJhXrG6ue79_H7njGBZNXe5RLCLM4cpevukJSfAQF_y7MaiwlByKcyOFLj_2pnFm5EYYaCGUV-1VmKPVFx9H1gCnMo-ddcvTf3DPcPWsP1FFcEzbI2c-OJ5h_5ykBoRP9H8XhvZNmc3ukxJb59vL1imjkw7H2fWqY"/>PKBM IBADURRAHMAN</div>
+<div class="flex items-center gap-6">
+<!-- Search (Placeholder style for nav balance) -->
+<div class="hidden lg:flex items-center bg-surface-container-low rounded-full px-4 py-1.5 border border-outline-variant/30 focus-within:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm font-body-sm w-48 text-on-surface placeholder:text-on-surface-variant/70" placeholder="Cari..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors cursor-pointer active:scale-95 transition-transform hidden sm:block">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant ml-2 cursor-pointer active:scale-95 transition-transform">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a school administrator in a modern office, softly lit with natural daylight, wearing a smart casual blazer, conveying a friendly and approachable demeanor, light background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWJS7O2hXfi6V7TxnvAgxfKYyilH2NMDYcVdIJnC19Td4Yu6tRSl_pMTa1YylQtoV9H7NCFPwznw8LUWrJx6m2JOZF1Dyqbn0sLVNVHonXGx-hvlx8brTl-tjOejtZx11M7P_Qfowt5_SBoox_bEl2POS3ZWjF0-vYsYObMrKHTKA7cch29rXsck5OyKF8T5pZYcf08jUQJY0mClKzXA_UjNFoHyuMfHlaMNZwMer_a7BaXj2Yh5EIyQ"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 p-6 md:p-10 max-w-[1440px] mx-auto w-full">
+<!-- Greeting Section -->
+<div class="mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-background mb-1 tracking-tight">Selamat datang kembali, Admin</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Berikut adalah ringkasan kehadiran hari ini.</p>
+</div>
+<!-- Quick Actions (Bento Mini) -->
+<div class="flex gap-3">
+<button class="btn-secondary px-4 py-2 font-label-md text-label-md flex items-center gap-2 hover:bg-secondary-container transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm">qr_code_scanner</span>
+                        Kode QR
+                    </button>
+<button class="btn-primary px-4 py-2 font-label-md text-label-md flex items-center gap-2 hover:bg-primary-container/90 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm">person_add</span>
+                        Data Guru
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Top Row: Metrics Cards (4 columns each on large screens) -->
+<div class="col-span-1 md:col-span-6 lg:col-span-3 card-layer-1 rounded-xl p-6 flex flex-col justify-between h-[140px] hover:shadow-md transition-shadow">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<span class="font-label-md text-label-md">Total Guru</span>
+</div>
+<div class="flex items-end justify-between">
+<span class="font-headline-lg text-headline-lg text-on-surface">42</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">Aktif</span>
+</div>
+</div>
+<div class="col-span-1 md:col-span-6 lg:col-span-3 card-layer-1 rounded-xl p-6 flex flex-col justify-between h-[140px] hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute right-0 top-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div class="flex items-center gap-3 text-on-surface-variant relative z-10">
+<div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-700 border border-green-100">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="font-label-md text-label-md">Hadir Hari Ini</span>
+</div>
+<div class="flex items-end justify-between relative z-10">
+<span class="font-headline-lg text-headline-lg text-on-surface">38</span>
+<span class="font-label-sm text-label-sm badge-success px-2 py-0.5 rounded-full mb-1">90%</span>
+</div>
+</div>
+<div class="col-span-1 md:col-span-6 lg:col-span-3 card-layer-1 rounded-xl p-6 flex flex-col justify-between h-[140px] hover:shadow-md transition-shadow">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-orange-600 border border-orange-100">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<span class="font-label-md text-label-md">Total Guru Terlambat</span>
+</div>
+<div class="flex items-end justify-between">
+<span class="font-headline-lg text-headline-lg text-on-surface">5</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">Bulan ini</span>
+</div>
+</div>
+<div class="col-span-1 md:col-span-6 lg:col-span-3 card-layer-1 rounded-xl p-6 flex flex-col justify-between h-[140px] hover:shadow-md transition-shadow">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-secondary border border-secondary/20">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+</div>
+<span class="font-label-md text-label-md">Total Reward</span>
+</div>
+<div class="flex items-end justify-between">
+<span class="font-headline-lg text-headline-lg text-on-surface">Rp 1.5M</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">Diberikan</span>
+</div>
+</div>
+</div>
+<!-- Chart Section -->
+<div class="mt-8 card-layer-1 rounded-xl p-6">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Diagram Kehadiran Bulanan</h3>
+<select class="bg-surface-container-low border border-outline-variant rounded-lg px-3 py-1.5 font-label-md text-label-md text-on-surface focus:ring-primary focus:border-primary">
+<option>Oktober 2023</option>
+<option>November 2023</option>
+</select>
+</div>
+<div class="relative h-[250px] w-full flex items-end">
+<!-- Grid lines and Y axis -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none pb-8">
+<div class="flex items-center w-full border-b border-outline-variant/50 h-0"><span class="w-8 -mt-2 text-xs text-on-surface-variant text-right pr-2">100%</span></div>
+<div class="flex items-center w-full border-b border-outline-variant/50 h-0"><span class="w-8 -mt-2 text-xs text-on-surface-variant text-right pr-2">75%</span></div>
+<div class="flex items-center w-full border-b border-outline-variant/50 h-0"><span class="w-8 -mt-2 text-xs text-on-surface-variant text-right pr-2">50%</span></div>
+<div class="flex items-center w-full border-b border-outline-variant/50 h-0"><span class="w-8 -mt-2 text-xs text-on-surface-variant text-right pr-2">25%</span></div>
+<div class="flex items-center w-full border-b border-outline-variant h-0"><span class="w-8 -mt-2 text-xs text-on-surface-variant text-right pr-2">0%</span></div>
+</div>
+<!-- Bars -->
+<div class="flex-1 flex justify-around items-end h-[calc(100%-32px)] ml-10 z-10">
+<!-- Week 1 -->
+<div class="flex flex-col items-center gap-2 group w-full">
+<div class="flex items-end justify-center w-full gap-1 sm:gap-2 h-full">
+<div class="w-full max-w-[24px] bg-primary/30 rounded-t-sm h-[15%] group-hover:bg-primary/50 transition-colors" title="Terlambat"></div>
+<div class="w-full max-w-[24px] bg-primary rounded-t-sm h-[90%] group-hover:bg-primary/90 transition-colors" title="Tepat Waktu"></div>
+</div>
+<span class="text-xs text-on-surface-variant font-label-sm">Minggu 1</span>
+</div>
+<!-- Week 2 -->
+<div class="flex flex-col items-center gap-2 group w-full">
+<div class="flex items-end justify-center w-full gap-1 sm:gap-2 h-full">
+<div class="w-full max-w-[24px] bg-primary/30 rounded-t-sm h-[20%] group-hover:bg-primary/50 transition-colors"></div>
+<div class="w-full max-w-[24px] bg-primary rounded-t-sm h-[85%] group-hover:bg-primary/90 transition-colors"></div>
+</div>
+<span class="text-xs text-on-surface-variant font-label-sm">Minggu 2</span>
+</div>
+<!-- Week 3 -->
+<div class="flex flex-col items-center gap-2 group w-full">
+<div class="flex items-end justify-center w-full gap-1 sm:gap-2 h-full">
+<div class="w-full max-w-[24px] bg-primary/30 rounded-t-sm h-[10%] group-hover:bg-primary/50 transition-colors"></div>
+<div class="w-full max-w-[24px] bg-primary rounded-t-sm h-[95%] group-hover:bg-primary/90 transition-colors"></div>
+</div>
+<span class="text-xs text-on-surface-variant font-label-sm">Minggu 3</span>
+</div>
+<!-- Week 4 -->
+<div class="flex flex-col items-center gap-2 group w-full">
+<div class="flex items-end justify-center w-full gap-1 sm:gap-2 h-full">
+<div class="w-full max-w-[24px] bg-primary/30 rounded-t-sm h-[25%] group-hover:bg-primary/50 transition-colors"></div>
+<div class="w-full max-w-[24px] bg-primary rounded-t-sm h-[80%] group-hover:bg-primary/90 transition-colors"></div>
+</div>
+<span class="text-xs text-on-surface-variant font-label-sm">Minggu 4</span>
+</div>
+</div>
+</div>
+<!-- Legend -->
+<div class="flex justify-center items-center gap-6 mt-6">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-xs text-on-surface-variant font-label-sm">Tepat Waktu</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary/30"></div>
+<span class="text-xs text-on-surface-variant font-label-sm">Terlambat</span>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

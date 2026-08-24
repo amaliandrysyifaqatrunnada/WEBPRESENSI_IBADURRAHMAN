@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Data Tenaga Pendidik - PKBM IBADURRAHMAN</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#83da85",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#e0f4ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#0c7521",
+                        "surface-dim": "#c0dfee",
+                        "on-tertiary-container": "#c7ffc3",
+                        "surface": "#f4faff",
+                        "outline-variant": "#bfcaba",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#001f2a",
+                        "primary-container": "#2e7d32",
+                        "secondary-fixed": "#98f994",
+                        "outline": "#707a6c",
+                        "on-surface": "#001f2a",
+                        "primary-fixed": "#a3f69c",
+                        "surface-container": "#d9f2ff",
+                        "primary-fixed-dim": "#88d982",
+                        "inverse-surface": "#163440",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#005312",
+                        "on-tertiary-fixed-variant": "#005318",
+                        "on-secondary-fixed": "#002204",
+                        "tertiary-container": "#277d34",
+                        "on-surface-variant": "#40493d",
+                        "surface-container-high": "#ceedfd",
+                        "surface-container-highest": "#c9e7f7",
+                        "tertiary-fixed": "#9ff79f",
+                        "secondary-fixed-dim": "#7ddc7a",
+                        "on-tertiary-fixed": "#002105",
+                        "secondary-container": "#98f994",
+                        "surface-bright": "#f4faff",
+                        "on-secondary": "#ffffff",
+                        "background": "#f4faff",
+                        "on-primary-container": "#cbffc2",
+                        "surface-variant": "#c9e7f7",
+                        "on-primary-fixed": "#002204",
+                        "tertiary": "#00631e",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#005313",
+                        "primary": "#0d631b",
+                        "surface-container-low": "#e6f6ff",
+                        "surface-tint": "#1b6d24",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "secondary": "#006e1c",
+                        "inverse-primary": "#88d982"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "card-gap": "24px",
+                        "gutter": "20px",
+                        "unit": "4px",
+                        "container-padding": "24px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f4faff; /* bg-background */
+        }
+        /* Custom scrollbar for better visual on large tables */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #bfcaba; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #707a6c; 
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface bg-background flex flex-col md:flex-row min-h-screen relative">
+<!-- Mobile Drawer Overlay -->
+<div class="fixed inset-0 bg-on-surface/50 z-40 hidden md:hidden transition-opacity" id="mobile-drawer-overlay"></div>
+<!-- SideNavBar (Navigation Shell) -->
+<aside class="w-[280px] h-screen fixed left-0 top-0 bg-surface dark:bg-inverse-surface border-r border-outline-variant dark:border-outline flex flex-col h-full py-6 z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out" id="sidebar">
+<!-- Header / Logo -->
+<div class="px-6 pb-6 flex items-center gap-4 border-b border-outline-variant dark:border-outline">
+<div class="w-10 h-10 rounded-full flex items-center justify-center shrink-0"><img alt="PKBM IBADURRAHMAN Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJt5dSEOA-f6DiR8Npb-NQWmJ6aYx90hM31BUuofNVaqyMsg-MUZKa0WnmNlMrjgJcqLNVDIbitFK6tUOy6a1MZbPfvAi4QN9ZLuDtt_Z5sSIp5CDS5EV3nOa_2Rv33qwViw67cnNjI95ZtPG9sDLEWWu1lUVox-z47R842AwKhzhLm8a-0n8PHwlDMMIsb6GZKeCwHj0dMRaNvgfiwg7L8ZrZFp2aFU0hRvDooCvXh3bHLIoYZiOyBmasR8tIZLKJZLE"/></div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary truncate">IBADURRAHMAN</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant truncate">Manajemen Tenaga Pendidik</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 px-2 pt-6 flex flex-col gap-2 overflow-y-auto custom-scrollbar">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors transition-all duration-200 ease-in-out rounded-r-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary border-l-4 border-primary rounded-r-lg transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-md text-label-md font-bold">Data Tenaga Pendidik</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors transition-all duration-200 ease-in-out rounded-r-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Attendance Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors transition-all duration-200 ease-in-out rounded-r-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors" data-icon="assessment">assessment</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+</nav>
+<!-- Footer Actions -->
+<div class="px-2 pt-4 border-t border-outline-variant dark:border-outline mt-auto">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-error hover:bg-error-container/20 transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-error transition-colors" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area Wrapper -->
+<div class="flex-1 flex flex-col md:ml-[280px] min-h-screen w-full relative">
+<!-- TopNavBar -->
+<header class="bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md border-b border-outline-variant dark:border-outline flat no shadows flex justify-between items-center w-full h-16 px-4 md:px-8 top-0 sticky z-30">
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-colors mr-2" id="mobile-menu-btn">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Product Name / Context (Hidden on very small screens if needed, but keeping for structure) -->
+<div class="hidden sm:block">
+<span class="font-headline-sm text-headline-sm font-bold text-primary dark:text-inverse-primary">PKBM IBADURRAHMAN</span>
+</div>
+<!-- Global Search (Center/Leftish) -->
+<div class="flex-1 max-w-md mx-4 relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Search across app..." type="text"/>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-2 md:gap-4 ml-auto">
+<button aria-label="Notifications" class="p-2 text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container rounded-full transition-colors relative cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button aria-label="Settings" class="p-2 text-on-surface-variant hover:text-primary dark:hover:text-inverse-primary hover:bg-surface-container rounded-full transition-colors hidden sm:block cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<!-- Admin Avatar -->
+<div class="h-8 w-8 rounded-full bg-primary-container overflow-hidden border border-outline-variant cursor-pointer ml-2">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a school administrator in a modern office setting. Clear lighting, high quality, suitable for a corporate avatar in a light mode UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIL8ETd7VpsodSjigAtJ2axUCZ6HkxxZ9MbvRFBAYh8hK1J1e_ROfA5baT8LrhVMyarHaoFlIXS-IHTS2VB90LwBnFSDwDCkesAx3fhZq6d_ApC36l9L2xpThw0wYgMZeolIUwUlXkW7P1Gkzws2zPJcmRXCocEbD0fJiq55uf3_-atAENUIDtWLvu4Qko7cXgkL8dPmvLehkgb9QKfQ1ngBgXJFxQZXT2Dm5Gfp882xtChYjR9R72KA"/>
+</div>
+</div>
+</header>
+<!-- Canvas / Main Content -->
+<main class="flex-1 p-4 md:p-8 lg:p-10 max-w-7xl mx-auto w-full">
+<!-- Page Header & Controls -->
+<div class="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">Tenaga Pendidik</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage teacher records, assignments, and statuses.</p>
+</div>
+<div class="flex flex-wrap gap-3 w-full sm:w-auto">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                        Ekspor
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">upload</span>
+                        Impor
+                    </button>
+<button class="flex items-center gap-2 px-5 py-2 bg-[#2E7D32] hover:bg-[#1b6d24] text-white rounded-lg font-label-md text-label-md transition-colors shadow-sm active:scale-95" onclick="document.getElementById('addTeacherModal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                        Tambah Guru
+                    </button>
+</div>
+</div>
+<!-- Data Table Card (Level 1 Surface) -->
+<div class="bg-surface-container-lowest border border-[#E6ECE7] rounded-xl overflow-hidden shadow-sm">
+<!-- Table Toolbar -->
+<div class="p-4 border-b border-[#E6ECE7] flex flex-col sm:flex-row justify-between gap-4 bg-surface-bright">
+<!-- Search -->
+<div class="relative w-full sm:max-w-xs">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-white border border-[#E6ECE7] rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-[#2E7D32] focus:ring-1 focus:ring-[#2E7D32] transition-colors h-10" placeholder="Search teachers..." type="text"/>
+</div>
+<!-- Filters -->
+<div class="flex gap-2">
+<div class="relative">
+<select class="appearance-none pl-4 pr-10 py-2 bg-white border border-[#E6ECE7] rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-[#2E7D32] focus:ring-1 focus:ring-[#2E7D32] h-10 cursor-pointer">
+<option>All Status</option>
+<option>Active</option>
+<option>Inactive</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[20px]">expand_more</span>
+</div>
+<div class="relative hidden sm:block">
+<select class="appearance-none pl-4 pr-10 py-2 bg-white border border-[#E6ECE7] rounded-lg font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-[#2E7D32] focus:ring-1 focus:ring-[#2E7D32] h-10 cursor-pointer">
+<option>All Positions</option>
+<option>Guru Kelas</option>
+<option>Guru Mapel</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Table Wrapper for horizontal scroll -->
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse min-w-[900px]">
+<thead>
+<tr class="bg-[#F7FAF7] border-b-2 border-[#E6ECE7]">
+<th class="py-3 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Profil</th>
+<th class="py-3 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">ID / NIP</th>
+<th class="py-3 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Nama Guru</th>
+<th class="py-3 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Jabatan</th>
+<th class="py-3 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Kontak</th>
+<th class="py-3 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="py-3 px-6 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#E6ECE7] bg-white">
+<!-- Row 1 -->
+<tr class="hover:bg-[#F7FAF7] transition-colors group">
+<td class="py-4 px-6">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border border-[#E6ECE7]">
+<img alt="Teacher Photo" class="w-full h-full object-cover" data-alt="Professional headshot portrait of an Indonesian male teacher in his 30s, wearing formal batik, smiling slightly. Bright, clear, light mode corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIpRMuwK7qbZKy1RD_lc_byUVlXfPAjjgckZ3RvCRVZjm07yioWtkEEopnO2-BBBSFIE3UiMA_mIaugLJRsCVCHvVr42-XpXhRZ0U8ibFBmvZJZJl4LPUb2PUyPPdVB3OXIUlSANxpWdImNn3mZN12j5CRj6qoNYzdPXwe092SdnVmTUZ1JsPlI54_VMJiuzcvS0KefACCaNDPotPts_vA0GsbECFbGjqORSttgGR34_6eWkWYn2uAvg"/>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="font-label-md text-label-md text-on-surface">TCH-001</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">198507232010011015</div>
+</td>
+<td class="py-4 px-6">
+<div class="font-label-md text-label-md text-on-surface">Budi Santoso, S.Pd.</div>
+</td>
+<td class="py-4 px-6">
+<div class="font-body-sm text-body-sm text-on-surface">Guru Kelas</div>
+</td>
+<td class="py-4 px-6">
+<div class="font-body-sm text-body-sm text-on-surface">0812-3456-7890</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#E8F5E9] text-[#2E7D32] border border-[#C8E6C9]">
+                                        Aktif
+                                    </span>
+</td>
+<td class="py-4 px-6 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-on-surface-variant hover:text-[#2E7D32] hover:bg-[#E8F5E9] rounded transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-[#F7FAF7] transition-colors group">
+<td class="py-4 px-6">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border border-[#E6ECE7] flex items-center justify-center text-on-surface-variant font-label-md">
+                                        SN
+                                    </div>
+</td>
+<td class="py-4 px-6">
+<div class="font-label-md text-label-md text-on-surface">TCH-002</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">199011152015032008</div>
+</td>
+<td class="py-4 px-6">
+<div class="font-label-md text-label-md text-on-surface">Siti Nurhaliza, M.Pd.</div>
+</td>
+<td class="py-4 px-6">
+<div class="font-body-sm text-body-sm text-on-surface">Guru Mapel Bahasa</div>
+</td>
+<td class="py-4 px-6">
+<div class="font-body-sm text-body-sm text-on-surface">0856-7890-1234</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#E8F5E9] text-[#2E7D32] border border-[#C8E6C9]">
+                                        Aktif
+                                    </span>
+</td>
+<td class="py-4 px-6 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-on-surface-variant hover:text-[#2E7D32] hover:bg-[#E8F5E9] rounded transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-[#F7FAF7] transition-colors group">
+<td class="py-4 px-6">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border border-[#E6ECE7]">
+<img alt="Teacher Photo" class="w-full h-full object-cover" data-alt="Professional headshot portrait of an Indonesian male teacher in his 40s, wearing a smart casual blazer. Bright, crisp light mode corporate photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBsmTdxgwG73Ly364uLyejucQPpSOaYzT01jheV0MiViN2WNktbN6_jLtSO5ZaLZG_H6IDo6tnvpvqP9eaKPXm_Q8QieAR8CZ92L0YrKPfw4h19JTbsyhrCbgnqzr_y3VR9CeKcTDrB0exuI-6QzPtkRpAsvUnG_cb9w9y5TTjH7TWs1kRG_45XuUBWPPc6sQiq7bvZKBgF0-kZYsZTCWdXKp4_yKnK4fzSPWxcZ7Vc2ZMYw7-ishQQw"/>
+</div>
+</td>
+<td class="py-4 px-6">
+<div class="font-label-md text-label-md text-on-surface">TCH-003</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">198205102008011022</div>
+</td>
+<td class="py-4 px-6">
+<div class="font-label-md text-label-md text-on-surface">Ahmad Hidayat, S.Kom.</div>
+</td>
+<td class="py-4 px-6">
+<div class="font-body-sm text-body-sm text-on-surface">Guru TIK</div>
+</td>
+<td class="py-4 px-6">
+<div class="font-body-sm text-body-sm text-on-surface">0813-5555-4444</div>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#FFF8E1] text-[#F57F17] border border-[#FFECB3]">
+                                        Nonaktif
+                                    </span>
+</td>
+<td class="py-4 px-6 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-1.5 text-on-surface-variant hover:text-[#2E7D32] hover:bg-[#E8F5E9] rounded transition-colors" title="Edit">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-error hover:bg-error-container/20 rounded transition-colors" title="Delete">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="p-4 border-t border-[#E6ECE7] bg-white flex items-center justify-between text-sm">
+<span class="font-body-sm text-on-surface-variant">Showing 1 to 3 of 45 entries</span>
+<div class="flex gap-1">
+<button class="px-3 py-1 border border-[#E6ECE7] rounded text-on-surface-variant hover:bg-surface-container disabled:opacity-50" disabled="">Prev</button>
+<button class="px-3 py-1 bg-[#2E7D32] text-white rounded font-medium">1</button>
+<button class="px-3 py-1 border border-[#E6ECE7] rounded text-on-surface hover:bg-surface-container">2</button>
+<button class="px-3 py-1 border border-[#E6ECE7] rounded text-on-surface hover:bg-surface-container">3</button>
+<button class="px-3 py-1 border border-[#E6ECE7] rounded text-on-surface hover:bg-surface-container">Next</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Modal: Add Teacher -->
+<!-- Level 3 Elevation applied via shadow class -->
+<div class="fixed inset-0 z-[60] flex items-center justify-center hidden" id="addTeacherModal">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-on-surface/40 backdrop-blur-sm transition-opacity" onclick="document.getElementById('addTeacherModal').classList.add('hidden')"></div>
+<!-- Modal Content -->
+<div class="relative bg-white rounded-xl shadow-[0px_12px_40px_rgba(38,50,56,0.12)] w-full max-w-2xl mx-4 max-h-[90vh] overflow-hidden flex flex-col border border-[#E6ECE7]">
+<!-- Modal Header -->
+<div class="px-6 py-4 border-b border-[#E6ECE7] flex justify-between items-center bg-[#F7FAF7]">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Add New Teacher</h3>
+<button class="text-on-surface-variant hover:text-on-surface rounded-full p-1 hover:bg-[#E6ECE7] transition-colors" onclick="document.getElementById('addTeacherModal').classList.add('hidden')">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Body (Scrollable) -->
+<div class="p-6 overflow-y-auto custom-scrollbar flex-1 bg-white">
+<form class="space-y-6">
+<!-- Photo Upload Area -->
+<div class="flex items-center gap-6 pb-6 border-b border-[#E6ECE7]">
+<div class="w-24 h-24 rounded-full bg-surface-container-high border-2 border-dashed border-[#bfcaba] flex flex-col items-center justify-center text-on-surface-variant cursor-pointer hover:bg-surface-variant hover:border-[#2E7D32] transition-colors">
+<span class="material-symbols-outlined mb-1">add_a_photo</span>
+<span class="text-xs">Upload</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface mb-1">Profile Photo</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-3">JPG, GIF or PNG. Max size of 2MB.</p>
+<button class="px-3 py-1.5 bg-[#E8F5E9] text-[#2E7D32] border border-[#2E7D32]/20 rounded font-label-sm text-label-sm hover:bg-[#C8E6C9] transition-colors" type="button">
+                                Choose File
+                            </button>
+</div>
+</div>
+<!-- Form Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+<!-- Teacher ID -->
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface mb-2">Teacher ID</label>
+<input class="w-full px-4 py-2.5 bg-surface border border-[#E6ECE7] rounded-xl font-body-md text-body-md text-on-surface-variant focus:outline-none cursor-not-allowed" readonly="" type="text" value="TCH-046"/>
+</div>
+<!-- Teacher Name -->
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface mb-2">Full Name <span class="text-error">*</span></label>
+<input class="w-full px-4 py-2.5 bg-white border border-[#E6ECE7] rounded-xl font-body-md text-body-md text-on-surface focus:outline-none focus:border-[#2E7D32] transition-colors" placeholder="e.g. Budi Santoso, S.Pd" type="text"/>
+</div>
+<!-- NIP -->
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface mb-2">NIP</label>
+<input class="w-full px-4 py-2.5 bg-white border border-[#E6ECE7] rounded-xl font-body-md text-body-md text-on-surface focus:outline-none focus:border-[#2E7D32] transition-colors" placeholder="Enter NIP" type="text"/>
+</div>
+<!-- Position -->
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface mb-2">Position <span class="text-error">*</span></label>
+<div class="relative">
+<select class="appearance-none w-full px-4 py-2.5 bg-white border border-[#E6ECE7] rounded-xl font-body-md text-body-md text-on-surface focus:outline-none focus:border-[#2E7D32] transition-colors cursor-pointer">
+<option disabled="" selected="" value="">Select Position</option>
+<option>Guru Kelas</option>
+<option>Guru Mapel</option>
+<option>Guru BK</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Phone Number -->
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface mb-2">Phone Number</label>
+<input class="w-full px-4 py-2.5 bg-white border border-[#E6ECE7] rounded-xl font-body-md text-body-md text-on-surface focus:outline-none focus:border-[#2E7D32] transition-colors" placeholder="08xx-xxxx-xxxx" type="tel"/>
+</div>
+<!-- Status -->
+<div class="relative">
+<label class="block font-label-md text-label-md text-on-surface mb-2">Initial Status</label>
+<div class="flex items-center gap-4 h-[44px]">
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="text-[#2E7D32] focus:ring-[#2E7D32]" name="status" type="radio"/>
+<span class="font-body-md text-body-md text-on-surface">Active</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="text-[#2E7D32] focus:ring-[#2E7D32]" name="status" type="radio"/>
+<span class="font-body-md text-body-md text-on-surface">Inactive</span>
+</label>
+</div>
+</div>
+</div>
+</form>
+</div>
+<!-- Modal Footer -->
+<div class="px-6 py-4 border-t border-[#E6ECE7] bg-[#F7FAF7] flex justify-end gap-3">
+<button class="px-5 py-2.5 rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-[#E6ECE7] transition-colors" onclick="document.getElementById('addTeacherModal').classList.add('hidden')" type="button">
+                    Cancel
+                </button>
+<button class="px-5 py-2.5 bg-[#2E7D32] hover:bg-[#1b6d24] text-white rounded-xl font-label-md text-label-md transition-colors shadow-sm active:scale-95" type="button">
+                    Save Teacher
+                </button>
+</div>
+</div>
+</div>
+<!-- Simple Script for Mobile Menu -->
+<script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const mobileOverlay = document.getElementById('mobile-drawer-overlay');
+
+        function toggleMenu() {
+            const isClosed = sidebar.classList.contains('-translate-x-full');
+            if (isClosed) {
+                sidebar.classList.remove('-translate-x-full');
+                mobileOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // prevent background scrolling
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                mobileOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        mobileOverlay.addEventListener('click', toggleMenu);
+    </script>
+</body></html>

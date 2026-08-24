@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GPS Settings - PKBM IBADURRAHMAN</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#83da85",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#e0f4ff",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#0c7521",
+                    "surface-dim": "#c0dfee",
+                    "on-tertiary-container": "#c7ffc3",
+                    "surface": "#f4faff",
+                    "outline-variant": "#bfcaba",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#001f2a",
+                    "primary-container": "#2e7d32",
+                    "secondary-fixed": "#98f994",
+                    "outline": "#707a6c",
+                    "on-surface": "#001f2a",
+                    "primary-fixed": "#a3f69c",
+                    "surface-container": "#d9f2ff",
+                    "primary-fixed-dim": "#88d982",
+                    "inverse-surface": "#163440",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#005312",
+                    "on-tertiary-fixed-variant": "#005318",
+                    "on-secondary-fixed": "#002204",
+                    "tertiary-container": "#277d34",
+                    "on-surface-variant": "#40493d",
+                    "surface-container-high": "#ceedfd",
+                    "surface-container-highest": "#c9e7f7",
+                    "tertiary-fixed": "#9ff79f",
+                    "secondary-fixed-dim": "#7ddc7a",
+                    "on-tertiary-fixed": "#002105",
+                    "secondary-container": "#98f994",
+                    "surface-bright": "#f4faff",
+                    "on-secondary": "#ffffff",
+                    "background": "#f4faff",
+                    "on-primary-container": "#cbffc2",
+                    "surface-variant": "#c9e7f7",
+                    "on-primary-fixed": "#002204",
+                    "tertiary": "#00631e",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#005313",
+                    "primary": "#0d631b",
+                    "surface-container-low": "#e6f6ff",
+                    "surface-tint": "#1b6d24",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "secondary": "#006e1c",
+                    "inverse-primary": "#88d982"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "card-gap": "24px",
+                    "gutter": "20px",
+                    "unit": "4px",
+                    "container-padding": "24px",
+                    "stack-md": "16px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "label-md": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "label-sm": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-lg-mobile": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-sm": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-md": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-lg": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-sm": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-md": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "display-lg": [
+                            "Plus Jakarta Sans"
+                    ]
+            },
+            "fontSize": {
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "28px",
+                            {
+                                    "lineHeight": "36px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-sm": [
+                            "20px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "60px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- SideNavBar -->
+<nav class="hidden md:flex w-[280px] h-screen fixed left-0 top-0 bg-surface border-r border-outline-variant flex-col py-6 z-20">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center bg-surface-container-lowest border border-outline-variant"><img alt="PKBM Ibadurrahman Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8h0JUwo5_OjxdMhbRVVqJAH0JSbCXu-QK826acToZA_yturkx7ryt0mfXBhxDRUvguuzJltjrW59Rg-0oM3TzDKuDDn-N8z2EinzeoNSvHaw0vdpon0MNAZV96jW2XGH8Yx7d5vfcViAhlQqmXZ4THLjpOSoCZ5AXVyG_Q_phRTor6cyYFBDcVE-DM0a7DbTJwd6T27cSbz5SnOW2tj8GcHIak1elTOQ6hYt_Iz9wiMoOOX2laU6PNiCDhk2KwTLKML8"/></div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">IBADURRAHMAN</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Teacher Management</p>
+</div>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-2 px-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">group</span>
+                Teacher Data
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container border-l-4 border-primary rounded-r-lg font-label-md text-label-md transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Attendance Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">assessment</span>
+                Reports
+            </a>
+</div>
+<div class="mt-auto px-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </a>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="hidden md:flex justify-between items-center w-full h-16 px-8 ml-[280px] w-[calc(100%-280px)] bg-surface/80 backdrop-blur-md sticky top-0 border-b border-outline-variant z-10">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-sm text-headline-sm font-bold text-primary">PKBM IBADURRAHMAN</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">settings</span>
+</button>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a school administrator in a modern office setting. The lighting is soft and bright, emphasizing a clean, approachable, and organized aesthetic consistent with a premium management dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA86ph6YbGOEI9cSjIBzoeuntZoCq1bbY-i-jeCYpZ-x9dZ8I48gxERrlFTrF7_YAK6G2nZHvCgGTXTlDDsS2NpX26Mpl9d3OllBxsqvLQcpbeEjotgkiaJO8ACiL4vsKahuL-cqyBssN6nrWRav-3UaEt0g3nJ7dFqE2qdyXOtauaL33v9LdPC9rvGvrSwGxwCdYD5UICrheCXB3H3b363TPXBIpqWdJT264w-sxxpo01j8amYT65uhw"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="md:ml-[280px] p-container-padding max-w-7xl mx-auto">
+<div class="mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg text-on-background">Pengaturan GPS</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Atur parameter geofencing untuk pelacakan kehadiran guru.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-card-gap">
+<!-- Map Card (Bento Style) -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col relative h-[500px]">
+<div class="p-4 border-b border-outline-variant bg-surface-container-lowest z-10 flex justify-between items-center">
+<div>
+<h3 class="font-label-md text-label-md text-on-background">Lokasi Sekolah</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tarik penanda untuk mengatur pusat yang tepat.</p>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined">my_location</span>
+</button>
+</div>
+<!-- Map Placeholder Area -->
+<div class="flex-1 relative bg-surface-variant w-full h-full">
+<img alt="Map View" class="w-full h-full object-cover" data-alt="A high-resolution satellite map view of a modern urban school campus, displayed in a clean, light-mode dashboard interface. A distinct green circular overlay indicates a geofence radius. The map colors are muted and professional, with clear roads and buildings visible under bright, even daylight." data-location="Jakarta" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBS1LMYTuyfLpy3YL8TvEVaV_LU_ApmTKMYg7MQreuvnAEV4HZofKX3mkXSn4bxpWLe6owOHvwiUhPC1BPY9xLIV-HDhaogcSQICWujz66tfo4J08QHGJPWaIbKOmQgBQdpBll9AQs82wOcgRkFKL2goRNOa7R-2wsxQ2o1D60B2KelZ0j-KWczySuRnQcEbLEYMxc0SscEZA0E8tttyvwvdUw43pzGN0r4pCxUtXs2z2V1LAHdWn8qg"/>
+<!-- Geofence Preview Overlay (Simulated) -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="relative flex items-center justify-center">
+<!-- Radius Circle -->
+<div class="absolute w-48 h-48 rounded-full bg-primary/20 border-2 border-primary/50 pointer-events-none"></div>
+<!-- Marker Pin -->
+<span class="material-symbols-outlined text-error text-4xl drop-shadow-md pb-8 pointer-events-auto cursor-grab active:cursor-grabbing">location_on</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Settings Panel -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-card-gap shadow-sm flex flex-col gap-stack-lg">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-1">Parameter Geofence</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Tentukan area absen yang dapat diterima.</p>
+<div class="flex flex-col gap-stack-md">
+<!-- Latitude -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Garis Lintang</label>
+<input class="w-full rounded-lg border-outline-variant bg-surface border px-4 py-2 text-on-background font-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-colors" type="text" value="-6.2088"/>
+</div>
+<!-- Longitude -->
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Garis Bujur</label>
+<input class="w-full rounded-lg border-outline-variant bg-surface border px-4 py-2 text-on-background font-body-md focus:border-primary focus:ring-1 focus:ring-primary transition-colors" type="text" value="106.8456"/>
+</div>
+<div class="w-full h-px bg-outline-variant my-2"></div>
+<!-- Radius Slider -->
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface-variant">Radius (Meter)</label>
+<span class="font-label-md text-label-md text-primary bg-primary-container/10 px-2 py-1 rounded">50m</span>
+</div>
+<input class="w-full h-2 bg-surface-variant rounded-lg appearance-none cursor-pointer accent-primary" max="200" min="10" type="range" value="50"/>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span class="">10m</span>
+<span class="">200m</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-stack-md">
+<button class="w-full bg-primary-container text-on-primary rounded-lg py-3 px-4 font-label-md text-label-md flex justify-center items-center gap-2 hover:bg-primary transition-colors shadow-sm active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px]">save</span>
+                        Simpan Lokasi
+                    </button>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-center mt-3">Perubahan langsung berlaku untuk semua guru.</p>
+</div>
+</div>
+</div>
+</main>
+</body></html>

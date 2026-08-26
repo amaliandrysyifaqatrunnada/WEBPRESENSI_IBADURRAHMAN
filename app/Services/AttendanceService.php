@@ -360,7 +360,7 @@ class AttendanceService
                     $statusMasuk = 'Tepat Waktu';
                     $reward = true;
                 } elseif ($timeString <= $lateThreshold) {
-                    $statusMasuk = 'Tepat Waktu';
+                    $statusMasuk = 'Normal';
                     $reward = false;
                 } else {
                     $statusMasuk = 'Terlambat';

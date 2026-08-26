@@ -305,6 +305,7 @@ class FaceIdController extends Controller
                 'teacher_name' => $teacher->name,
                 'unit_name' => $unit->name,
                 'type' => $request->input('action_type'),
+                'status' => $result['status'] ?? null,
             ]);
         } catch (\Exception $e) {
             // Check specific common failure reasons and log them

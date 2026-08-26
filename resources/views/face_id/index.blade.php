@@ -523,16 +523,25 @@
                     
                     if (result.type === 'check_in') {
                         statusLabel.textContent = "Status Masuk";
-                        statusTextElem.textContent = result.message.includes("Reward") ? "Tepat Waktu (🏆 Reward)" : "Tepat Waktu";
-                        statusTextElem.className = "text-emerald-700 font-bold";
-                        if (result.message.toLowerCase().includes("terlambat")) {
+                        if (result.status === 'Terlambat') {
                             statusTextElem.textContent = "Terlambat";
                             statusTextElem.className = "text-red-600 font-bold";
+                        } else if (result.status === 'Normal') {
+                            statusTextElem.textContent = "Normal";
+                            statusTextElem.className = "text-blue-600 font-bold";
+                        } else {
+                            statusTextElem.textContent = result.message.includes("Reward") ? "Tepat Waktu (🏆 Reward)" : "Tepat Waktu";
+                            statusTextElem.className = "text-emerald-700 font-bold";
                         }
                     } else {
                         statusLabel.textContent = "Status Pulang";
-                        statusTextElem.textContent = result.message.toLowerCase().includes("awal") ? "Pulang Lebih Awal" : "Normal";
-                        statusTextElem.className = result.message.toLowerCase().includes("awal") ? "text-amber-600 font-bold" : "text-emerald-700 font-bold";
+                        if (result.status === 'Pulang Lebih Awal') {
+                            statusTextElem.textContent = "Pulang Lebih Awal";
+                            statusTextElem.className = "text-amber-600 font-bold";
+                        } else {
+                            statusTextElem.textContent = "Normal";
+                            statusTextElem.className = "text-emerald-700 font-bold";
+                        }
                     }
   
                     // Show step 3

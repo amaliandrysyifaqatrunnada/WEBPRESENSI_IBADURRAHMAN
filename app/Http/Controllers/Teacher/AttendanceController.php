@@ -89,6 +89,7 @@ class AttendanceController extends Controller
                 'message' => $result['message'],
                 'time' => $result['time'] ?? null,
                 'type' => $dto->action_type,
+                'status' => $result['status'] ?? null,
             ]);
         } catch (\Exception $e) {
             return response()->json([

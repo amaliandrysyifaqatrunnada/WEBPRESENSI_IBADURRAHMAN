@@ -563,11 +563,11 @@ try {
     Carbon::setTestNow(Carbon::parse('today 06:48:00'));
     $attendanceService->submitAttendance($dto);
     $att = Attendance::where('teacher_id', $teacherA->id)->first();
-    if ($att && $att->status_masuk === 'Tepat Waktu' && !$att->reward) {
-        logResult(12, "Clock-in 06:46 - 06:50 (Tepat Waktu, No Reward)", "PASS", "status_masuk: {$att->status_masuk}, reward: false");
+    if ($att && $att->status_masuk === 'Normal' && !$att->reward) {
+        logResult(12, "Clock-in 06:46 - 06:50 (Normal)", "PASS", "status_masuk: {$att->status_masuk}, reward: false");
         $totalPassed++;
     } else {
-        logResult(12, "Clock-in 06:46 - 06:50 (Tepat Waktu, No Reward)", "FAIL", "status_masuk: " . ($att ? $att->status_masuk : 'none') . ", reward: " . ($att && $att->reward ? 'true' : 'false'));
+        logResult(12, "Clock-in 06:46 - 06:50 (Normal)", "FAIL", "status_masuk: " . ($att ? $att->status_masuk : 'none') . ", reward: " . ($att && $att->reward ? 'true' : 'false'));
         $totalFailed++;
     }
 

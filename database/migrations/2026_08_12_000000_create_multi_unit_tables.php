@@ -153,19 +153,19 @@ return new class extends Migration
         $newAdmins = [
             [
                 'name' => 'Admin Unit TK',
-                'email' => 'admin-tk@ibadurrahman.sch.id',
+                'email' => 'admin_TK@ibadurrahman.sch.id',
                 'password' => Hash::make('password'),
                 'unit_id' => $unitIds['TK'],
             ],
             [
                 'name' => 'Admin Unit Paket B',
-                'email' => 'admin-paketb@ibadurrahman.sch.id',
+                'email' => 'admin_paketB@ibadurrahman.sch.id',
                 'password' => Hash::make('password'),
                 'unit_id' => $unitIds['PAKET_B'],
             ],
             [
                 'name' => 'Admin Unit Paket C',
-                'email' => 'admin-paketc@ibadurrahman.sch.id',
+                'email' => 'admin_paketC@ibadurrahman.sch.id',
                 'password' => Hash::make('password'),
                 'unit_id' => $unitIds['PAKET_C'],
             ],

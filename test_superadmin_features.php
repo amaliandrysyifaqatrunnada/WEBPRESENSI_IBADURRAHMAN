@@ -61,11 +61,11 @@ try {
     }
 
     // Fetch or create Admin TK
-    $adminTK = User::where('email', 'admin-tk@ibadurrahman.sch.id')->first();
+    $adminTK = User::where('email', 'admin_TK@ibadurrahman.sch.id')->first();
     if (!$adminTK) {
         $adminTK = User::create([
             'name' => 'Admin Unit TK',
-            'email' => 'admin-tk@ibadurrahman.sch.id',
+            'email' => 'admin_TK@ibadurrahman.sch.id',
             'password' => bcrypt('password'),
             'unit_id' => 2,
         ]);

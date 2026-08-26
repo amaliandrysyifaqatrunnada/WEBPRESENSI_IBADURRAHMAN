@@ -92,7 +92,7 @@
     </div>
 
     <!-- Attendance Status Bento Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-gutter mb-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-gutter mb-8">
         <!-- Hadir -->
         <div class="card-layer-1 rounded-xl p-4 flex flex-col justify-between h-[110px] hover:shadow-md transition-shadow">
             <span class="text-[10px] font-bold text-emerald-700 uppercase tracking-wider">Sudah Hadir</span>
@@ -126,33 +126,6 @@
             <div class="mt-2 flex items-baseline justify-between">
                 <span class="text-2xl font-extrabold text-red-600">{{ $earlyCheckoutToday }}</span>
                 <span class="material-symbols-outlined text-red-600 text-lg">exit_to_app</span>
-            </div>
-        </div>
-
-        <!-- Izin -->
-        <div class="card-layer-1 rounded-xl p-4 flex flex-col justify-between h-[110px] hover:shadow-md transition-shadow">
-            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">Izin</span>
-            <div class="mt-2 flex items-baseline justify-between">
-                <span class="text-2xl font-extrabold text-blue-600">{{ $izinToday }}</span>
-                <span class="material-symbols-outlined text-blue-600 text-lg">assignment_turned_in</span>
-            </div>
-        </div>
-
-        <!-- Sakit -->
-        <div class="card-layer-1 rounded-xl p-4 flex flex-col justify-between h-[110px] hover:shadow-md transition-shadow">
-            <span class="text-[10px] font-bold text-purple-600 uppercase tracking-wider">Sakit</span>
-            <div class="mt-2 flex items-baseline justify-between">
-                <span class="text-2xl font-extrabold text-purple-600">{{ $sakitToday }}</span>
-                <span class="material-symbols-outlined text-purple-600 text-lg">medical_services</span>
-            </div>
-        </div>
-
-        <!-- Alpa -->
-        <div class="card-layer-1 rounded-xl p-4 flex flex-col justify-between h-[110px] hover:shadow-md transition-shadow">
-            <span class="text-[10px] font-bold text-red-800 uppercase tracking-wider">Alpa</span>
-            <div class="mt-2 flex items-baseline justify-between">
-                <span class="text-2xl font-extrabold text-red-800">{{ $alpaToday }}</span>
-                <span class="material-symbols-outlined text-red-850 text-lg">dangerous</span>
             </div>
         </div>
     </div>
@@ -217,9 +190,6 @@
                         <th class="py-3 px-4">Hadir</th>
                         <th class="py-3 px-4">Terlambat</th>
                         <th class="py-3 px-4">Pulang Awal</th>
-                        <th class="py-3 px-4">Izin</th>
-                        <th class="py-3 px-4">Sakit</th>
-                        <th class="py-3 px-4">Alpa</th>
                         <th class="py-3 px-4">Belum Absen</th>
                     </tr>
                 </thead>
@@ -231,9 +201,6 @@
                             <td class="py-3.5 px-4 text-emerald-700 font-bold">{{ $row['hadir'] }}</td>
                             <td class="py-3.5 px-4 text-orange-600 font-bold">{{ $row['terlambat'] }}</td>
                             <td class="py-3.5 px-4 text-red-600 font-semibold">{{ $row['pulang_awal'] }}</td>
-                            <td class="py-3.5 px-4 text-blue-600">{{ $row['izin'] }}</td>
-                            <td class="py-3.5 px-4 text-purple-600">{{ $row['sakit'] }}</td>
-                            <td class="py-3.5 px-4 text-red-800">{{ $row['alpa'] }}</td>
                             <td class="py-3.5 px-4 text-slate-500 font-medium">{{ $row['belum_hadir'] }}</td>
                         </tr>
                     @endforeach

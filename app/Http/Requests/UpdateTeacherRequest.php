@@ -21,7 +21,7 @@ class UpdateTeacherRequest extends FormRequest
     {
         $teacherId = $this->route('teacher');
 
-        return [
+        $rules = [
             'nip' => 'nullable|string|max:50|unique:teachers,nip,' . $teacherId,
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:teachers,email,' . $teacherId,
@@ -31,6 +31,12 @@ class UpdateTeacherRequest extends FormRequest
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // max 2MB
             'status' => 'required|string|in:active,inactive',
         ];
+
+        if (auth()->check() && auth()->user()->hasRole('superadmin')) {
+            $rules['unit_id'] = 'required|exists:units,id';
+        }
+
+        return $rules;
     }
 
     /**

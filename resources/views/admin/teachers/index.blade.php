@@ -286,6 +286,22 @@
                             <input id="form-nip" name="nip" class="w-full px-4 py-2.5 bg-white border border-[#E6ECE7] rounded-xl font-body-md text-body-md text-on-surface focus:outline-none focus:border-[#2E7D32] transition-colors" placeholder="Masukkan NIP" type="text"/>
                         </div>
 
+                        @if(auth()->user()->hasRole('superadmin'))
+                        <!-- Unit Sekolah (Superadmin Only) -->
+                        <div class="relative">
+                            <label class="block font-label-md text-label-md text-on-surface mb-2" for="form-unit-id">Unit Sekolah <span class="text-error">*</span></label>
+                            <div class="relative">
+                                <select id="form-unit-id" name="unit_id" class="appearance-none w-full px-4 py-2.5 bg-white border border-[#E6ECE7] rounded-xl font-body-md text-body-md text-on-surface focus:outline-none focus:border-[#2E7D32] transition-colors cursor-pointer" required>
+                                    <option value="" disabled selected>Pilih Unit</option>
+                                    @foreach(\App\Models\Unit::all() as $unit)
+                                        <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline pointer-events-none">expand_more</span>
+                            </div>
+                        </div>
+                        @endif
+
                         <!-- Position / Jabatan -->
                         <div class="relative">
                             <label class="block font-label-md text-label-md text-on-surface mb-2" for="form-position">Jabatan / Posisi <span class="text-error">*</span></label>
@@ -391,6 +407,11 @@
             avatarPreview.classList.add('hidden');
             avatarPreview.src = "";
 
+            const unitSelect = document.getElementById('form-unit-id');
+            if (unitSelect) {
+                unitSelect.value = "";
+            }
+
             modal.classList.remove('hidden');
         }
 
@@ -409,6 +430,11 @@
             document.getElementById('form-position').value = teacher.position;
             document.getElementById('form-phone').value = teacher.phone ?? '';
             passwordInput.value = ""; // clear password field
+
+            const unitSelect = document.getElementById('form-unit-id');
+            if (unitSelect) {
+                unitSelect.value = teacher.unit_id ?? '';
+            }
 
             // Set radio button status
             if (teacher.status === 'active') {

@@ -89,12 +89,18 @@ class ProfileController extends Controller
         ]);
 
         if (!Hash::check($request->current_password, $user->password)) {
+            if ($request->wantsJson()) {
+                return response()->json(['success' => false, 'message' => 'Password lama tidak sesuai.'], 422);
+            }
             return back()->withErrors([
                 'current_password' => 'Password lama tidak sesuai.'
             ]);
         }
 
         if (Hash::check($request->password, $user->password)) {
+            if ($request->wantsJson()) {
+                return response()->json(['success' => false, 'message' => 'Password baru tidak boleh sama dengan password lama.'], 422);
+            }
             return back()->withErrors([
                 'password' => 'Password baru tidak boleh sama dengan password lama.'
             ]);
@@ -103,6 +109,10 @@ class ProfileController extends Controller
         $user->update([
             'password' => Hash::make($request->password),
         ]);
+
+        if ($request->wantsJson()) {
+            return response()->json(['success' => true, 'message' => 'Password berhasil diubah.']);
+        }
 
         return back()->with('success', 'Password berhasil diubah.');
     }

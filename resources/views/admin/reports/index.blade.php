@@ -175,7 +175,7 @@
                             </td>
                             <td class="py-4 px-6 font-semibold">
                                 <div class="text-on-surface">{{ $att->teacher->name }}</div>
-                                <div class="text-[10px] text-outline">TCH-{{ str_pad($att->teacher->id, 3, '0', STR_PAD_LEFT) }}</div>
+                                <div class="text-[10px] text-outline">{{ $att->teacher->display_id }}</div>
                             </td>
                             <td class="py-4 px-6">
                                 {{ $att->clock_in ? \Carbon\Carbon::parse($att->clock_in)->format('H:i') : '-' }}

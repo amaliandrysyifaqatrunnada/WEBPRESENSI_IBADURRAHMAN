@@ -188,7 +188,7 @@
                     <td>{{ \Carbon\Carbon::parse($att->date)->format('d/m/Y') }}</td>
                     <td>
                         <strong>{{ $att->teacher->name }}</strong><br>
-                        <span style="font-size: 7px; color: #888888;">TCH-{{ str_pad($att->teacher->id, 3, '0', STR_PAD_LEFT) }}</span>
+                        <span style="font-size: 7px; color: #888888;">{{ $att->teacher->display_id }}</span>
                     </td>
                     <td>{{ $att->clock_in ? substr($att->clock_in, 0, 5) : '-' }}</td>
                     <td>

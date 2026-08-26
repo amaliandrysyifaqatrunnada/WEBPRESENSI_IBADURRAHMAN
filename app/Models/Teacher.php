@@ -17,6 +17,8 @@ class Teacher extends Authenticatable
 
     protected $guard = 'teacher';
 
+    protected $appends = ['display_id'];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -96,5 +98,29 @@ class Teacher extends Authenticatable
     public function attendanceLogs(): HasMany
     {
         return $this->hasMany(AttendanceLog::class);
+    }
+
+    /**
+     * Get the formatted display ID for the teacher based on their unit/package type.
+     */
+    public function getDisplayIdAttribute(): string
+    {
+        $prefix = 'TCH';
+        if ($this->unit_id) {
+            $unit = $this->unit ?? \App\Models\Unit::find($this->unit_id);
+            if ($unit) {
+                $type = $unit->package_type;
+                if ($type === 'PAKET_A') {
+                    $prefix = 'TCH-A';
+                } elseif ($type === 'PAKET_B') {
+                    $prefix = 'TCH-B';
+                } elseif ($type === 'PAKET_C') {
+                    $prefix = 'TCH-C';
+                } elseif ($type === 'TK') {
+                    $prefix = 'TCH-TK';
+                }
+            }
+        }
+        return $prefix . '-' . str_pad($this->id, 3, '0', STR_PAD_LEFT);
     }
 }

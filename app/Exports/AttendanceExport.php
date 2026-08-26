@@ -51,7 +51,7 @@ class AttendanceExport implements FromCollection, WithHeadings, WithMapping, Sho
     public function map($row): array
     {
         return [
-            'TCH-' . str_pad($row->teacher->id, 3, '0', STR_PAD_LEFT),
+            $row->teacher->display_id,
             $row->date,
             $row->teacher->nip ?? '-',
             $row->teacher->name,

@@ -122,7 +122,7 @@
                             </td>
                             <!-- ID/NIP -->
                             <td class="py-4 px-6">
-                                <div class="font-label-md text-label-md text-on-surface">TCH-{{ str_pad($teacher->id, 3, '0', STR_PAD_LEFT) }}</div>
+                                <div class="font-label-md text-label-md text-on-surface">{{ $teacher->display_id }}</div>
                                 <div class="font-body-sm text-body-sm text-on-surface-variant">{{ $teacher->nip ?? '-' }}</div>
                             </td>
                             <!-- Nama -->
@@ -421,7 +421,7 @@
             methodSpoof.innerHTML = '<input type="hidden" name="_method" value="PUT">';
             passwordLabel.innerHTML = 'Kata Sandi / PIN (Kosongkan jika tidak diubah)';
             passwordInput.required = false;
-            displayIdInput.value = `TCH-${String(teacher.id).padStart(3, '0')}`;
+            displayIdInput.value = teacher.display_id || '';
 
             // Populate inputs
             document.getElementById('form-name').value = teacher.name;

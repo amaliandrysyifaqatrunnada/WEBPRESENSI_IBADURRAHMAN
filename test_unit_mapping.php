@@ -40,32 +40,32 @@ try {
     $unitA = Unit::updateOrCreate(['id' => 1], [
         'name' => 'PKBM Ibadurrahman - Paket A',
         'package_type' => 'PAKET_A',
-        'latitude' => -7.4535,
-        'longitude' => 112.7097,
+        'latitude' => -7.4486,
+        'longitude' => 112.7257,
         'gps_radius' => 50.0
     ]);
 
     $unitTK = Unit::updateOrCreate(['id' => 2], [
         'name' => 'TK PKBM Ibadurrahman',
         'package_type' => 'TK',
-        'latitude' => -7.4530,
-        'longitude' => 112.7100,
+        'latitude' => -7.452778,
+        'longitude' => 112.688611,
         'gps_radius' => 50.0
     ]);
 
     $unitB = Unit::updateOrCreate(['id' => 3], [
         'name' => 'PKBM Ibadurrahman - Paket B',
         'package_type' => 'PAKET_B',
-        'latitude' => -7.4525,
-        'longitude' => 112.7105,
+        'latitude' => -7.4535,
+        'longitude' => 112.7097,
         'gps_radius' => 50.0
     ]);
 
     $unitC = Unit::updateOrCreate(['id' => 4], [
         'name' => 'PKBM Ibadurrahman - Paket C',
         'package_type' => 'PAKET_C',
-        'latitude' => -7.4520,
-        'longitude' => 112.7110,
+        'latitude' => -7.4540,
+        'longitude' => 112.7100,
         'gps_radius' => 50.0
     ]);
 

@@ -771,10 +771,26 @@ try {
     }
 
     // Restore original unit settings for clean system state
-    $unitA->update(['latitude' => -7.4535, 'longitude' => 112.7097, 'gps_radius' => 50.0]);
-    $unitTK->update(['latitude' => -7.4530, 'longitude' => 112.7100, 'gps_radius' => 50.0]);
-    $unitB->update(['latitude' => -7.4525, 'longitude' => 112.7105, 'gps_radius' => 50.0]);
-    $unitC->update(['latitude' => -7.4520, 'longitude' => 112.7110, 'gps_radius' => 50.0]);
+    $unitA->update(['address' => 'Jl Monginsidi Kav DPR A3 Sidoklumpuk Sidoarjo', 'latitude' => -7.4486, 'longitude' => 112.7257, 'gps_radius' => 50.0]);
+    $unitTK->update(['address' => 'Perum Puri Lestari FR 01 Sidoarjo', 'latitude' => -7.452778, 'longitude' => 112.688611, 'gps_radius' => 50.0]);
+    $unitB->update(['address' => 'Perum Auri Jl Albatros No 150 Kwadengan Lemahputro Sidoarjo', 'latitude' => -7.4535, 'longitude' => 112.7097, 'gps_radius' => 50.0]);
+    $unitC->update(['address' => 'Perum Auri Jl Avia no 178 Kwadengan Lemahputro Sidoarjo', 'latitude' => -7.4540, 'longitude' => 112.7100, 'gps_radius' => 50.0]);
+
+    SchoolSetting::setValue('school_address', 'Jl Monginsidi Kav DPR A3 Sidoklumpuk Sidoarjo', 1);
+    SchoolSetting::setValue('school_latitude', '-7.4486', 1);
+    SchoolSetting::setValue('school_longitude', '112.7257', 1);
+
+    SchoolSetting::setValue('school_address', 'Perum Puri Lestari FR 01 Sidoarjo', 2);
+    SchoolSetting::setValue('school_latitude', '-7.452778', 2);
+    SchoolSetting::setValue('school_longitude', '112.688611', 2);
+
+    SchoolSetting::setValue('school_address', 'Perum Auri Jl Albatros No 150 Kwadengan Lemahputro Sidoarjo', 3);
+    SchoolSetting::setValue('school_latitude', '-7.4535', 3);
+    SchoolSetting::setValue('school_longitude', '112.7097', 3);
+
+    SchoolSetting::setValue('school_address', 'Perum Auri Jl Avia no 178 Kwadengan Lemahputro Sidoarjo', 4);
+    SchoolSetting::setValue('school_latitude', '-7.4540', 4);
+    SchoolSetting::setValue('school_longitude', '112.7100', 4);
 
     // Clean up test teachers
     if (isset($teacherA)) {

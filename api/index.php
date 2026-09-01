@@ -60,5 +60,17 @@ if (is_dir($baseBootstrapCache)) {
     }
 }
 
+// Write Aiven SSL certificate to temp file if provided via environment variable
+$aivenCert = getenv('AIVEN_CA_CERT') ?: ($_ENV['AIVEN_CA_CERT'] ?? ($_SERVER['AIVEN_CA_CERT'] ?? null));
+if ($aivenCert) {
+    $caPath = $tmp . '/aiven-ca.pem';
+    if (!file_exists($caPath) || filesize($caPath) === 0) {
+        file_put_contents($caPath, $aivenCert);
+    }
+    $_ENV['MYSQL_ATTR_SSL_CA'] = $caPath;
+    $_SERVER['MYSQL_ATTR_SSL_CA'] = $caPath;
+    putenv('MYSQL_ATTR_SSL_CA=' . $caPath);
+}
+
 // Forward request to standard Laravel public/index.php entrypoint
 require __DIR__ . '/../public/index.php';

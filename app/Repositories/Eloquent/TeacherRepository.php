@@ -120,7 +120,7 @@ class TeacherRepository implements TeacherRepositoryInterface
     }
 
     /**
-     * Soft delete a teacher record.
+     * Soft delete a teacher record and clean up associated attendance data.
      */
     public function delete(int $id): bool
     {
@@ -128,6 +128,13 @@ class TeacherRepository implements TeacherRepositoryInterface
         if (!$teacher) {
             abort(403, 'Anda tidak memiliki hak akses untuk menghapus data pendidik ini.');
         }
+
+        // Delete associated attendance records, logs, leave requests, and custom schedules
+        \App\Models\Attendance::where('teacher_id', $teacher->id)->delete();
+        \App\Models\AttendanceLog::where('teacher_id', $teacher->id)->delete();
+        \App\Models\LeaveRequest::where('teacher_id', $teacher->id)->delete();
+        \App\Models\TeacherWorkSchedule::where('teacher_id', $teacher->id)->delete();
+
         return $teacher->delete();
     }
 

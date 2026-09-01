@@ -24,11 +24,29 @@
                     </div>
                 </div>
  
+                @if(isset($units) && $units->count() > 0)
+                <div class="flex flex-col">
+                    <label class="font-label-md text-label-md text-on-surface mb-2" for="unit-select">Pilih Unit Sekolah</label>
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">school</span>
+                        <select id="unit-select" class="w-full pl-10 pr-10 py-3 bg-white border border-outline-variant rounded-xl font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary h-12 appearance-none">
+                            @foreach($units as $u)
+                                <option value="{{ $u->id }}" {{ ($unit && $unit->id == $u->id) ? 'selected' : '' }}>
+                                    {{ $u->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none">arrow_drop_down</span>
+                    </div>
+                </div>
+                @endif
+
                 <div class="flex flex-col">
                     <label class="font-label-md text-label-md text-on-surface mb-2" for="teacher-query">Nama atau Nomor ID Tenaga Pendidik</label>
                     <div class="relative">
                         <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">person_search</span>
-                        <input id="teacher-query" class="w-full pl-10 pr-4 py-3 bg-white border border-outline-variant rounded-xl font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary h-12" placeholder="Masukkan nama atau NIP Anda..." type="text"/>
+                        <input id="teacher-query" list="teacher-suggestions" autocomplete="off" class="w-full pl-10 pr-4 py-3 bg-white border border-outline-variant rounded-xl font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary h-12" placeholder="Masukkan nama atau NIP Anda..." type="text"/>
+                        <datalist id="teacher-suggestions"></datalist>
                     </div>
                 </div>
  
@@ -189,6 +207,42 @@
  
         const txtTeacherName = document.getElementById('identified-teacher-name');
         const btnReset = document.getElementById('btn-reset-flow');
+
+        // Unit select & autocomplete setup
+        const unitSelect = document.getElementById('unit-select');
+        const teacherSuggestions = document.getElementById('teacher-suggestions');
+
+        async function fetchTeachersForUnit(unitId) {
+            if (!unitId || !teacherSuggestions) return;
+            try {
+                const response = await fetch(`{{ route('face.id.teachers') }}?unit_id=${unitId}`);
+                const teachers = await response.json();
+                
+                // Clear existing options
+                teacherSuggestions.innerHTML = '';
+                
+                // Populate new options
+                teachers.forEach(teacher => {
+                    const option = document.createElement('option');
+                    option.value = teacher.name;
+                    teacherSuggestions.appendChild(option);
+                });
+            } catch (err) {
+                console.error("Error fetching teachers:", err);
+            }
+        }
+
+        if (unitSelect) {
+            // Load initial teachers list
+            fetchTeachersForUnit(unitSelect.value);
+            
+            // Reload on unit change
+            unitSelect.addEventListener('change', (e) => {
+                fetchTeachersForUnit(e.target.value);
+                // Clear the query input since the unit changed
+                inputQuery.value = '';
+            });
+        }
  
         // Server time sync
         const serverTime = {{ now()->timestamp * 1000 }};
@@ -262,6 +316,8 @@
             btnSearch.disabled = true;
             btnSearch.textContent = "Mencari...";
  
+            const selectedUnitId = unitSelect ? unitSelect.value : '';
+
             try {
                 const response = await fetch(searchUrl, {
                     method: 'POST',
@@ -269,7 +325,10 @@
                         'Content-Type': 'application/json',
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     },
-                    body: JSON.stringify({ query: query })
+                    body: JSON.stringify({ 
+                        query: query,
+                        unit_id: selectedUnitId
+                    })
                 });
  
                 const result = await response.json();

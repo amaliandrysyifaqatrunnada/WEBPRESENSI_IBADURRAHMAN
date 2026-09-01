@@ -17,7 +17,7 @@
             <!-- Avatar Section -->
             <div class="flex flex-col items-center gap-3 pb-4 border-b border-outline-variant/30">
                 <div class="w-24 h-24 rounded-full overflow-hidden border border-outline-variant relative group shadow-inner">
-                    <img id="profile-avatar-preview" class="w-full h-full object-cover" src="{{ $user->avatar ? asset('storage/' . $user->avatar) : 'https://lh3.googleusercontent.com/aida-public/AB6AXuBWJS7O2hXfi6V7TxnvAgxfKYyilH2NMDYcVdIJnC19Td4Yu6tRSl_pMTa1YylQtoV9H7NCFPwznw8LUWrJx6m2JOZF1Dyqbn0sLVNVHonXGx-hvlx8brTl-tjOejtZx11M7P_Qfowt5_SBoox_bEl2POS3ZWjF0-vYsYObMrKHTKA7cch29rXsck5OyKF8T5pZYcf08jUQJY0mClKzXA_UjNFoHyuMfHlaMNZwMer_a7BaXj2Yh5EIyQ' }}"/>
+                    <img id="profile-avatar-preview" class="w-full h-full object-cover" src="{{ $user->avatar_url }}"/>
                     <label for="avatar-upload-input" class="absolute inset-0 bg-black/40 text-white text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer font-semibold uppercase tracking-wider">
                         Upload
                     </label>

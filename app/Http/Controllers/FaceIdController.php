@@ -33,7 +33,9 @@ class FaceIdController extends Controller
             }
         }
 
-        return view('face_id.index', compact('device', 'unit'));
+        $units = Unit::where('active', true)->orderBy('name', 'asc')->get();
+
+        return view('face_id.index', compact('device', 'unit', 'units'));
     }
 
     /**
@@ -42,21 +44,26 @@ class FaceIdController extends Controller
     public function searchTeacher(Request $request)
     {
         $queryStr = $request->input('query');
+        $unitId = $request->input('unit_id');
         if (empty($queryStr)) {
             return response()->json(['success' => false, 'message' => 'Masukkan nama atau nomor ID pendidik.'], 422);
         }
 
-        $deviceToken = $request->cookie('school_device_token');
         $query = Teacher::where('status', 'active');
 
-        if ($deviceToken) {
-            $device = AttendanceDevice::where('device_token', $deviceToken)->where('status', true)->first();
-            if ($device) {
-                $query->where('unit_id', $device->unit_id);
-            }
+        if (!empty($unitId)) {
+            $query->where('unit_id', $unitId);
         } else {
-            if (auth()->guard('teacher')->check()) {
-                $query->where('unit_id', auth()->guard('teacher')->user()->unit_id);
+            $deviceToken = $request->cookie('school_device_token');
+            if ($deviceToken) {
+                $device = AttendanceDevice::where('device_token', $deviceToken)->where('status', true)->first();
+                if ($device) {
+                    $query->where('unit_id', $device->unit_id);
+                }
+            } else {
+                if (auth()->guard('teacher')->check()) {
+                    $query->where('unit_id', auth()->guard('teacher')->user()->unit_id);
+                }
             }
         }
 
@@ -385,5 +392,23 @@ class FaceIdController extends Controller
         return response($contents)
             ->header('Content-Type', 'image/jpeg')
             ->header('Content-Disposition', 'inline');
+    }
+
+    /**
+     * Get active teachers by unit ID.
+     */
+    public function getTeachersByUnit(Request $request)
+    {
+        $unitId = $request->input('unit_id');
+        if (empty($unitId)) {
+            return response()->json([]);
+        }
+
+        $teachers = Teacher::where('unit_id', $unitId)
+            ->where('status', 'active')
+            ->orderBy('name', 'asc')
+            ->get(['id', 'name', 'nip']);
+
+        return response()->json($teachers);
     }
 }

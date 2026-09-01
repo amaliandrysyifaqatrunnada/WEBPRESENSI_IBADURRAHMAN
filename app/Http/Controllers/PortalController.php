@@ -15,14 +15,6 @@ class PortalController extends Controller
      */
     public function index()
     {
-        // If already logged in, redirect to respective dashboard
-        if (Auth::guard('web')->check()) {
-            return redirect()->route('admin.dashboard');
-        }
-        if (Auth::guard('teacher')->check()) {
-            return redirect()->route('teacher.attendance');
-        }
-
         return view('portal');
     }
 

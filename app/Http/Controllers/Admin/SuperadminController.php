@@ -55,14 +55,29 @@ class SuperadminController extends Controller
         $sakitToday = $attendancesToday->where('status', 'sakit')->count();
         $alpaToday = $attendancesToday->where('status', 'alpa')->count();
 
-        // Belum Hadir (active teachers with no attendance record today)
+        // Also check approved leave requests for today
+        $leaveQuery = \App\Models\LeaveRequest::where('status', 'DISETUJUI')
+            ->where('start_date', '<=', $today)
+            ->where('end_date', '>=', $today);
+        if ($selectedUnitId !== 'All') {
+            $leaveQuery->where('unit_id', $selectedUnitId);
+        }
+        $approvedLeavesToday = $leaveQuery->get();
+
+        $totalIzinToday = $izinToday + $approvedLeavesToday->where('type', 'izin')->count();
+        $totalSakitToday = $sakitToday + $approvedLeavesToday->where('type', 'sakit')->count();
+        $totalAlpaToday = $alpaToday + $approvedLeavesToday->where('type', 'tanpa_keterangan')->count();
+
+        // Belum Hadir (active teachers with no attendance/approved leave record today)
         $activeTeacherIdsQuery = Teacher::where('status', 'active');
         if ($selectedUnitId !== 'All') {
             $activeTeacherIdsQuery->where('unit_id', $selectedUnitId);
         }
         $activeTeacherIds = $activeTeacherIdsQuery->pluck('id')->toArray();
         $recordedTeacherIds = $attendancesToday->pluck('teacher_id')->toArray();
-        $notCheckedInToday = count(array_diff($activeTeacherIds, $recordedTeacherIds));
+        $leaveTeacherIds = $approvedLeavesToday->pluck('teacher_id')->toArray();
+        $accountedTeacherIds = array_unique(array_merge($recordedTeacherIds, $leaveTeacherIds));
+        $notCheckedInToday = count(array_diff($activeTeacherIds, $accountedTeacherIds));
 
         $earlyCheckoutToday = $attendancesToday->whereIn('status_pulang', ['Pulang Awal', 'Pulang Lebih Awal'])->count();
 
@@ -76,16 +91,23 @@ class SuperadminController extends Controller
         foreach ($units as $u) {
             $uTeachers = Teacher::where('unit_id', $u->id)->pluck('id')->toArray();
             $uAttendances = Attendance::where('date', $today)->where('unit_id', $u->id)->get();
+            $uLeaves = \App\Models\LeaveRequest::where('status', 'DISETUJUI')
+                ->where('unit_id', $u->id)
+                ->where('start_date', '<=', $today)
+                ->where('end_date', '>=', $today)
+                ->get();
             
             $uPresent = $uAttendances->where('status', 'hadir')->count();
             $uLate = $uAttendances->where('status', 'terlambat')->count();
-            $uIzin = $uAttendances->where('status', 'izin')->count();
-            $uSakit = $uAttendances->where('status', 'sakit')->count();
-            $uAlpa = $uAttendances->where('status', 'alpa')->count();
+            $uIzin = $uAttendances->where('status', 'izin')->count() + $uLeaves->where('type', 'izin')->count();
+            $uSakit = $uAttendances->where('status', 'sakit')->count() + $uLeaves->where('type', 'sakit')->count();
+            $uAlpa = $uAttendances->where('status', 'alpa')->count() + $uLeaves->where('type', 'tanpa_keterangan')->count();
 
             $uActiveTeachers = Teacher::where('status', 'active')->where('unit_id', $u->id)->pluck('id')->toArray();
             $uRecordedTeachers = $uAttendances->pluck('teacher_id')->toArray();
-            $uNotCheckedIn = count(array_diff($uActiveTeachers, $uRecordedTeachers));
+            $uLeaveTeachers = $uLeaves->pluck('teacher_id')->toArray();
+            $uAccountedTeachers = array_unique(array_merge($uRecordedTeachers, $uLeaveTeachers));
+            $uNotCheckedIn = count(array_diff($uActiveTeachers, $uAccountedTeachers));
 
             $uEarlyCheckout = $uAttendances->whereIn('status_pulang', ['Pulang Awal', 'Pulang Lebih Awal'])->count();
 
@@ -98,7 +120,7 @@ class SuperadminController extends Controller
                 'izin' => $uIzin,
                 'sakit' => $uSakit,
                 'alpa' => $uAlpa,
-                'belum_hadir' => $uNotCheckedIn
+                'belum_absen' => $uNotCheckedIn,
             ];
         }
 
@@ -133,6 +155,9 @@ class SuperadminController extends Controller
             'izinToday',
             'sakitToday',
             'alpaToday',
+            'totalIzinToday',
+            'totalSakitToday',
+            'totalAlpaToday',
             'notCheckedInToday',
             'earlyCheckoutToday',
             'gpsPresentToday',
@@ -225,12 +250,10 @@ class SuperadminController extends Controller
     public function exportExcel(Request $request)
     {
         $filters = $this->parseSuperadminFilters($request);
-        
-        $query = Attendance::with(['teacher', 'logs', 'unit']);
-        $this->applyFilters($query, $filters);
-        $attendances = $query->orderBy('date', 'desc')->get();
+        $reportService = app(\App\Services\ReportService::class);
+        $recapData = $reportService->generateMonthlyRecap($filters);
 
-        return Excel::download(new AttendanceExport($attendances), 'Rekap_Kehadiran_Global_' . date('Ymd_His') . '.xlsx');
+        return Excel::download(new \App\Exports\MonthlyRecapExport($recapData), 'Rekap_Presensi_Bulanan_Global_' . date('Ymd_His') . '.xlsx');
     }
 
     /**
@@ -239,43 +262,21 @@ class SuperadminController extends Controller
     public function exportPdf(Request $request)
     {
         $filters = $this->parseSuperadminFilters($request);
-
-        $query = Attendance::with(['teacher', 'logs', 'unit']);
-        $this->applyFilters($query, $filters);
-        $attendances = $query->orderBy('date', 'desc')->get();
-
-        // Compile simple summary stats
-        $totalPresent = $attendances->whereIn('status', ['hadir', 'terlambat'])->count();
-        $totalLate = $attendances->where('status', 'terlambat')->count();
-        $totalReward = $attendances->where('reward', true)->count();
-        $totalPulangAwal = $attendances->whereIn('status_pulang', ['Pulang Awal', 'Pulang Lebih Awal'])->count();
-        $totalPenalties = $attendances->sum('penalty');
-
-        $stats = [
-            'present' => $totalPresent,
-            'late' => $totalLate,
-            'reward' => $totalReward,
-            'pulang_awal' => $totalPulangAwal,
-            'penalties' => $totalPenalties,
-        ];
+        $reportService = app(\App\Services\ReportService::class);
+        $recapData = $reportService->generateMonthlyRecap($filters);
 
         $unit = null;
         if ($filters['unit_id'] !== 'All') {
             $unit = Unit::find($filters['unit_id']);
         }
 
-        // Convert format to match original PDF
-        $pdfFilters = [
-            'type' => 'Rentang Tanggal',
-            'date' => '-',
-            'start_date' => $filters['start_date'],
-            'end_date' => $filters['end_date'],
-            'status' => $filters['status'],
-            'teacher_id' => $filters['search_name'] ?: 'Semua Guru',
-        ];
+        $pdf = Pdf::loadView('admin.reports.pdf', [
+            'recapData' => $recapData,
+            'filters' => $filters,
+            'unit' => $unit,
+        ]);
 
-        $pdf = Pdf::loadView('admin.reports.pdf', compact('attendances', 'stats', 'pdfFilters', 'unit'));
-        return $pdf->download('Laporan_Kehadiran_Global_' . date('Ymd_His') . '.pdf');
+        return $pdf->download('Rekap_Presensi_Bulanan_Global_' . date('Ymd_His') . '.pdf');
     }
 
     /**
@@ -288,6 +289,8 @@ class SuperadminController extends Controller
             'status' => $request->input('status', 'All'),
             'method' => $request->input('method', 'All'),
             'search_name' => $request->input('search_name'),
+            'month' => $request->input('month', Carbon::today()->month),
+            'year' => $request->input('year', Carbon::today()->year),
             'start_date' => $request->input('start_date', Carbon::today()->toDateString()),
             'end_date' => $request->input('end_date', Carbon::today()->toDateString()),
         ];

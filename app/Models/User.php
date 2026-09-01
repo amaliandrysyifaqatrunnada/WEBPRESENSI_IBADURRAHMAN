@@ -59,4 +59,37 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Unit::class);
     }
+
+    /**
+     * Get the avatar URL for the user based on uploaded avatar or unit package type.
+     */
+    public function getAvatarUrlAttribute(): string
+    {
+        if ($this->avatar) {
+            if (\Illuminate\Support\Str::startsWith($this->avatar, ['http://', 'https://'])) {
+                return $this->avatar;
+            }
+            if (file_exists(public_path('storage/' . $this->avatar)) || file_exists(storage_path('app/public/' . $this->avatar))) {
+                return asset('storage/' . $this->avatar);
+            }
+            if (file_exists(public_path($this->avatar))) {
+                return asset($this->avatar);
+            }
+        }
+
+        // Fallback avatar based on unit's package type
+        $packageType = $this->unit ? $this->unit->package_type : null;
+        switch ($packageType) {
+            case 'PAKET_A':
+                return asset('images/packages/paket-a.jpg');
+            case 'TK':
+                return asset('images/packages/paket-tk.png');
+            case 'PAKET_B':
+                return asset('images/packages/paket-b.png');
+            case 'PAKET_C':
+                return asset('images/packages/paket-c.png');
+            default:
+                return asset('images/logo-pkbm-transparent.png');
+        }
+    }
 }

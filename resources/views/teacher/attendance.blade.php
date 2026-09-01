@@ -56,6 +56,23 @@
                 </div>
             </div>
 
+            <!-- Banner / Link Pengajuan Izin Tanpa GPS -->
+            <div class="bg-blue-50/80 rounded-xl p-3.5 border border-blue-200 flex items-center justify-between gap-3 shadow-xs">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 border border-primary/20">
+                        <span class="material-symbols-outlined text-xl">event_busy</span>
+                    </div>
+                    <div>
+                        <div class="font-bold text-xs text-on-surface">Tidak Bisa Hadir Hari Ini?</div>
+                        <div class="text-[11px] text-slate-600 mt-0.5">Ajukan Izin / Sakit dari rumah tanpa GPS.</div>
+                    </div>
+                </div>
+                <a href="{{ route('teacher.leaves.index') }}" class="px-3 py-2 bg-primary text-white font-bold text-xs rounded-xl hover:bg-primary/90 transition-all flex items-center gap-1 shrink-0 shadow-xs">
+                    <span>Pengajuan Izin</span>
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+
             <!-- Method Selector (Tabbed) -->
             <!-- Method Selector (Tabbed) -->
             <div class="grid grid-cols-3 gap-2 border-b border-outline-variant/30 pb-3" id="method-selector">
@@ -250,6 +267,7 @@
         const schoolLat = parseFloat("{{ $schoolSettings['latitude'] }}");
         const schoolLng = parseFloat("{{ $schoolSettings['longitude'] }}");
         const schoolRadius = parseFloat("{{ $schoolSettings['radius'] }}");
+        const gpsAccuracyThreshold = parseFloat("{{ $schoolSettings['gps_accuracy_threshold'] ?? 50 }}");
 
         let currentLat = 0;
         let currentLng = 0;
@@ -383,7 +401,7 @@
                         
                         updateMapPosition(currentLat, currentLng);
 
-                        const isAccuracyOk = currentAccuracy <= 50;
+                        const isAccuracyOk = currentAccuracy <= gpsAccuracyThreshold;
                         isWithinGeofence = (distance <= schoolRadius);
 
                         if (currentMethod === 'gps') {
@@ -584,21 +602,6 @@
 
         // 5. Face Camera controller
         async function startFaceCamera() {
-            if (!isFaceModelsLoaded) {
-                faceLoaderText.textContent = "Memuat model biometrik wajah...";
-                try {
-                    await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
-                    await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
-                    await faceapi.nets.faceRecognitionNet.loadFromUri('/models');
-                    isFaceModelsLoaded = true;
-                } catch (e) {
-                    console.error("Models loading error:", e);
-                    faceLoaderText.textContent = "Gagal memuat model. Hubungkan internet.";
-                    showErrorMessage("Gagal memuat model weights biometrik wajah.");
-                    return;
-                }
-            }
-
             try {
                 faceWebcamStream = await navigator.mediaDevices.getUserMedia({ 
                     video: { width: 640, height: 480, facingMode: "user" },
@@ -613,72 +616,22 @@
             }
         }
 
-        function getMAR(landmarks) {
-            const innerLipTop = landmarks[62];
-            const innerLipBottom = landmarks[66];
-            const innerLipLeft = landmarks[60];
-            const innerLipRight = landmarks[64];
-            
-            const verticalDist = Math.hypot(innerLipTop.x - innerLipBottom.x, innerLipTop.y - innerLipBottom.y);
-            const horizontalDist = Math.hypot(innerLipLeft.x - innerLipRight.x, innerLipLeft.y - innerLipRight.y);
-            
-            return verticalDist / (horizontalDist || 0.001);
-        }
-
         function onFacePlay() {
             if (faceLoader) faceLoader.classList.add('hidden');
-            faceStatusText.textContent = "Mencari wajah...";
-            faceStatusIcon.textContent = "face";
+            faceStatusText.textContent = "Kamera aktif. Siap melakukan presensi.";
+            faceStatusIcon.textContent = "check_circle";
 
-            faceLivenessPassed = false;
+            faceLivenessPassed = true;
             faceCapturedDescriptor = null;
-
-            const displaySize = { width: faceVideo.videoWidth || 640, height: faceVideo.videoHeight || 480 };
-            faceapi.matchDimensions(faceCanvas, displaySize);
 
             if (absenBtn) absenBtn.disabled = true;
 
-            faceDetectionInterval = setInterval(async () => {
-                if (faceVideo.paused || faceVideo.ended || !isFaceModelsLoaded) return;
-
-                const detection = await faceapi.detectSingleFace(faceVideo, new faceapi.TinyFaceDetectorOptions({ inputSize: 224, scoreThreshold: 0.5 }))
-                    .withFaceLandmarks()
-                    .withFaceDescriptor();
-
-                const ctx = faceCanvas.getContext('2d');
-                ctx.clearRect(0, 0, faceCanvas.width, faceCanvas.height);
-
-                if (detection) {
-                    const resizedDetection = faceapi.resizeResults(detection, displaySize);
-                    faceapi.draw.drawFaceLandmarks(faceCanvas, resizedDetection);
-
-                    faceCapturedDescriptor = Array.from(detection.descriptor);
-
-                    if (!faceLivenessPassed) {
-                        faceStatusText.textContent = "Silakan BUKA MULUT Anda sedikit untuk verifikasi keaktifan.";
-                        faceStatusIcon.textContent = "sentiment_very_satisfied";
-
-                        const landmarks = detection.landmarks.positions;
-                        const mar = getMAR(landmarks);
-
-                        if (mar > 0.3) {
-                            faceLivenessPassed = true;
-                            faceStatusText.textContent = "Verifikasi keaktifan sukses! Siap presensi.";
-                            faceStatusIcon.textContent = "check_circle";
-
-                            // Enable the primary button for check-in
-                            const distance = calculateDistance(currentLat, currentLng, schoolLat, schoolLng);
-                            if (currentAccuracy <= 50 && distance <= schoolRadius) {
-                                if (absenBtn) absenBtn.disabled = false;
-                            }
-                            clearInterval(faceDetectionInterval);
-                        }
-                    }
-                } else {
-                    faceStatusText.textContent = "Pastikan wajah terlihat jelas di kamera.";
-                    faceStatusIcon.textContent = "face_5";
-                }
-            }, 150);
+            // Enable the primary button immediately if location is valid
+            const distance = calculateDistance(currentLat, currentLng, schoolLat, schoolLng);
+            const isAccuracyOk = currentAccuracy <= gpsAccuracyThreshold;
+            if (isAccuracyOk && distance <= schoolRadius) {
+                if (absenBtn) absenBtn.disabled = false;
+            }
         }
 
         function stopFaceCamera() {
@@ -703,7 +656,7 @@
         // 6. AJAX Attendance Submission
         function submitAttendance(qrToken = null) {
             const distance = calculateDistance(currentLat, currentLng, schoolLat, schoolLng);
-            const isAccuracyOk = currentAccuracy <= 50;
+            const isAccuracyOk = currentAccuracy <= gpsAccuracyThreshold;
 
             if (!isAccuracyOk) {
                 showErrorMessage('Lokasi GPS kurang akurat. Aktifkan GPS dengan akurasi tinggi dan coba kembali.');
@@ -719,8 +672,8 @@
             const actionType = hasCheckedIn ? 'check_out' : 'check_in';
 
             if (currentMethod === 'face_id') {
-                if (!faceLivenessPassed || !faceCapturedDescriptor) {
-                    showErrorMessage('Verifikasi keaktifan wajah gagal atau belum selesai.');
+                if (!faceLivenessPassed) {
+                    showErrorMessage('Kamera belum siap.');
                     return;
                 }
 
@@ -889,5 +842,4 @@
             submitAttendance(qrTokenParam);
         }
     </script>
-</x-layouts.auth>
 </x-layouts.auth>

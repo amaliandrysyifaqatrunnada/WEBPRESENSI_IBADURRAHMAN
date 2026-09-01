@@ -114,7 +114,7 @@
     </div>
 
     <!-- Summary cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-gutter mb-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-gutter mb-8">
         <!-- Hadir -->
         <div class="card-layer-1 rounded-xl p-4 flex items-center justify-between bg-surface-container-lowest border border-outline-variant">
             <div class="space-y-1">
@@ -140,6 +140,24 @@
                 <h4 class="font-headline-sm text-headline-sm text-[#F57F17] font-bold">{{ $stats['pulang_awal'] }}</h4>
             </div>
             <span class="material-symbols-outlined text-[24px] text-[#F57F17] bg-[#FFF8E1] p-2 rounded-full">logout</span>
+        </div>
+
+        <!-- Izin -->
+        <div class="card-layer-1 rounded-xl p-4 flex items-center justify-between bg-surface-container-lowest border border-outline-variant">
+            <div class="space-y-1">
+                <span class="text-[11px] text-on-surface-variant font-medium">Izin</span>
+                <h4 class="font-headline-sm text-headline-sm text-blue-700 font-bold">{{ $stats['izin'] ?? 0 }}</h4>
+            </div>
+            <span class="material-symbols-outlined text-[24px] text-blue-700 bg-blue-50 p-2 rounded-full">event_busy</span>
+        </div>
+
+        <!-- Sakit -->
+        <div class="card-layer-1 rounded-xl p-4 flex items-center justify-between bg-surface-container-lowest border border-outline-variant">
+            <div class="space-y-1">
+                <span class="text-[11px] text-on-surface-variant font-medium">Sakit</span>
+                <h4 class="font-headline-sm text-headline-sm text-purple-700 font-bold">{{ $stats['sakit'] ?? 0 }}</h4>
+            </div>
+            <span class="material-symbols-outlined text-[24px] text-purple-700 bg-purple-50 p-2 rounded-full">medical_services</span>
         </div>
     </div>
 
@@ -174,8 +192,8 @@
                                 {{ \Carbon\Carbon::parse($att->date)->isoFormat('dddd, D MMM YYYY') }}
                             </td>
                             <td class="py-4 px-6 font-semibold">
-                                <div class="text-on-surface">{{ $att->teacher->name }}</div>
-                                <div class="text-[10px] text-outline">{{ $att->teacher->display_id }}</div>
+                                <div class="text-on-surface">{{ $att->teacher ? $att->teacher->name : 'Guru Dihapus / Tidak Ditemukan' }}</div>
+                                <div class="text-[10px] text-outline">{{ $att->teacher ? $att->teacher->display_id : '-' }}</div>
                             </td>
                             <td class="py-4 px-6">
                                 {{ $att->clock_in ? \Carbon\Carbon::parse($att->clock_in)->format('H:i') : '-' }}

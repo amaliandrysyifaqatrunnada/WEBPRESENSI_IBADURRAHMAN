@@ -14,6 +14,10 @@ class AuthController extends Controller
     public function showLoginForm()
     {
         if (Auth::guard('web')->check()) {
+            $user = Auth::guard('web')->user();
+            if ($user->hasRole('koordinator')) {
+                return redirect()->route('coordinator.dashboard');
+            }
             return redirect()->route('admin.dashboard');
         }
 
@@ -34,6 +38,12 @@ class AuthController extends Controller
 
         if (Auth::guard('web')->attempt($credentials, $remember)) {
             $request->session()->regenerate();
+            $user = Auth::guard('web')->user();
+
+            if ($user->hasRole('koordinator')) {
+                return redirect()->route('coordinator.dashboard')->with('success', 'Selamat datang di Portal Koordinator Paket!');
+            }
+
             return redirect()->route('admin.dashboard')->with('success', 'Selamat datang kembali, Admin!');
         }
 

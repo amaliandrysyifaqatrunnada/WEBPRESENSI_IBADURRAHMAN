@@ -10,7 +10,7 @@
     </div>
 
     <!-- Bento Grid Layout -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-gutter">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter mb-6">
         <!-- Card 1: Total Guru -->
         <div class="card-layer-1 rounded-xl p-5 flex flex-col justify-between h-[135px] hover:shadow-md transition-shadow">
             <div class="flex items-center gap-2.5 text-on-surface-variant">
@@ -25,35 +25,7 @@
             </div>
         </div>
 
-        <!-- Card 2: Guru Aktif -->
-        <div class="card-layer-1 rounded-xl p-5 flex flex-col justify-between h-[135px] hover:shadow-md transition-shadow">
-            <div class="flex items-center gap-2.5 text-on-surface-variant">
-                <div class="w-9 h-9 rounded-full bg-green-50 flex items-center justify-center text-green-700 border border-green-100">
-                    <span class="material-symbols-outlined text-sm font-semibold" style="font-variation-settings: 'FILL' 1;">how_to_reg</span>
-                </div>
-                <span class="font-label-sm text-label-sm">Guru Aktif</span>
-            </div>
-            <div class="flex flex-col mt-2">
-                <span class="font-headline-sm text-headline-sm text-green-700 font-bold leading-none">{{ $activeTeachers }}</span>
-                <span class="text-[10px] text-green-600 mt-1.5 font-medium">Status Aktif</span>
-            </div>
-        </div>
-
-        <!-- Card 3: Guru Tidak Aktif -->
-        <div class="card-layer-1 rounded-xl p-5 flex flex-col justify-between h-[135px] hover:shadow-md transition-shadow">
-            <div class="flex items-center gap-2.5 text-on-surface-variant">
-                <div class="w-9 h-9 rounded-full bg-red-50 flex items-center justify-center text-red-700 border border-red-100">
-                    <span class="material-symbols-outlined text-sm font-semibold" style="font-variation-settings: 'FILL' 1;">person_off</span>
-                </div>
-                <span class="font-label-sm text-label-sm">Tidak Aktif</span>
-            </div>
-            <div class="flex flex-col mt-2">
-                <span class="font-headline-sm text-headline-sm text-red-700 font-bold leading-none">{{ $inactiveTeachers }}</span>
-                <span class="text-[10px] text-red-600 mt-1.5 font-medium">Status Dinonaktifkan</span>
-            </div>
-        </div>
-
-        <!-- Card 4: Hadir Hari Ini -->
+        <!-- Card 2: Hadir Hari Ini -->
         <div class="card-layer-1 rounded-xl p-5 flex flex-col justify-between h-[135px] hover:shadow-md transition-shadow relative overflow-hidden group">
             <div class="absolute right-0 top-0 w-24 h-24 bg-primary/5 rounded-bl-full -mr-6 -mt-6 transition-transform group-hover:scale-110"></div>
             <div class="flex items-center gap-2.5 text-on-surface-variant relative z-10">
@@ -68,7 +40,7 @@
             </div>
         </div>
 
-        <!-- Card 5: Guru Terlambat -->
+        <!-- Card 3: Guru Terlambat -->
         <div class="card-layer-1 rounded-xl p-5 flex flex-col justify-between h-[135px] hover:shadow-md transition-shadow">
             <div class="flex items-center gap-2.5 text-on-surface-variant">
                 <div class="w-9 h-9 rounded-full bg-orange-50 flex items-center justify-center text-orange-600 border border-orange-100">
@@ -82,7 +54,7 @@
             </div>
         </div>
 
-        <!-- Card 6: Belum Presensi -->
+        <!-- Card 4: Belum Presensi -->
         <div class="card-layer-1 rounded-xl p-5 flex flex-col justify-between h-[135px] hover:shadow-md transition-shadow">
             <div class="flex items-center gap-2.5 text-on-surface-variant">
                 <div class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-700 border border-slate-200">
@@ -93,6 +65,34 @@
             <div class="flex flex-col mt-2">
                 <span class="font-headline-sm text-headline-sm text-slate-700 font-bold leading-none">{{ $notCheckedInToday }}</span>
                 <span class="text-[10px] text-slate-600 mt-1.5 font-medium">Belum Presensi Hari Ini</span>
+            </div>
+        </div>
+
+        <!-- Card 5: Izin Hari Ini -->
+        <div class="card-layer-1 rounded-xl p-5 flex flex-col justify-between h-[135px] hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-2.5 text-on-surface-variant">
+                <div class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-700 border border-blue-100">
+                    <span class="material-symbols-outlined text-sm font-semibold" style="font-variation-settings: 'FILL' 1;">event_busy</span>
+                </div>
+                <span class="font-label-sm text-label-sm">Izin Hari Ini</span>
+            </div>
+            <div class="flex flex-col mt-2">
+                <span class="font-headline-sm text-headline-sm text-blue-700 font-bold leading-none">{{ $izinToday ?? 0 }}</span>
+                <span class="text-[10px] text-blue-600 mt-1.5 font-medium">Izin Berketerangan / Tanpa Ket.</span>
+            </div>
+        </div>
+
+        <!-- Card 6: Sakit Hari Ini -->
+        <div class="card-layer-1 rounded-xl p-5 flex flex-col justify-between h-[135px] hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-2.5 text-on-surface-variant">
+                <div class="w-9 h-9 rounded-full bg-purple-50 flex items-center justify-center text-purple-700 border border-purple-100">
+                    <span class="material-symbols-outlined text-sm font-semibold" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+                </div>
+                <span class="font-label-sm text-label-sm">Sakit Hari Ini</span>
+            </div>
+            <div class="flex flex-col mt-2">
+                <span class="font-headline-sm text-headline-sm text-purple-700 font-bold leading-none">{{ $sakitToday ?? 0 }}</span>
+                <span class="text-[10px] text-purple-600 mt-1.5 font-medium">Izin Sakit Terverifikasi</span>
             </div>
         </div>
     </div>

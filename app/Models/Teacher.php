@@ -37,6 +37,8 @@ class Teacher extends Authenticatable
         'face_registered',
         'face_registered_at',
         'face_template',
+        'use_custom_schedule',
+        'supervisor_id',
     ];
 
     /**
@@ -62,6 +64,7 @@ class Teacher extends Authenticatable
             'face_registered' => 'boolean',
             'face_registered_at' => 'datetime',
             'face_template' => 'encrypted:json',
+            'use_custom_schedule' => 'boolean',
         ];
     }
 
@@ -98,6 +101,38 @@ class Teacher extends Authenticatable
     public function attendanceLogs(): HasMany
     {
         return $this->hasMany(AttendanceLog::class);
+    }
+
+    /**
+     * Get custom work schedules for the teacher.
+     */
+    public function workSchedules(): HasMany
+    {
+        return $this->hasMany(TeacherWorkSchedule::class);
+    }
+
+    /**
+     * Get leave requests submitted by the teacher.
+     */
+    public function leaveRequests(): HasMany
+    {
+        return $this->hasMany(LeaveRequest::class);
+    }
+
+    /**
+     * Get supervisor (atasan) of this teacher.
+     */
+    public function supervisor(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Teacher::class, 'supervisor_id');
+    }
+
+    /**
+     * Get subordinates (guru bawahan) supervised by this teacher.
+     */
+    public function subordinates(): HasMany
+    {
+        return $this->hasMany(Teacher::class, 'supervisor_id');
     }
 
     /**

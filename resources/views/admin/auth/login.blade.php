@@ -17,6 +17,26 @@
                 <p class="font-body-md text-body-md text-on-surface-variant">Portal Administratif</p>
             </div>
 
+            <!-- Flash Messages -->
+            @if(session('error'))
+                <div class="p-3.5 bg-error-container/20 border border-error/30 text-error text-xs rounded-xl flex items-center gap-2.5">
+                    <span class="material-symbols-outlined text-base">error</span>
+                    <span>{{ session('error') }}</span>
+                </div>
+            @endif
+            @if(session('info'))
+                <div class="p-3.5 bg-blue-50 border border-blue-200 text-blue-800 text-xs rounded-xl flex items-center gap-2.5">
+                    <span class="material-symbols-outlined text-base">info</span>
+                    <span>{{ session('info') }}</span>
+                </div>
+            @endif
+            @if(session('success'))
+                <div class="p-3.5 bg-primary/10 border border-primary/20 text-primary text-xs rounded-xl flex items-center gap-2.5">
+                    <span class="material-symbols-outlined text-base">check_circle</span>
+                    <span>{{ session('success') }}</span>
+                </div>
+            @endif
+
             <!-- Login Form -->
             <form action="{{ route('admin.login') }}" method="POST" class="flex flex-col gap-stack-md">
                 @csrf

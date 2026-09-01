@@ -18,6 +18,10 @@ class DashboardController extends Controller
             return redirect()->route('admin.superadmin.dashboard');
         }
 
+        if (auth()->user()->hasRole('koordinator')) {
+            return redirect()->route('coordinator.dashboard');
+        }
+
         $today = Carbon::today()->toDateString();
         $selectedMonth = $request->input('month', Carbon::now()->format('Y-m'));
         $monthCarbon = Carbon::parse($selectedMonth);
@@ -109,19 +113,34 @@ class DashboardController extends Controller
         // Present Rate of Active Teachers
         $presentRate = $activeTeachers > 0 ? round(($totalPresentToday / $activeTeachers) * 100) : 0;
 
-        // 3. Yet to Check-In Today (Belum Presensi) scoped to unit
+        // 3. Izin & Sakit Today scoped to unit
+        $uAttendancesToday = Attendance::where('date', $today)->where('unit_id', $unitId)->get();
+        $uLeavesToday = \App\Models\LeaveRequest::where('status', 'DISETUJUI')
+            ->where('unit_id', $unitId)
+            ->where('start_date', '<=', $today)
+            ->where('end_date', '>=', $today)
+            ->get();
+
+        $izinToday = $uAttendancesToday->where('status', 'izin')->count() + $uLeavesToday->where('type', 'izin')->count();
+        $sakitToday = $uAttendancesToday->where('status', 'sakit')->count() + $uLeavesToday->where('type', 'sakit')->count();
+
+        // 4. Yet to Check-In Today (Belum Presensi) scoped to unit
+        $recordedTeacherIds = $uAttendancesToday->pluck('teacher_id')->toArray();
+        $leaveTeacherIds = $uLeavesToday->pluck('teacher_id')->toArray();
+        $accountedTeacherIds = array_unique(array_merge($recordedTeacherIds, $leaveTeacherIds));
+
         $notCheckedInToday = Teacher::where('status', 'active')
             ->where('unit_id', $unitId)
-            ->whereNotIn('id', Attendance::where('date', $today)->where('unit_id', $unitId)->pluck('teacher_id'))
+            ->whereNotIn('id', $accountedTeacherIds)
             ->count();
 
-        // 4. Late this Month scoped to unit
+        // 5. Late this Month scoped to unit
         $lateThisMonth = Attendance::whereBetween('date', [$startOfMonth, $endOfMonth])
             ->where('unit_id', $unitId)
             ->where('status', 'terlambat')
             ->count();
 
-        // 5. Total Reward / Denda
+        // 6. Total Reward / Denda
         $totalReward = 'Rp 1.5M';
 
         return view('admin.dashboard', compact(
@@ -131,6 +150,8 @@ class DashboardController extends Controller
             'presentToday', 
             'lateToday', 
             'totalPresentToday',
+            'izinToday',
+            'sakitToday',
             'presentRate', 
             'notCheckedInToday', 
             'lateThisMonth', 

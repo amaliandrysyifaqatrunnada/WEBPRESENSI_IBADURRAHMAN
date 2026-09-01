@@ -24,7 +24,7 @@
             <div class="relative ml-2" id="admin-profile-dropdown-wrapper">
                 <button class="flex items-center gap-3 px-3 py-1.5 rounded-full hover:bg-surface-container transition-all cursor-pointer focus:outline-none" id="admin-profile-btn" onclick="toggleAdminDropdown(event)">
                     <div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
-                        <img class="w-full h-full object-cover" id="navbar-admin-avatar" alt="Admin Avatar" src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://lh3.googleusercontent.com/aida-public/AB6AXuBWJS7O2hXfi6V7TxnvAgxfKYyilH2NMDYcVdIJnC19Td4Yu6tRSl_pMTa1YylQtoV9H7NCFPwznw8LUWrJx6m2JOZF1Dyqbn0sLVNVHonXGx-hvlx8brTl-tjOejtZx11M7P_Qfowt5_SBoox_bEl2POS3ZWjF0-vYsYObMrKHTKA7cch29rXsck5OyKF8T5pZYcf08jUQJY0mClKzXA_UjNFoHyuMfHlaMNZwMer_a7BaXj2Yh5EIyQ' }}"/>
+                        <img class="w-full h-full object-cover" id="navbar-admin-avatar" alt="Admin Avatar" src="{{ auth()->user()->avatar_url }}"/>
                     </div>
                     <div class="hidden sm:flex flex-col text-left select-none max-w-[150px]">
                         <span class="text-xs font-semibold text-on-surface truncate leading-tight" id="dropdown-admin-name">{{ auth()->user()->name }}</span>
@@ -36,7 +36,7 @@
                 <div class="absolute right-0 mt-2 w-64 bg-white dark:bg-inverse-surface rounded-xl border border-outline-variant shadow-lg py-2 hidden z-50 font-sans" id="admin-profile-dropdown">
                     <div class="px-4 py-3 border-b border-outline-variant/30 flex items-center gap-3">
                         <div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant shrink-0">
-                            <img class="w-full h-full object-cover" id="dropdown-admin-avatar" alt="Admin Avatar" src="{{ auth()->user()->avatar ? asset('storage/' . auth()->user()->avatar) : 'https://lh3.googleusercontent.com/aida-public/AB6AXuBWJS7O2hXfi6V7TxnvAgxfKYyilH2NMDYcVdIJnC19Td4Yu6tRSl_pMTa1YylQtoV9H7NCFPwznw8LUWrJx6m2JOZF1Dyqbn0sLVNVHonXGx-hvlx8brTl-tjOejtZx11M7P_Qfowt5_SBoox_bEl2POS3ZWjF0-vYsYObMrKHTKA7cch29rXsck5OyKF8T5pZYcf08jUQJY0mClKzXA_UjNFoHyuMfHlaMNZwMer_a7BaXj2Yh5EIyQ' }}"/>
+                            <img class="w-full h-full object-cover" id="dropdown-admin-avatar" alt="Admin Avatar" src="{{ auth()->user()->avatar_url }}"/>
                         </div>
                         <div class="overflow-hidden">
                             <div class="font-label-md text-on-surface truncate font-semibold" id="dropdown-admin-header-name">{{ auth()->user()->name }}</div>

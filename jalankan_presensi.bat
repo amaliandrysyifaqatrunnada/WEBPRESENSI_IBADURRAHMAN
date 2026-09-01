@@ -5,8 +5,8 @@ echo   MEMULAI SISTEM PRESENSI PKBM IBADURRAHMAN
 echo ==================================================
 echo.
 
-:: 1. Berpindah ke folder project C:\ibadurrahman
-cd /d C:\ibadurrahman
+:: 1. Berpindah ke folder project di mana file .bat ini berada
+cd /d "%~dp0"
 
 :: 2. Menjalankan Laravel Serve di window baru
 echo [1/2] Menjalankan Server Laravel (Port 8000)...

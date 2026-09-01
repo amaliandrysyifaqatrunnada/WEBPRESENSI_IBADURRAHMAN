@@ -15,23 +15,57 @@
                 Login Tenaga Pendidik
             </h1>
             <p class="font-body-md text-body-md text-on-surface-variant mt-3 text-center">
-                Masukkan Email Anda untuk mengakses sistem.
+                Masukkan Nama atau Email Anda untuk mengakses sistem.
             </p>
         </div>
+
+        <!-- Flash Messages -->
+        @if(session('error'))
+            <div class="mb-4 p-3.5 bg-red-100 border border-red-200 text-red-700 text-xs rounded-xl flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">error</span>
+                <span>{{ session('error') }}</span>
+            </div>
+        @endif
+        @if(session('success'))
+            <div class="mb-4 p-3.5 bg-green-100 border border-green-200 text-green-700 text-xs rounded-xl flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">check_circle</span>
+                <span>{{ session('success') }}</span>
+            </div>
+        @endif
 
         <!-- Login Form -->
         <form class="flex flex-col gap-6" action="{{ route('teacher.login') }}" method="POST">
             @csrf
-            <!-- Input Field -->
+            @if(isset($units) && $units->count() > 0)
             <div class="flex flex-col">
-                <label class="font-label-md text-label-md text-on-surface mb-2" for="email">Alamat Email</label>
+                <label class="font-label-md text-label-md text-on-surface mb-2" for="unit-select">Pilih Unit Sekolah</label>
                 <div class="relative">
                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-outline">
-                        <span class="material-symbols-outlined">mail</span>
+                        <span class="material-symbols-outlined">school</span>
                     </div>
-                    <input autocomplete="off" class="w-full bg-surface-container-lowest border border-outline-variant rounded-12px py-3 pl-12 pr-4 font-body-md text-body-md text-on-surface placeholder-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" id="email" name="email" placeholder="Contoh: budi@ibadurrahman.sch.id" required type="email" value="{{ old('email') }}"/>
+                    <select id="unit-select" class="w-full bg-surface-container-lowest border border-outline-variant rounded-12px py-3 pl-12 pr-10 font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors appearance-none">
+                        @foreach($units as $u)
+                            <option value="{{ $u->id }}">
+                                {{ $u->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none">arrow_drop_down</span>
                 </div>
-                @error('email')
+            </div>
+            @endif
+
+            <!-- Input Field -->
+            <div class="flex flex-col">
+                <label class="font-label-md text-label-md text-on-surface mb-2" for="name">Nama Lengkap atau Email</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-outline">
+                        <span class="material-symbols-outlined">person</span>
+                    </div>
+                    <input autocomplete="off" list="login-suggestions" class="w-full bg-surface-container-lowest border border-outline-variant rounded-12px py-3 pl-12 pr-4 font-body-md text-body-md text-on-surface placeholder-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" id="name" name="name" placeholder="Masukkan nama lengkap atau email Anda..." required type="text" value="{{ old('name') }}"/>
+                    <datalist id="login-suggestions"></datalist>
+                </div>
+                @error('name')
                     <p class="text-error text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
@@ -51,4 +85,41 @@
             </p>
         </div>
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const unitSelect = document.getElementById('unit-select');
+            const loginSuggestions = document.getElementById('login-suggestions');
+            const nameInput = document.getElementById('name');
+
+            async function fetchUsersForUnit(unitId) {
+                if (!unitId || !loginSuggestions) return;
+                try {
+                    const response = await fetch(`{{ route('face.id.teachers') }}?unit_id=${unitId}`);
+                    const users = await response.json();
+                    
+                    loginSuggestions.innerHTML = '';
+                    
+                    users.forEach(user => {
+                        const option = document.createElement('option');
+                        option.value = user.name;
+                        loginSuggestions.appendChild(option);
+                    });
+                } catch (err) {
+                    console.error("Error fetching users:", err);
+                }
+            }
+
+            if (unitSelect) {
+                // Load initial suggestions
+                fetchUsersForUnit(unitSelect.value);
+
+                // Reload on select change
+                unitSelect.addEventListener('change', (e) => {
+                    fetchUsersForUnit(e.target.value);
+                    nameInput.value = '';
+                });
+            }
+        });
+    </script>
 </x-layouts.auth>

@@ -66,6 +66,17 @@ class AttendanceService
             throw new \Exception("Anda belum terdaftar di unit pendidikan mana pun.");
         }
 
+        // 0. Check Holiday and Final Approved Leave
+        $holiday = $this->checkHoliday($today, $unit->id);
+        if ($holiday) {
+            throw new \Exception("Hari ini (" . Carbon::parse($today)->format('d/m/Y') . ") adalah hari libur: " . $holiday->name);
+        }
+
+        $finalLeave = $this->checkFinalLeave($teacher->id, $today);
+        if ($finalLeave) {
+            throw new \Exception("Anda tidak diwajibkan presensi hari ini karena memiliki pengajuan " . strtoupper($finalLeave->type) . " yang sudah disetujui.");
+        }
+
         // 1. Fetch unit coordinates and geofence radius
         $schoolLat = $unit->latitude;
         $schoolLng = $unit->longitude;
@@ -83,17 +94,13 @@ class AttendanceService
             $schoolLng
         );
 
-        // 2. Fetch schedule for today's day of week
-        $dayOfWeek = strtolower(Carbon::now()->format('l')); // 'monday', 'saturday', etc.
-        $schedule = Schedule::where('unit_id', $unit->id)
-            ->where('day_of_week', $dayOfWeek)
-            ->first();
-
-        if (!$schedule || !$schedule->is_active) {
-            throw new \Exception("Hari ini (" . ucfirst($dayOfWeek) . ") tidak ada jadwal presensi aktif untuk unit Anda.");
+        // 2. Fetch effective work schedule for today
+        $effectiveSchedule = $this->getEffectiveWorkSchedule($teacher, $today);
+        if (!$effectiveSchedule) {
+            throw new \Exception("Hari ini tidak ada jadwal presensi aktif.");
         }
 
-        return DB::transaction(function () use ($dto, $today, $timeString, $teacher, $unit, $schoolRadius, $distance, $schedule) {
+        return DB::transaction(function () use ($dto, $today, $timeString, $teacher, $unit, $schoolRadius, $distance, $effectiveSchedule) {
             
             // A. Check for Izin / Sakit / Alpa submissions (usually recorded by admin or system)
             $isManualStatus = $dto->status && in_array($dto->status, ['izin', 'sakit', 'alpa']);
@@ -348,8 +355,8 @@ class AttendanceService
                 }
 
                 // 2. Evaluate check-in time status
-                $rewardLimit = $schedule->reward_limit_time;
-                $lateThreshold = $schedule->late_threshold_time;
+                $rewardLimit = $effectiveSchedule['reward_limit_time'];
+                $lateThreshold = $effectiveSchedule['late_threshold_time'];
 
                 $statusMasuk = 'Tepat Waktu';
                 $status = 'hadir'; // backward compatibility
@@ -442,12 +449,10 @@ class AttendanceService
                     throw new \Exception("Batas waktu presensi pulang hari ini sudah berakhir (Maksimal: {$formattedMaxTime} WIB).");
                 }
 
-                // Evaluate status pulang: jika pulang sebelum jadwalnya atau sebelum jam 15.15 maka kasih keterangan pulang lebih awal
-                // Khusus hari Sabtu, jadwal pulang berakhir jam 13:00 sehingga batas pulang awal adalah 13:00
-                $isSaturday = Carbon::parse($today)->isSaturday();
-                $thresholdTime = $isSaturday ? $schedule->work_end_time : '15:15:00';
+                // Evaluate status pulang
+                $thresholdTime = $effectiveSchedule['work_end_time'];
 
-                if ($timeString < $schedule->work_end_time || $timeString < $thresholdTime) {
+                if ($timeString < $thresholdTime) {
                     $statusPulang = 'Pulang Lebih Awal';
                 } else {
                     $statusPulang = 'Normal';
@@ -488,5 +493,101 @@ class AttendanceService
 
             throw new \Exception("Aksi tidak didukung.");
         });
+    }
+
+    /**
+     * Check if a given date is an active holiday for global or a specific unit.
+     */
+    public function checkHoliday(string $date, ?int $unitId = null): ?\App\Models\Holiday
+    {
+        return \App\Models\Holiday::whereDate('date', $date)
+            ->where('is_active', true)
+            ->where(function ($query) use ($unitId) {
+                $query->whereNull('unit_id');
+                if ($unitId) {
+                    $query->orWhere('unit_id', $unitId);
+                }
+            })
+            ->first();
+    }
+
+    /**
+     * Check if teacher has a final approved leave request covering the date.
+     */
+    public function checkFinalLeave(int $teacherId, string $date): ?\App\Models\LeaveRequest
+    {
+        return \App\Models\LeaveRequest::where('teacher_id', $teacherId)
+            ->where('status', 'DISETUJUI')
+            ->whereDate('start_date', '<=', $date)
+            ->whereDate('end_date', '>=', $date)
+            ->first();
+    }
+
+    /**
+     * Resolve effective work schedule for teacher on a specific date.
+     * Priority:
+     * 1. Active Custom Schedule of Teacher
+     * 2. Active Default Schedule of Unit
+     * 3. System Default (07:00 - 15:00)
+     */
+    public function getEffectiveWorkSchedule(Teacher $teacher, string $date): array
+    {
+        $carbonDate = Carbon::parse($date);
+        $dayOfWeekIso = $carbonDate->dayOfWeekIso; // 1 = Monday ... 7 = Sunday
+        $dayOfWeekName = strtolower($carbonDate->format('l')); // 'monday', etc.
+
+        // 1. Priority 1: Custom Teacher Schedule
+        if ($teacher->use_custom_schedule) {
+            $customSchedule = \App\Models\TeacherWorkSchedule::where('teacher_id', $teacher->id)
+                ->where('day_of_week', $dayOfWeekIso)
+                ->where('is_active', true)
+                ->first();
+
+            if ($customSchedule) {
+                $startTime = strlen($customSchedule->start_time) === 5 ? $customSchedule->start_time . ':00' : $customSchedule->start_time;
+                $endTime = strlen($customSchedule->end_time) === 5 ? $customSchedule->end_time . ':00' : $customSchedule->end_time;
+
+                $startCarbon = Carbon::parse($startTime);
+                $rewardLimit = $startCarbon->copy()->subMinutes(15)->format('H:i:s');
+                $lateThreshold = $startCarbon->format('H:i:s');
+
+                return [
+                    'type' => 'custom',
+                    'start_time' => $startTime,
+                    'end_time' => $endTime,
+                    'reward_limit_time' => $rewardLimit,
+                    'late_threshold_time' => $lateThreshold,
+                    'work_end_time' => $endTime,
+                ];
+            }
+        }
+
+        // 2. Priority 2: Default Unit Schedule
+        if ($teacher->unit_id) {
+            $unitSchedule = Schedule::where('unit_id', $teacher->unit_id)
+                ->where('day_of_week', $dayOfWeekName)
+                ->first();
+
+            if ($unitSchedule && $unitSchedule->is_active) {
+                return [
+                    'type' => 'unit',
+                    'start_time' => $unitSchedule->work_start_time,
+                    'end_time' => $unitSchedule->work_end_time,
+                    'reward_limit_time' => $unitSchedule->reward_limit_time,
+                    'late_threshold_time' => $unitSchedule->late_threshold_time,
+                    'work_end_time' => $unitSchedule->work_end_time,
+                ];
+            }
+        }
+
+        // 3. Priority 3: System Default (07:00 - 15:00)
+        return [
+            'type' => 'system_default',
+            'start_time' => '07:00:00',
+            'end_time' => '15:00:00',
+            'reward_limit_time' => '06:45:00',
+            'late_threshold_time' => '07:00:00',
+            'work_end_time' => '15:00:00',
+        ];
     }
 }

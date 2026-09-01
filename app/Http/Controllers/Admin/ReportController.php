@@ -49,9 +49,9 @@ class ReportController extends Controller
     public function exportExcel(Request $request)
     {
         $filters = $this->parseFilters($request);
-        $attendances = $this->reportService->getFilteredAttendances($filters);
+        $recapData = $this->reportService->generateMonthlyRecap($filters);
 
-        return Excel::download(new AttendanceExport($attendances), 'Laporan_Kehadiran_' . date('Ymd_His') . '.xlsx');
+        return Excel::download(new \App\Exports\MonthlyRecapExport($recapData), 'Rekap_Presensi_Bulanan_' . date('Ymd_His') . '.xlsx');
     }
 
     /**
@@ -60,13 +60,12 @@ class ReportController extends Controller
     public function exportPdf(Request $request)
     {
         $filters = $this->parseFilters($request);
-        $attendances = $this->reportService->getFilteredAttendances($filters);
-        $stats = $this->reportService->getReportStats($filters);
+        $recapData = $this->reportService->generateMonthlyRecap($filters);
         $unit = auth()->user()->unit;
 
-        $pdf = Pdf::loadView('admin.reports.pdf', compact('attendances', 'stats', 'filters', 'unit'));
+        $pdf = Pdf::loadView('admin.reports.pdf', compact('recapData', 'filters', 'unit'));
         
-        return $pdf->download('Laporan_Kehadiran_' . date('Ymd_His') . '.pdf');
+        return $pdf->download('Rekap_Presensi_Bulanan_' . date('Ymd_His') . '.pdf');
     }
 
     /**

@@ -66,6 +66,9 @@ class ReportService
         $totalLate = $records->where('status', 'terlambat')->count();
         $totalReward = $records->where('reward', true)->count();
         $totalPulangAwal = $records->whereIn('status_pulang', ['Pulang Awal', 'Pulang Lebih Awal'])->count();
+        $totalIzin = $records->where('status', 'izin')->count();
+        $totalSakit = $records->where('status', 'sakit')->count();
+        $totalAlpa = $records->where('status', 'alpa')->count();
         $totalPenalties = $records->sum('penalty');
 
         return [
@@ -73,6 +76,9 @@ class ReportService
             'late' => $totalLate,
             'reward' => $totalReward,
             'pulang_awal' => $totalPulangAwal,
+            'izin' => $totalIzin,
+            'sakit' => $totalSakit,
+            'alpa' => $totalAlpa,
             'penalties' => $totalPenalties,
         ];
     }
@@ -129,6 +135,9 @@ class ReportService
      */
     protected function applyFilters(Builder $query, array $filters): void
     {
+        // Enforce that attendance records must belong to an active (non-deleted) teacher
+        $query->whereHas('teacher');
+
         // 1. Filter by Teacher
         if (!empty($filters['teacher_id']) && $filters['teacher_id'] !== 'All Teachers') {
             $query->where('teacher_id', $filters['teacher_id']);
@@ -167,5 +176,14 @@ class ReportService
                 $query->whereYear('date', $year);
                 break;
         }
+    }
+
+    /**
+     * Generate date-based monthly recap matrix combined with attendance, holidays, leaves, and effective schedules.
+     */
+    public function generateMonthlyRecap(array $filters): array
+    {
+        $recapService = app(\App\Services\MonthlyAttendanceRecapService::class);
+        return $recapService->buildCalendarMatrix($filters);
     }
 }

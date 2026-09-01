@@ -37,6 +37,7 @@ class AttendanceController extends Controller
             'longitude' => $unit ? $unit->longitude : SchoolSetting::getValue('school_longitude', '112.7097', $teacher->unit_id),
             'radius' => $unit ? $unit->gps_radius : SchoolSetting::getValue('school_geofence_radius', '50', $teacher->unit_id),
             'method' => SchoolSetting::getValue('attendance_method', 'gps', $teacher->unit_id),
+            'gps_accuracy_threshold' => (float) SchoolSetting::getValue('gps_accuracy_threshold', 50.0, $teacher->unit_id),
         ];
 
         // 3. Fetch past attendance history

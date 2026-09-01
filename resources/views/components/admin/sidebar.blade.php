@@ -18,6 +18,18 @@
                 <span class="font-label-md text-label-md">Dasbor</span>
             </a>
 
+            <div class="px-4 py-2 mt-2 text-xs font-bold text-outline uppercase tracking-wider">Pengaturan Global</div>
+
+            <a class="flex items-center gap-3 px-4 py-3 {{ request()->is('admin/holidays*') ? 'bg-secondary-container text-on-secondary-container border-l-4 border-primary rounded-r-lg font-bold' : 'text-on-surface-variant hover:bg-surface-container-high rounded-r-lg' }} transition-all duration-200 ease-in-out" href="{{ route('admin.holidays.index') }}">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ request()->is('admin/holidays*') ? '1' : '0' }};">event_note</span>
+                <span class="font-label-md text-label-md">Hari Libur</span>
+            </a>
+
+            <a class="flex items-center gap-3 px-4 py-3 {{ request()->is('admin/coordinators*') ? 'bg-secondary-container text-on-secondary-container border-l-4 border-primary rounded-r-lg font-bold' : 'text-on-surface-variant hover:bg-surface-container-high rounded-r-lg' }} transition-all duration-200 ease-in-out" href="{{ route('admin.coordinators.index') }}">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ request()->is('admin/coordinators*') ? '1' : '0' }};">manage_accounts</span>
+                <span class="font-label-md text-label-md">Koordinator Paket</span>
+            </a>
+
             <div class="px-4 py-2 mt-2 text-xs font-bold text-outline uppercase tracking-wider">Rekapitulasi</div>
             
             <a class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('admin.superadmin.recap') ? 'bg-secondary-container text-on-secondary-container border-l-4 border-primary rounded-r-lg font-bold' : 'text-on-surface-variant hover:bg-surface-container-high rounded-r-lg' }} transition-all duration-200 ease-in-out" href="{{ route('admin.superadmin.recap') }}">
@@ -25,14 +37,24 @@
                 <span class="font-label-md text-label-md">Semua Presensi</span>
             </a>
 
-            <div class="px-4 py-2 mt-2 text-xs font-bold text-outline uppercase tracking-wider">Data</div>
+            <div class="px-4 py-2 mt-2 text-xs font-bold text-outline uppercase tracking-wider">Data & Jadwal</div>
 
-            <a class="flex items-center gap-3 px-4 py-3 {{ request()->is('admin/teachers*') ? 'bg-secondary-container text-on-secondary-container border-l-4 border-primary rounded-r-lg font-bold' : 'text-on-surface-variant hover:bg-surface-container-high rounded-r-lg' }} transition-all duration-200 ease-in-out" href="{{ route('admin.teachers.index') }}">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ request()->is('admin/teachers*') ? '1' : '0' }};">group</span>
+            <a class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('admin.teachers.index') ? 'bg-secondary-container text-on-secondary-container border-l-4 border-primary rounded-r-lg font-bold' : 'text-on-surface-variant hover:bg-surface-container-high rounded-r-lg' }} transition-all duration-200 ease-in-out" href="{{ route('admin.teachers.index') }}">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ request()->routeIs('admin.teachers.index') ? '1' : '0' }};">group</span>
                 <span class="font-label-md text-label-md">Semua Tenaga Pendidik</span>
             </a>
 
-            <div class="px-4 py-2 mt-2 text-xs font-bold text-outline uppercase tracking-wider">Laporan</div>
+            <a class="flex items-center gap-3 px-4 py-3 {{ request()->is('admin/teachers-schedule*') ? 'bg-secondary-container text-on-secondary-container border-l-4 border-primary rounded-r-lg font-bold' : 'text-on-surface-variant hover:bg-surface-container-high rounded-r-lg' }} transition-all duration-200 ease-in-out" href="{{ route('admin.teachers.schedule.index') }}">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ request()->is('admin/teachers-schedule*') ? '1' : '0' }};">edit_calendar</span>
+                <span class="font-label-md text-label-md">Jadwal Tenaga Pendidik</span>
+            </a>
+
+            <div class="px-4 py-2 mt-2 text-xs font-bold text-outline uppercase tracking-wider">Izin & Laporan</div>
+
+            <a class="flex items-center gap-3 px-4 py-3 {{ request()->is('admin/leaves*') ? 'bg-secondary-container text-on-secondary-container border-l-4 border-primary rounded-r-lg font-bold' : 'text-on-surface-variant hover:bg-surface-container-high rounded-r-lg' }} transition-all duration-200 ease-in-out" href="{{ route('admin.leaves.index') }}">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ request()->is('admin/leaves*') ? '1' : '0' }};">assignment_turned_in</span>
+                <span class="font-label-md text-label-md">Persetujuan Izin</span>
+            </a>
 
             <a class="flex items-center gap-3 px-4 py-3 {{ request()->is('admin/reports*') ? 'bg-secondary-container text-on-secondary-container border-l-4 border-primary rounded-r-lg font-bold' : 'text-on-surface-variant hover:bg-surface-container-high rounded-r-lg' }} transition-all duration-200 ease-in-out" href="{{ route('admin.reports.index') }}">
                 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ request()->is('admin/reports*') ? '1' : '0' }};">assessment</span>
@@ -45,9 +67,19 @@
                 <span class="font-label-md text-label-md">Dasbor</span>
             </a>
 
-            <a class="flex items-center gap-3 px-4 py-3 {{ request()->is('admin/teachers*') ? 'bg-secondary-container text-on-secondary-container border-l-4 border-primary rounded-r-lg font-bold' : 'text-on-surface-variant hover:bg-surface-container-high rounded-r-lg' }} transition-all duration-200 ease-in-out" href="{{ route('admin.teachers.index') }}">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ request()->is('admin/teachers*') ? '1' : '0' }};">group</span>
+            <a class="flex items-center gap-3 px-4 py-3 {{ request()->routeIs('admin.teachers.index') ? 'bg-secondary-container text-on-secondary-container border-l-4 border-primary rounded-r-lg font-bold' : 'text-on-surface-variant hover:bg-surface-container-high rounded-r-lg' }} transition-all duration-200 ease-in-out" href="{{ route('admin.teachers.index') }}">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ request()->routeIs('admin.teachers.index') ? '1' : '0' }};">group</span>
                 <span class="font-label-md text-label-md">Data Guru</span>
+            </a>
+
+            <a class="flex items-center gap-3 px-4 py-3 {{ request()->is('admin/teachers-schedule*') ? 'bg-secondary-container text-on-secondary-container border-l-4 border-primary rounded-r-lg font-bold' : 'text-on-surface-variant hover:bg-surface-container-high rounded-r-lg' }} transition-all duration-200 ease-in-out" href="{{ route('admin.teachers.schedule.index') }}">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ request()->is('admin/teachers-schedule*') ? '1' : '0' }};">edit_calendar</span>
+                <span class="font-label-md text-label-md">Jadwal Tenaga Pendidik</span>
+            </a>
+
+            <a class="flex items-center gap-3 px-4 py-3 {{ request()->is('admin/leaves*') ? 'bg-secondary-container text-on-secondary-container border-l-4 border-primary rounded-r-lg font-bold' : 'text-on-surface-variant hover:bg-surface-container-high rounded-r-lg' }} transition-all duration-200 ease-in-out" href="{{ route('admin.leaves.index') }}">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' {{ request()->is('admin/leaves*') ? '1' : '0' }};">assignment_turned_in</span>
+                <span class="font-label-md text-label-md">Persetujuan Izin</span>
             </a>
 
             <a class="flex items-center gap-3 px-4 py-3 {{ (request()->is('admin/settings*') || request()->is('admin/devices*')) ? 'bg-secondary-container text-on-secondary-container border-l-4 border-primary rounded-r-lg font-bold' : 'text-on-surface-variant hover:bg-surface-container-high rounded-r-lg' }} transition-all duration-200 ease-in-out" href="{{ route('admin.settings.attendance') }}">

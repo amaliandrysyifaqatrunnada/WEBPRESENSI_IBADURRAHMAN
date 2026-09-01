@@ -2,42 +2,40 @@
 
 WORKDIR /app
 
-RUN install-php-extensions `
-    pdo_mysql `
-    mbstring `
-    xml `
-    curl `
-    zip `
-    bcmath `
-    intl `
-    gd `
-    exif `
+RUN install-php-extensions \
+    pdo_mysql \
+    mbstring \
+    xml \
+    curl \
+    zip \
+    bcmath \
+    intl \
+    gd \
+    exif \
     opcache
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY . /app
 
-RUN composer install `
-    --no-dev `
-    --optimize-autoloader `
-    --no-interaction `
+RUN composer install \
+    --no-dev \
+    --optimize-autoloader \
+    --no-interaction \
     --prefer-dist
 
-RUN mkdir -p `
-    storage/framework/cache `
-    storage/framework/sessions `
-    storage/framework/views `
-    storage/logs `
+RUN mkdir -p \
+    storage/framework/cache \
+    storage/framework/sessions \
+    storage/framework/views \
+    storage/logs \
     bootstrap/cache
 
 RUN chmod -R 775 storage bootstrap/cache
 
-RUN php artisan config:clear
-
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
-RUN sed -i 's/\r$//' /usr/local/bin/docker-entrypoint.sh `
+RUN sed -i 's/\r$//' /usr/local/bin/docker-entrypoint.sh \
     && chmod +x /usr/local/bin/docker-entrypoint.sh
 
 ENV APP_ENV=production

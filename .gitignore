@@ -27,5 +27,8 @@ frankenphp
 frankenphp-worker.php
 .vercel
 .env*
+!.env.example
 
 ca.pem
+rr
+.rr.yaml

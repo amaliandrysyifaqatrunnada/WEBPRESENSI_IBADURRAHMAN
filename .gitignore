@@ -25,3 +25,7 @@ yarn-error.log
 **/caddy
 frankenphp
 frankenphp-worker.php
+.vercel
+.env*
+
+ca.pem

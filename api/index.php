@@ -1,5 +1,17 @@
 <?php
 
+// Sanitize APP_KEY if pasted with 'APP_KEY=' prefix or quotes
+$appKey = getenv('APP_KEY') ?: ($_ENV['APP_KEY'] ?? ($_SERVER['APP_KEY'] ?? ''));
+if (!empty($appKey)) {
+    if (str_starts_with($appKey, 'APP_KEY=')) {
+        $appKey = substr($appKey, 8);
+    }
+    $appKey = trim($appKey, " \t\n\r\0\x0B\"'");
+    $_ENV['APP_KEY'] = $appKey;
+    $_SERVER['APP_KEY'] = $appKey;
+    putenv('APP_KEY=' . $appKey);
+}
+
 // Resolve serverless writable temp directory
 $tmp = is_dir('/tmp') ? '/tmp' : sys_get_temp_dir();
 

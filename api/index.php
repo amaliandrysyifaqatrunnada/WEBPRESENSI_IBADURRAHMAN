@@ -48,17 +48,6 @@ $_ENV['APP_EVENTS_CACHE'] = $tmp . '/bootstrap/cache/events.php';
 $_SERVER['APP_EVENTS_CACHE'] = $tmp . '/bootstrap/cache/events.php';
 putenv('APP_EVENTS_CACHE=' . $tmp . '/bootstrap/cache/events.php');
 
-// Copy pre-discovered packages and services if present in repository
-$baseBootstrapCache = __DIR__ . '/../bootstrap/cache';
-if (is_dir($baseBootstrapCache)) {
-    foreach (['packages.php', 'services.php'] as $cacheFile) {
-        $source = $baseBootstrapCache . '/' . $cacheFile;
-        $dest = $tmp . '/bootstrap/cache/' . $cacheFile;
-        if (is_file($source) && !is_file($dest)) {
-            copy($source, $dest);
-        }
-    }
-}
 
 // Write Aiven SSL certificate to temp file if provided via environment variable
 $aivenCert = getenv('AIVEN_CA_CERT') ?: ($_ENV['AIVEN_CA_CERT'] ?? ($_SERVER['AIVEN_CA_CERT'] ?? null));

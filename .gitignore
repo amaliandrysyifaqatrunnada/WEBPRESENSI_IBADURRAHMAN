@@ -22,8 +22,6 @@ yarn-error.log
 /storage/logs/*
 /bootstrap/cache/*
 !/bootstrap/cache/.gitignore
-!/bootstrap/cache/packages.php
-!/bootstrap/cache/services.php
 
 **/caddy
 frankenphp

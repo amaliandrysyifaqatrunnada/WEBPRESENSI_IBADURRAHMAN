@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowchart Sistem Presensi - PKBM Ibadurrahman</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; margin: 0; padding: 0; }
+            .print-container { width: 100% !important; max-width: none !important; box-shadow: none !important; margin: 0 !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen text-slate-800 font-sans py-8 px-4">
+    <div class="max-w-5xl mx-auto">
+        <!-- Control Bar -->
+        <div class="no-print bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>
+                <h1 class="text-2xl font-black text-emerald-800 flex items-center gap-2">
+                    <span>📊</span> Flowchart Sistem Presensi PKBM Ibadurrahman
+                </h1>
+                <p class="text-sm text-slate-500 mt-1">
+                    Diagram alur kerja resmi untuk lampiran Laporan / Skripsi / Dokumen Institusi.
+                </p>
+            </div>
+            <div class="flex items-center gap-3 w-full md:w-auto">
+                <a href="flowchart_presensi.png" download="Flowchart_Presensi_PKBM_Ibadurrahman.png" 
+                   class="flex-1 md:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all duration-200">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Download Gambar (PNG)
+                </a>
+                <button onclick="window.print()" 
+                   class="flex-1 md:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all duration-200">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                    Cetak / Simpan PDF
+                </button>
+            </div>
+        </div>
+
+        <!-- Preview Card -->
+        <div class="print-container bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden flex justify-center p-4 md:p-8">
+            <img src="flowchart_presensi.png" alt="Flowchart Alur Kerja Presensi PKBM Ibadurrahman" class="w-full max-w-4xl h-auto object-contain rounded-lg border border-slate-100 shadow-sm">
+        </div>
+
+        <!-- Instructions -->
+        <div class="no-print mt-8 bg-emerald-50 border border-emerald-200 rounded-2xl p-6 text-sm text-emerald-950">
+            <h3 class="font-bold text-emerald-900 mb-2 flex items-center gap-1.5">
+                <span>💡</span> Cara Memasukkan ke Dokumen Laporan (Word / Google Docs / Canva):
+            </h3>
+            <ol class="list-decimal list-inside space-y-1 text-emerald-800 ml-1">
+                <li>Klik tombol <b>Download Gambar (PNG)</b> di atas.</li>
+                <li>Buka dokumen Microsoft Word atau Google Docs laporan Anda.</li>
+                <li>Pilih menu <b>Insert ➜ Pictures ➜ This Device</b>, lalu pilih file <code>Flowchart_Presensi_PKBM_Ibadurrahman.png</code> yang baru diunduh.</li>
+                <li>Atur ukuran gambar sesuai kebutuhan halaman laporan Anda. Resolusi gambar sudah sangat tajam (1300 × 1850 px) dan tidak akan pecah/buram.</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

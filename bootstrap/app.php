@@ -51,4 +51,10 @@ return Application::configure(basePath: dirname(__DIR__))
             }
             return redirect()->back()->with('error', 'Halaman atau sesi Anda telah kedaluwarsa. Silakan coba kembali.');
         });
+        $exceptions->respond(function (\Symfony\Component\HttpFoundation\Response $response, \Throwable $e, \Illuminate\Http\Request $request) {
+            if ($request->query('debug') === 'ibadurrahman') {
+                return response("ROOT ERROR: " . get_class($e) . "\n" . $e->getMessage() . "\n\nin " . $e->getFile() . ":" . $e->getLine() . "\n\n" . $e->getTraceAsString(), 500, ['Content-Type' => 'text/plain']);
+            }
+            return $response;
+        });
     })->create();

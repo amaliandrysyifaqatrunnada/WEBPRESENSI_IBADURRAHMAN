@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1620" width="1100" height="1620" style="background:#ffffff; font-family:Arial, Helvetica, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 1520" width="950" height="1520" style="background:#ffffff; font-family:Arial, Helvetica, sans-serif;">
   <defs>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1.5 L 9 5 L 0 8.5 z" fill="#000000"/>
@@ -6,219 +6,243 @@
   </defs>
 
   <!-- Canvas Background -->
-  <rect width="1100" height="1620" fill="#ffffff"/>
+  <rect width="950" height="1520" fill="#ffffff"/>
 
-  <!-- Document Title Box -->
-  <rect x="40" y="30" width="1020" height="60" fill="#f8fafc" stroke="#000000" stroke-width="1.5"/>
-  <text x="550" y="56" text-anchor="middle" font-size="16" font-weight="bold" fill="#000000">FLOWCHART ALUR KERJA SISTEM PRESENSI</text>
-  <text x="550" y="76" text-anchor="middle" font-size="13" font-weight="normal" fill="#333333">PKBM IBADURRAHMAN BERBASIS WEB</text>
+  <!-- Title (Formal) -->
+  <text x="475" y="45" text-anchor="middle" font-size="16" font-weight="bold" fill="#000000">FLOWCHART ALUR KERJA SISTEM WEB PRESENSI</text>
+  <text x="475" y="68" text-anchor="middle" font-size="12.5" fill="#333333">PKBM IBADURRAHMAN</text>
+  <line x1="150" y1="85" x2="800" y2="85" stroke="#000000" stroke-width="1"/>
 
-  <!-- ==================== SWIMLANE HEADERS ==================== -->
-  <!-- Header Guru -->
-  <rect x="40" y="90" width="340" height="40" fill="#f1f5f9" stroke="#000000" stroke-width="1.5"/>
-  <text x="210" y="115" text-anchor="middle" font-size="13" font-weight="bold" fill="#000000">Guru / Tenaga Pendidik</text>
+  <!-- ==================== 1. START & PORTAL ==================== -->
+  <!-- Terminator: Mulai -->
+  <rect x="400" y="105" width="150" height="42" rx="21" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="475" y="131" text-anchor="middle" font-size="12" font-weight="bold" fill="#000000">Mulai</text>
 
-  <!-- Header Sistem -->
-  <rect x="380" y="90" width="420" height="40" fill="#f1f5f9" stroke="#000000" stroke-width="1.5"/>
-  <text x="590" y="115" text-anchor="middle" font-size="13" font-weight="bold" fill="#000000">Sistem Web Presensi (Cloud)</text>
+  <!-- Line: Mulai -> Buka Web -->
+  <line x1="475" y1="147" x2="475" y2="182" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- Header Admin -->
-  <rect x="800" y="90" width="260" height="40" fill="#f1f5f9" stroke="#000000" stroke-width="1.5"/>
-  <text x="930" y="115" text-anchor="middle" font-size="13" font-weight="bold" fill="#000000">Administrator</text>
+  <!-- Process: Akses Web -->
+  <rect x="330" y="184" width="290" height="46" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="475" y="204" text-anchor="middle" font-size="11.5" fill="#000000">Buka Website Presensi</text>
+  <text x="475" y="220" text-anchor="middle" font-size="10.5" fill="#555555">(Halaman Utama / Portal)</text>
 
-  <!-- Swimlane Outer Bounds & Vertical Separators -->
-  <rect x="40" y="130" width="1020" height="1440" fill="none" stroke="#000000" stroke-width="1.5"/>
-  <line x1="380" y1="130" x2="380" y2="1570" stroke="#000000" stroke-width="1.5"/>
-  <line x1="800" y1="130" x2="800" y2="1570" stroke="#000000" stroke-width="1.5"/>
+  <!-- Line: Buka Web -> Decision Menu -->
+  <line x1="475" y1="230" x2="475" y2="265" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- ==================== FLOWCHART ELEMENTS ==================== -->
+  <!-- Decision: Pilih Menu Portal -->
+  <polygon points="475,267 575,305 475,343 375,305" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="475" y="301" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000">Pilih Menu</text>
+  <text x="475" y="315" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000">Portal?</text>
 
-  <!-- 1. START (Guru) -->
-  <rect x="135" y="150" width="150" height="42" rx="21" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="210" y="176" text-anchor="middle" font-size="12" font-weight="bold" fill="#000000">Mulai</text>
+  <!-- ==================== 3 CABANG DARI PORTAL ==================== -->
+  <!-- Cabang 1: Guru (Kiri x=190) -->
+  <path d="M 375 305 L 190 305 L 190 380" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="260" y="297" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#000000">[1] Menu Guru</text>
 
-  <!-- Line: Start -> Input Login -->
-  <line x1="210" y1="192" x2="210" y2="222" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- Cabang 2: Layar QR (Tengah x=475) -->
+  <line x1="475" y1="343" x2="475" y2="380" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="480" y="362" font-size="10.5" font-weight="bold" fill="#000000">[2] Layar QR</text>
 
-  <!-- 2. Input Login (Parallelogram) -->
-  <polygon points="120,224 315,224 285,274 90,274" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="202" y="246" text-anchor="middle" font-size="11.5" fill="#000000">Input Email &amp; Password</text>
-  <text x="202" y="262" text-anchor="middle" font-size="11" fill="#333333">(Login Guru)</text>
+  <!-- Cabang 3: Admin (Kanan x=760) -->
+  <path d="M 575 305 L 760 305 L 760 380" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="680" y="297" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#000000">[3] Menu Admin</text>
 
-  <!-- Line: Guru Login -> Sistem Validasi -->
-  <path d="M 300 249 L 590 249 L 590 295" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- ==================== CABANG 1: GURU ==================== -->
+  <!-- Input: Login Guru -->
+  <polygon points="105,382 275,382 245,428 75,428" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="175" y="401" text-anchor="middle" font-size="11" fill="#000000">Input Email &amp; Password</text>
+  <text x="175" y="416" text-anchor="middle" font-size="10" fill="#555555">(Login Guru)</text>
 
-  <!-- 3. Proses Validasi Akun (Sistem) -->
-  <rect x="490" y="297" width="200" height="45" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="590" y="324" text-anchor="middle" font-size="12" fill="#000000">Validasi Kredensial Akun</text>
+  <line x1="175" y1="428" x2="175" y2="458" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- Line: Validasi -> Decision Akun Valid -->
-  <line x1="590" y1="342" x2="590" y2="372" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- Decision: Cek Login Guru -->
+  <polygon points="175,460 240,490 175,520 110,490" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="175" y="487" text-anchor="middle" font-size="10" font-weight="bold" fill="#000000">Login</text>
+  <text x="175" y="499" text-anchor="middle" font-size="10" font-weight="bold" fill="#000000">Valid?</text>
 
-  <!-- 4. Decision: Akun Valid? (Sistem) -->
-  <polygon points="590,374 670,410 590,446 510,410" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="590" y="407" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#000000">Akun</text>
-  <text x="590" y="422" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#000000">Valid?</text>
+  <!-- Login Salah (Loop back) -->
+  <path d="M 110 490 L 55 490 L 55 405 L 85 405" fill="none" stroke="#000000" stroke-width="1.3" stroke-dasharray="3" marker-end="url(#arrow)"/>
+  <text x="48" y="450" text-anchor="middle" font-size="9" font-weight="bold" fill="#000000">Tidak</text>
 
-  <!-- Line Decision -> Tidak (Loop back to Input Login) -->
-  <path d="M 510 410 L 210 410 L 210 280" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="350" y="402" font-size="11" font-weight="bold" fill="#000000">Tidak</text>
+  <!-- Login Benar -->
+  <line x1="175" y1="520" x2="175" y2="550" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="180" y="537" font-size="10" font-weight="bold" fill="#000000">Ya</text>
 
-  <!-- Line Decision -> Ya (Ke Tampilkan Dashboard Guru) -->
-  <path d="M 590 446 L 590 480 L 210 480 L 210 515" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="596" y="465" font-size="11" font-weight="bold" fill="#000000">Ya</text>
+  <!-- Process: Dashboard Guru -->
+  <rect x="90" y="552" width="170" height="40" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="175" y="576" text-anchor="middle" font-size="11" fill="#000000">Masuk Dashboard Guru</text>
 
-  <!-- 5. Tampil Dashboard Guru -->
-  <rect x="110" y="517" width="200" height="45" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="210" y="544" text-anchor="middle" font-size="12" fill="#000000">Dashboard Tenaga Pendidik</text>
+  <line x1="175" y1="592" x2="175" y2="622" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- Line: Dashboard -> Decision Jenis Presensi -->
-  <line x1="210" y1="562" x2="210" y2="595" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- Decision: Jenis Kehadiran -->
+  <polygon points="175,624 245,655 175,686 105,655" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="175" y="651" text-anchor="middle" font-size="10" font-weight="bold" fill="#000000">Jenis</text>
+  <text x="175" y="663" text-anchor="middle" font-size="10" font-weight="bold" fill="#000000">Presensi?</text>
 
-  <!-- 6. Decision: Pilih Jenis Kehadiran (Guru) -->
-  <polygon points="210,597 295,635 210,673 125,635" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="210" y="631" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000">Pilih Jenis</text>
-  <text x="210" y="646" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000">Kehadiran?</text>
+  <!-- Sub-branch: Izin / Sakit (ke kiri) -->
+  <path d="M 105 655 L 60 655 L 60 710" fill="none" stroke="#000000" stroke-width="1.3" marker-end="url(#arrow)"/>
+  <text x="65" y="647" font-size="9.5" font-weight="bold" fill="#000000">Izin/Sakit</text>
 
-  <!-- ==================== CABANG 1: IZIN / SAKIT ==================== -->
-  <!-- Path to Izin/Sakit (Kiri) -->
-  <path d="M 125 635 L 75 635 L 75 700" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="80" y="625" font-size="10.5" font-weight="bold" fill="#000000">Izin/Sakit</text>
+  <polygon points="15,712 125,712 105,752 0,752" fill="#ffffff" stroke="#000000" stroke-width="1.3"/>
+  <text x="60" y="729" text-anchor="middle" font-size="9" fill="#000000">Form Izin &amp;</text>
+  <text x="60" y="741" text-anchor="middle" font-size="9" fill="#555555">Upload Bukti</text>
 
-  <!-- Input Form Izin (Parallelogram) -->
-  <polygon points="45,702 180,702 155,752 20,752" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="100" y="723" text-anchor="middle" font-size="10.5" fill="#000000">Input Keterangan</text>
-  <text x="100" y="738" text-anchor="middle" font-size="10" fill="#333333">&amp; Upload Surat</text>
+  <path d="M 60 752 L 60 1150 L 175 1150" fill="none" stroke="#000000" stroke-width="1.3"/>
 
-  <!-- Line to Simpan Izin di Sistem -->
-  <path d="M 100 752 L 100 790 L 490 790" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- Sub-branch: Hadir (ke bawah) -->
+  <line x1="175" y1="686" x2="175" y2="720" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="180" y="705" font-size="10" font-weight="bold" fill="#000000">Hadir</text>
 
-  <!-- Simpan Data Izin (Sistem) -->
-  <rect x="490" y="768" width="200" height="44" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="590" y="794" text-anchor="middle" font-size="11.5" fill="#000000">Simpan Data Pengajuan Izin</text>
+  <!-- Process: Scan QR / Selfie -->
+  <rect x="95" y="722" width="160" height="42" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="175" y="740" text-anchor="middle" font-size="10" fill="#000000">Scan QR Code Sekolah</text>
+  <text x="175" y="753" text-anchor="middle" font-size="9" fill="#555555">atau Ambil Selfie Wajah</text>
 
-  <!-- Line: Simpan Izin -> Notifikasi ke Admin -->
-  <path d="M 690 790 L 840 790" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="175" y1="764" x2="175" y2="794" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- Admin Verifikasi Izin -->
-  <rect x="840" y="768" width="180" height="44" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="930" y="794" text-anchor="middle" font-size="11" fill="#000000">Verifikasi &amp; Approval Izin</text>
+  <!-- Input: Deteksi GPS -->
+  <polygon points="105,796 265,796 240,836 80,836" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="172" y="813" text-anchor="middle" font-size="10" fill="#000000">Deteksi Koordinat GPS</text>
+  <text x="172" y="825" text-anchor="middle" font-size="9" fill="#555555">(Perangkat Guru)</text>
 
-  <!-- ==================== CABANG 2: HADIR ==================== -->
-  <!-- Path to Hadir (Bawah) -->
-  <line x1="210" y1="673" x2="210" y2="825" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="216" y="695" font-size="11" font-weight="bold" fill="#000000">Hadir</text>
+  <line x1="172" y1="836" x2="172" y2="866" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- 7. Scan QR / Selfie (Guru) -->
-  <rect x="110" y="827" width="200" height="45" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="210" y="847" text-anchor="middle" font-size="11" fill="#000000">Scan QR Code Sekolah</text>
-  <text x="210" y="862" text-anchor="middle" font-size="10.5" fill="#333333">atau Ambil Foto Selfie</text>
+  <!-- Decision: Cek Radius GPS -->
+  <polygon points="172,868 245,900 172,932 99,900" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="172" y="896" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#000000">Radius &lt;=</text>
+  <text x="172" y="908" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#000000">50 Meter?</text>
 
-  <!-- Line: Scan -> Input GPS -->
-  <line x1="210" y1="872" x2="210" y2="902" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- Tidak dalam radius -->
+  <path d="M 99 900 L 70 900 L 70 950" fill="none" stroke="#000000" stroke-width="1.3" stroke-dasharray="3" marker-end="url(#arrow)"/>
+  <text x="75" y="892" font-size="9" font-weight="bold" fill="#000000">Tidak</text>
+  <rect x="25" y="952" width="105" height="34" fill="#ffffff" stroke="#000000" stroke-width="1.3"/>
+  <text x="77" y="968" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#000000">Presensi Ditolak</text>
+  <text x="77" y="979" text-anchor="middle" font-size="7.5" fill="#555555">(Luar Radius)</text>
 
-  <!-- 8. Input GPS Koordinat (Parallelogram) -->
-  <polygon points="120,904 315,904 285,950 90,950" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="202" y="924" text-anchor="middle" font-size="11" fill="#000000">Deteksi Koordinat GPS HP</text>
-  <text x="202" y="939" text-anchor="middle" font-size="10" fill="#333333">(Latitude, Longitude)</text>
+  <path d="M 77 986 L 77 1410 L 475 1410" fill="none" stroke="#000000" stroke-width="1.3"/>
 
-  <!-- Line: GPS -> Sistem Cek Radius -->
-  <path d="M 300 927 L 590 927 L 590 965" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- Ya dalam radius -->
+  <line x1="172" y1="932" x2="172" y2="970" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="178" y="950" font-size="10" font-weight="bold" fill="#000000">Ya</text>
 
-  <!-- 9. Decision: Radius Sekolah <= 50m? (Sistem) -->
-  <polygon points="590,967 685,1005 590,1043 495,1005" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="590" y="1001" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000">Radius GPS</text>
-  <text x="590" y="1016" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000">&lt;= 50 Meter?</text>
+  <!-- Decision: Batas Waktu -->
+  <polygon points="172,972 245,1004 172,1036 99,1004" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="172" y="1000" text-anchor="middle" font-size="9" font-weight="bold" fill="#000000">Waktu &lt;=</text>
+  <text x="172" y="1012" text-anchor="middle" font-size="9" font-weight="bold" fill="#000000">Batas Masuk?</text>
 
-  <!-- Radius Tidak (Ditolak) -->
-  <path d="M 495 1005 L 430 1005 L 430 1060" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="445" y="998" font-size="10.5" font-weight="bold" fill="#000000">Tidak</text>
+  <!-- Waktu Ya / Tidak -->
+  <path d="M 99 1004 L 75 1004 L 75 1050" fill="none" stroke="#000000" stroke-width="1.3" marker-end="url(#arrow)"/>
+  <text x="80" y="996" font-size="8.5" font-weight="bold" fill="#000000">Ya</text>
+  <rect x="40" y="1052" width="85" height="30" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="82" y="1071" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#000000">"Tepat Waktu"</text>
 
-  <!-- Output Error (Parallelogram) -->
-  <polygon points="390,1062 525,1062 495,1108 360,1108" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="442" y="1082" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#000000">Presensi Ditolak</text>
-  <text x="442" y="1096" text-anchor="middle" font-size="9.5" fill="#333333">(Di Luar Radius)</text>
+  <path d="M 245 1004 L 270 1004 L 270 1050" fill="none" stroke="#000000" stroke-width="1.3" marker-end="url(#arrow)"/>
+  <text x="275" y="996" font-size="8.5" font-weight="bold" fill="#000000">Tidak</text>
+  <rect x="230" y="1052" width="85" height="30" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="272" y="1071" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#000000">"Terlambat"</text>
 
-  <!-- Radius Ya (Cek Jam Masuk) -->
-  <line x1="590" y1="1043" x2="590" y2="1080" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="596" y="1062" font-size="11" font-weight="bold" fill="#000000">Ya</text>
+  <!-- Konvergensi Status Presensi -->
+  <path d="M 82 1082 L 82 1115 L 175 1115" fill="none" stroke="#000000" stroke-width="1.3"/>
+  <path d="M 272 1082 L 272 1115 L 175 1115" fill="none" stroke="#000000" stroke-width="1.3"/>
+  <line x1="175" y1="1115" x2="175" y2="1170" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- 10. Decision: Cek Jam Masuk (Sistem) -->
-  <polygon points="590,1082 685,1120 590,1158 495,1120" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="590" y="1116" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000">Waktu Masuk &lt;=</text>
-  <text x="590" y="1131" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000">Batas Masuk?</text>
+  <!-- Process: Simpan DB Presensi -->
+  <rect x="95" y="1172" width="160" height="42" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="175" y="1191" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#000000">Simpan Data Presensi</text>
+  <text x="175" y="1204" text-anchor="middle" font-size="9" fill="#555555">ke Database Cloud (MySQL)</text>
 
-  <!-- Cabang Tepat Waktu -->
-  <path d="M 495 1120 L 450 1120 L 450 1175" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="456" y="1112" font-size="10.5" font-weight="bold" fill="#000000">Ya</text>
-  <rect x="385" y="1177" width="130" height="38" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="450" y="1195" text-anchor="middle" font-size="10.5" fill="#000000">Status Kehadiran:</text>
-  <text x="450" y="1208" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#000000">"Tepat Waktu"</text>
+  <line x1="175" y1="1214" x2="175" y2="1248" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- Cabang Terlambat -->
-  <path d="M 685 1120 L 730 1120 L 730 1175" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
-  <text x="695" y="1112" font-size="10.5" font-weight="bold" fill="#000000">Tidak</text>
-  <rect x="665" y="1177" width="130" height="38" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="730" y="1195" text-anchor="middle" font-size="10.5" fill="#000000">Status Kehadiran:</text>
-  <text x="730" y="1208" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#000000">"Terlambat"</text>
+  <!-- Output: Notifikasi Sukses -->
+  <polygon points="105,1250 265,1250 240,1292 80,1292" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="172" y="1268" text-anchor="middle" font-size="10" font-weight="bold" fill="#000000">Tampilkan Bukti Presensi</text>
+  <text x="172" y="1281" text-anchor="middle" font-size="9" fill="#555555">&amp; Riwayat Kehadiran</text>
 
-  <!-- Konvergensi ke Simpan Database -->
-  <path d="M 450 1215 L 450 1250 L 590 1250" fill="none" stroke="#000000" stroke-width="1.5"/>
-  <path d="M 730 1215 L 730 1250 L 590 1250" fill="none" stroke="#000000" stroke-width="1.5"/>
-  <line x1="590" y1="1250" x2="590" y2="1275" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- ==================== CABANG 2: LAYAR QR ==================== -->
+  <rect x="385" y="382" width="180" height="42" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="475" y="401" text-anchor="middle" font-size="10.5" fill="#000000">Buka Menu /qr-presensi</text>
+  <text x="475" y="414" text-anchor="middle" font-size="9" fill="#555555">(Layar Monitor Sekolah)</text>
 
-  <!-- 11. Proses Simpan Database (Sistem) -->
-  <rect x="490" y="1277" width="200" height="46" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="590" y="1298" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#000000">Simpan Data Presensi</text>
-  <text x="590" y="1313" text-anchor="middle" font-size="10.5" fill="#333333">ke Database Cloud (MySQL)</text>
+  <line x1="475" y1="424" x2="475" y2="464" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- Line: Simpan DB -> Notifikasi ke Guru -->
-  <path d="M 490 1300 L 210 1300 L 210 1345" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="385" y="466" width="180" height="42" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="475" y="485" text-anchor="middle" font-size="10.5" fill="#000000">Generate Token Dinamis</text>
+  <text x="475" y="498" text-anchor="middle" font-size="9" fill="#555555">(Enkripsi Unik Acak)</text>
 
-  <!-- 12. Output Notifikasi Berhasil (Guru) -->
-  <polygon points="120,1347 315,1347 285,1393 90,1393" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="202" y="1367" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000">Tampilkan Bukti Presensi</text>
-  <text x="202" y="1382" text-anchor="middle" font-size="10" fill="#333333">&amp; Riwayat Kehadiran</text>
+  <line x1="475" y1="508" x2="475" y2="548" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- ==================== FLOW ADMIN ==================== -->
-  <!-- Admin Start Login -->
-  <polygon points="850,224 1025,224 1000,274 825,274" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="925" y="246" text-anchor="middle" font-size="11.5" fill="#000000">Login Administrator</text>
-  <text x="925" y="262" text-anchor="middle" font-size="10.5" fill="#333333">(Email &amp; Password)</text>
+  <rect x="385" y="550" width="180" height="42" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="475" y="569" text-anchor="middle" font-size="10.5" fill="#000000">Tampilkan QR di Monitor</text>
+  <text x="475" y="582" text-anchor="middle" font-size="9" fill="#555555">(Siap Dipindai Guru)</text>
 
-  <line x1="925" y1="274" x2="925" y2="305" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="475" y1="592" x2="475" y2="632" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <rect x="840" y="307" width="170" height="44" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="925" y="327" text-anchor="middle" font-size="11" fill="#000000">Dashboard Monitoring</text>
-  <text x="925" y="342" text-anchor="middle" font-size="10" fill="#333333">Kehadiran Realtime</text>
+  <!-- Decision: Timer QR -->
+  <polygon points="475,634 545,665 475,696 405,665" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="475" y="661" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#000000">Timer 30 dtk</text>
+  <text x="475" y="673" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#000000">Habis?</text>
 
-  <line x1="925" y1="351" x2="925" y2="385" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- Loop back QR -->
+  <path d="M 545 665 L 590 665 L 590 487 L 570 487" fill="none" stroke="#000000" stroke-width="1.3" stroke-dasharray="3" marker-end="url(#arrow)"/>
+  <text x="595" y="580" font-size="9" font-weight="bold" fill="#000000">Ya (Rotasi)</text>
 
-  <rect x="840" y="387" width="170" height="58" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="925" y="407" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000">Manajemen Master:</text>
-  <text x="925" y="423" text-anchor="middle" font-size="10" fill="#333333">• Data Tenaga Pendidik</text>
-  <text x="925" y="437" text-anchor="middle" font-size="10" fill="#333333">• Setting GPS &amp; Jam Masuk</text>
+  <!-- QR Tidak Habis (Standby) -->
+  <line x1="475" y1="696" x2="475" y2="736" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="480" y="718" font-size="9.5" font-weight="bold" fill="#000000">Tidak</text>
+  <rect x="395" y="738" width="160" height="34" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+  <text x="475" y="754" text-anchor="middle" font-size="9.5" fill="#000000">Standby Layar Monitor</text>
+  <text x="475" y="765" text-anchor="middle" font-size="8.5" fill="#555555">(Anti Titip Absen Aktif)</text>
 
-  <!-- Line: Admin Laporan -->
-  <path d="M 930 812 L 930 1345" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- ==================== CABANG 3: ADMIN ==================== -->
+  <polygon points="695,382 865,382 835,428 665,428" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="765" y="401" text-anchor="middle" font-size="11" fill="#000000">Input Akun Administrator</text>
+  <text x="765" y="416" text-anchor="middle" font-size="10" fill="#555555">(Email &amp; Password)</text>
 
-  <!-- Output Laporan Admin (Parallelogram) -->
-  <polygon points="845,1347 1030,1347 1005,1393 820,1393" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="925" y="1367" text-anchor="middle" font-size="11" font-weight="bold" fill="#000000">Cetak Laporan Rekapitulasi</text>
-  <text x="925" y="1382" text-anchor="middle" font-size="10" fill="#333333">(Format PDF / Excel)</text>
+  <line x1="765" y1="428" x2="765" y2="458" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
 
-  <!-- ==================== SELESAI ==================== -->
-  <!-- Convergence Lines to Finish -->
-  <path d="M 210 1393 L 210 1450 L 590 1450" fill="none" stroke="#000000" stroke-width="1.5"/>
-  <path d="M 442 1108 L 442 1450" fill="none" stroke="#000000" stroke-width="1.5"/>
-  <path d="M 925 1393 L 925 1450 L 590 1450" fill="none" stroke="#000000" stroke-width="1.5"/>
+  <!-- Decision: Login Admin -->
+  <polygon points="765,460 830,490 765,520 700,490" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="765" y="487" text-anchor="middle" font-size="10" font-weight="bold" fill="#000000">Login</text>
+  <text x="765" y="499" text-anchor="middle" font-size="10" font-weight="bold" fill="#000000">Valid?</text>
 
-  <line x1="590" y1="1450" x2="590" y2="1490" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <!-- Loop back Admin -->
+  <path d="M 830 490 L 880 490 L 880 405 L 850 405" fill="none" stroke="#000000" stroke-width="1.3" stroke-dasharray="3" marker-end="url(#arrow)"/>
+  <text x="885" y="450" font-size="9" font-weight="bold" fill="#000000">Tidak</text>
 
-  <!-- Selesai (Terminator) -->
-  <rect x="515" y="1492" width="150" height="42" rx="21" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
-  <text x="590" y="1518" text-anchor="middle" font-size="12" font-weight="bold" fill="#000000">Selesai</text>
+  <line x1="765" y1="520" x2="765" y2="550" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="770" y="537" font-size="10" font-weight="bold" fill="#000000">Ya</text>
 
-  <!-- Academic Caption Below -->
-  <text x="550" y="1600" text-anchor="middle" font-size="11.5" font-style="italic" fill="#333333">Gambar 3.x Flowchart Alur Kerja Sistem Presensi PKBM Ibadurrahman (Standar ANSI/ISO 5807)</text>
+  <rect x="680" y="552" width="170" height="40" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="765" y="576" text-anchor="middle" font-size="11" fill="#000000">Dashboard Monitoring Admin</text>
+
+  <line x1="765" y1="592" x2="765" y2="632" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="675" y="634" width="180" height="52" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="765" y="652" text-anchor="middle" font-size="10" font-weight="bold" fill="#000000">Manajemen Data &amp; Setting:</text>
+  <text x="765" y="666" text-anchor="middle" font-size="9" fill="#555555">• Data Guru (CRUD / Excel)</text>
+  <text x="765" y="678" text-anchor="middle" font-size="9" fill="#555555">• Koordinat GPS &amp; Jam Masuk</text>
+
+  <line x1="765" y1="686" x2="765" y2="726" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <polygon points="695,728 860,728 835,770 670,770" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="765" y="746" text-anchor="middle" font-size="10" font-weight="bold" fill="#000000">Cetak Laporan Rekapitulasi</text>
+  <text x="765" y="759" text-anchor="middle" font-size="9" fill="#555555">(Format PDF / Excel)</text>
+
+  <!-- ==================== CONVERGENCE TO SELESAI ==================== -->
+  <!-- Line from Guru Output -->
+  <path d="M 172 1292 L 172 1360 L 475 1360" fill="none" stroke="#000000" stroke-width="1.5"/>
+
+  <!-- Line from Layar QR Standby -->
+  <path d="M 475 772 L 475 1360" fill="none" stroke="#000000" stroke-width="1.5"/>
+
+  <!-- Line from Admin Laporan -->
+  <path d="M 765 770 L 765 1360 L 475 1360" fill="none" stroke="#000000" stroke-width="1.5"/>
+
+  <!-- Down into Selesai -->
+  <line x1="475" y1="1360" x2="475" y2="1425" stroke="#000000" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Terminator: Selesai -->
+  <rect x="400" y="1427" width="150" height="42" rx="21" fill="#ffffff" stroke="#000000" stroke-width="1.5"/>
+  <text x="475" y="1453" text-anchor="middle" font-size="12" font-weight="bold" fill="#000000">Selesai</text>
+
 </svg>

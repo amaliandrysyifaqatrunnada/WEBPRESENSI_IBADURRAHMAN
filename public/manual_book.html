@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buku Panduan Pengguna - Sistem Presensi PKBM Ibadurrahman</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; color: black !important; font-size: 12pt; }
+            .page-break { page-break-before: always; }
+            .shadow-lg, .shadow-md, .shadow-sm { box-shadow: none !important; }
+            .border { border-color: #cbd5e1 !important; }
+            a { text-decoration: none !important; color: black !important; }
+        }
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased py-8 px-4">
+
+    <!-- Top Action Bar (Screen Only) -->
+    <div class="no-print max-w-4xl mx-auto mb-6 bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 sticky top-4 z-50">
+        <div>
+            <h1 class="font-bold text-emerald-800 text-lg flex items-center gap-2">
+                <span>📖</span> Buku Panduan Pengguna (Manual Book)
+            </h1>
+            <p class="text-xs text-slate-500">Sistem Informasi Presensi Tenaga Pendidik PKBM Ibadurrahman</p>
+        </div>
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+            <button onclick="window.print()" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm shadow-md transition-all">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                Cetak / Simpan PDF
+            </button>
+            <a href="https://presensi-pkbm-ibadurrahman.vercel.app" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-sm border border-slate-300 transition-all">
+                Buka Web
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Document Container -->
+    <div class="max-w-4xl mx-auto bg-white p-8 sm:p-14 rounded-2xl shadow-lg border border-slate-200">
+
+        <!-- Cover / Header Document -->
+        <div class="border-b-2 border-emerald-800 pb-8 mb-10 text-center">
+            <div class="inline-block p-3 bg-emerald-50 rounded-2xl mb-4">
+                <span class="text-4xl">🏫</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight uppercase">
+                Buku Panduan Pengguna
+            </h1>
+            <h2 class="text-xl sm:text-2xl font-bold text-emerald-800 mt-2">
+                Sistem Informasi Presensi Tenaga Pendidik
+            </h2>
+            <p class="text-slate-500 font-medium mt-1">
+                PKBM IBADURRAHMAN • BERBASIS CLOUD WEB
+            </p>
+            <div class="mt-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">
+                <span>Versi 1.0 (Cloud Serverless Edition)</span> • <span>Tahun 2026</span>
+            </div>
+        </div>
+
+        <!-- Table of System Information -->
+        <div class="mb-10 bg-slate-50 border border-slate-200 rounded-xl p-6">
+            <h3 class="font-bold text-slate-900 mb-4 text-sm uppercase tracking-wider text-emerald-900">
+                Informasi Sistem &amp; Akses
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                <div>
+                    <span class="text-slate-500 block text-xs">Alamat Website Resmi:</span>
+                    <a href="https://presensi-pkbm-ibadurrahman.vercel.app" class="font-mono font-bold text-emerald-700 hover:underline">
+                        https://presensi-pkbm-ibadurrahman.vercel.app
+                    </a>
+                </div>
+                <div>
+                    <span class="text-slate-500 block text-xs">Akses Perangkat:</span>
+                    <span class="font-semibold text-slate-800">Smartphone (Android/iOS), Tablet, Laptop, Smart TV</span>
+                </div>
+                <div>
+                    <span class="text-slate-500 block text-xs">Fitur Keamanan:</span>
+                    <span class="font-semibold text-slate-800">Dynamic Rotating QR (30 dtk) &amp; Geofencing GPS (50m)</span>
+                </div>
+                <div>
+                    <span class="text-slate-500 block text-xs">Basis Data:</span>
+                    <span class="font-semibold text-slate-800">Cloud MySQL 24/7 (Aiven) + Vercel Edge</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- DAFTAR ISI -->
+        <div class="mb-12 border border-slate-200 rounded-xl p-6 bg-white">
+            <h3 class="font-bold text-slate-900 mb-3 text-base border-b pb-2">Daftar Isi</h3>
+            <ul class="space-y-1.5 text-sm text-slate-700">
+                <li><b>BAB 1. Pendahuluan</b> (Tentang Sistem, Hak Akses, Kebutuhan Perangkat)</li>
+                <li><b>BAB 2. Panduan Tenaga Pendidik (Guru)</b> (Login, Presensi Scan QR &amp; Selfie, Izin/Sakit, Riwayat)</li>
+                <li><b>BAB 3. Panduan Layar Kios Sekolah</b> (Tampilan Barcode Dinamis, Anti Titip Absen, Kios Face ID)</li>
+                <li><b>BAB 4. Panduan Administrator</b> (Dashboard Realtime, Master Data Guru, Pengaturan GPS &amp; Jam, Approval Izin, Rekap Excel/PDF)</li>
+                <li><b>BAB 5. Panduan Superadmin</b> (Kalender Libur &amp; Koordinator Unit)</li>
+                <li><b>BAB 6. Troubleshooting &amp; Solusi Kendala</b> (GPS Luar Radius, Izin Kamera, Reset Password)</li>
+            </ul>
+        </div>
+
+        <!-- ==================== BAB 1 ==================== -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-emerald-800 border-b border-emerald-200 pb-2 mb-4">
+                BAB 1: PENDAHULUAN
+            </h2>
+            <div class="space-y-3 text-sm text-slate-700 leading-relaxed">
+                <p>
+                    <b>1.1 Tentang Sistem:</b> Sistem Presensi PKBM Ibadurrahman adalah aplikasi berbasis web yang dirancang untuk mendokumentasikan kehadiran seluruh tenaga pendidik secara transparan, otomatis, dan akurat. Sistem ini tidak memerlukan instalasi aplikasi tambahan dari Play Store/App Store, melainkan dapat diakses langsung melalui peramban web (*browser*).
+                </p>
+                <p>
+                    <b>1.2 Peran Pengguna (*User Roles*):</b>
+                </p>
+                <ul class="list-disc list-inside space-y-1 pl-2">
+                    <li><b>Guru / Tenaga Pendidik:</b> Melakukan absensi masuk/pulang harian, mengajukan permohonan izin/sakit/cuti, dan memantau riwayat kehadiran pribadi.</li>
+                    <li><b>Operator Layar Kios:</b> Menampilkan Barcode QR Dinamis pada monitor/smart TV sekolah.</li>
+                    <li><b>Koordinator Unit:</b> Memantau rekapitulasi kehadiran dan memvalidasi permohonan izin pada unit binaannya.</li>
+                    <li><b>Administrator / Superadmin:</b> Pengelola seluruh sistem, data tenaga pendidik, jadwal jam kerja, radius koordinat GPS sekolah, dan pencetakan laporan bulanan institusi.</li>
+                </ul>
+                <p>
+                    <b>1.3 Kebutuhan Perangkat:</b> Smartphone dengan kamera aktif, koneksi internet, serta GPS/Lokasi yang diaktifkan dengan mode akurasi tinggi (*High Accuracy*).
+                </p>
+            </div>
+        </section>
+
+        <!-- ==================== BAB 2 ==================== -->
+        <section class="mb-12 page-break">
+            <h2 class="text-xl font-bold text-emerald-800 border-b border-emerald-200 pb-2 mb-4">
+                BAB 2: PANDUAN TENAGA PENDIDIK (GURU)
+            </h2>
+            <div class="space-y-4 text-sm text-slate-700 leading-relaxed">
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1">2.1 Masuk Akun (Login Guru)</h4>
+                    <ol class="list-decimal list-inside space-y-1 pl-2">
+                        <li>Buka alamat web: <span class="font-mono text-xs bg-slate-100 p-1 rounded">https://presensi-pkbm-ibadurrahman.vercel.app</span></li>
+                        <li>Pada halaman utama, ketuk tombol <b>"Login Tenaga Pendidik"</b>.</li>
+                        <li>Masukkan <b>Email</b> dan <b>Password</b> yang telah diberikan oleh pihak sekolah.</li>
+                        <li>Tekan tombol <b>Masuk</b> untuk membuka Dashboard Tenaga Pendidik.</li>
+                    </ol>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1">2.2 Melakukan Presensi Hadir (Masuk / Pulang)</h4>
+                    <ol class="list-decimal list-inside space-y-1 pl-2">
+                        <li>Pastikan <b>GPS / Lokasi HP sudah menyala</b>.</li>
+                        <li>Pada dashboard, pilih menu <b>"Presensi Sekarang"</b>.</li>
+                        <li>Pilih metode yang diinginkan:
+                            <ul class="list-disc list-inside pl-4 mt-1 space-y-1">
+                                <li><b>Metode Scan QR:</b> Arahkan kamera HP ke layar monitor sekolah yang menampilkan barcode QR dinamis.</li>
+                                <li><b>Metode Selfie Cepat:</b> Ambil foto wajah Anda secara langsung menghadap kamera HP.</li>
+                            </ul>
+                        </li>
+                        <li>Sistem otomatis mendeteksi lokasi GPS Anda. Jika Anda berada di lingkungan sekolah (radius ≤ 50 meter), presensi langsung tersimpan.</li>
+                        <li>Status kehadiran akan tercatat sebagai <b>"Tepat Waktu"</b> atau <b>"Terlambat"</b> sesuai ketentuan jam masuk sekolah.</li>
+                    </ol>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1">2.3 Pengajuan Izin / Sakit / Cuti</h4>
+                    <ol class="list-decimal list-inside space-y-1 pl-2">
+                        <li>Pada dashboard guru, pilih menu <b>"Pengajuan Izin / Sakit"</b>.</li>
+                        <li>Pilih jenis (Izin, Sakit, atau Cuti) dan tentukan tanggal mulai serta tanggal selesai.</li>
+                        <li>Tuliskan alasan/keterangan ketidakhadiran.</li>
+                        <li>Unggah foto surat dokter atau surat permohonan izin bertanda tangan.</li>
+                        <li>Tekan <b>Kirim Pengajuan</b>. Status pengajuan dapat dipantau langsung di riwayat izin.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== BAB 3 ==================== -->
+        <section class="mb-12">
+            <h2 class="text-xl font-bold text-emerald-800 border-b border-emerald-200 pb-2 mb-4">
+                BAB 3: PANDUAN LAYAR KIOS SEKOLAH
+            </h2>
+            <div class="space-y-4 text-sm text-slate-700 leading-relaxed">
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1">3.1 Menampilkan Barcode QR Dinamis di Sekolah</h4>
+                    <ol class="list-decimal list-inside space-y-1 pl-2">
+                        <li>Gunakan perangkat monitor, smart TV, atau tablet piket sekolah.</li>
+                        <li>Buka tautan: <span class="font-mono text-xs bg-slate-100 p-1 rounded">https://presensi-pkbm-ibadurrahman.vercel.app/qr-presensi</span></li>
+                        <li>Tekan tombol <b>F11</b> pada keyboard untuk tampilan penuh (*Full Screen*).</li>
+                        <li>Layar akan menampilkan jam digital sekolah dan QR Code presensi yang aktif.</li>
+                    </ol>
+                </div>
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 text-amber-950 text-xs">
+                    <b>🛡️ Fitur Anti Titip Absen:</b> Kode QR di layar berotasi secara otomatis setiap 30 detik. Token lama akan langsung kedaluwarsa, sehingga guru yang berada di rumah tidak dapat menggunakan foto/screenshot barcode yang dikirimkan oleh temannya.
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== BAB 4 ==================== -->
+        <section class="mb-12 page-break">
+            <h2 class="text-xl font-bold text-emerald-800 border-b border-emerald-200 pb-2 mb-4">
+                BAB 4: PANDUAN ADMINISTRATOR &amp; KOORDINATOR
+            </h2>
+            <div class="space-y-4 text-sm text-slate-700 leading-relaxed">
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1">4.1 Monitoring Realtime di Dashboard Admin</h4>
+                    <p>
+                        Setelah login melalui menu <b>Login Admin</b>, administrator dapat melihat statistik kehadiran hari ini: jumlah guru yang hadir tepat waktu, terlambat, izin, sakit, maupun yang belum hadir. Tabel aktivitas menyajikan jam presensi presisi beserta koordinat GPS dan foto bukti kehadiran.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1">4.2 Manajemen Tenaga Pendidik</h4>
+                    <ul class="list-disc list-inside space-y-1 pl-2">
+                        <li><b>Tambah Guru:</b> Buka menu <i>Tenaga Pendidik ➜ Tambah Guru</i>, isi NIP/NIK, nama, unit tugas, dan akun.</li>
+                        <li><b>Import Excel:</b> Tambah data banyak guru sekaligus menggunakan format spreadsheet yang disediakan.</li>
+                        <li><b>Jadwal Khusus:</b> Atur jam kerja berbeda untuk guru dengan pola jadwal mengajar khusus melalui menu <i>Jadwal Guru</i>.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1">4.3 Konfigurasi Jam Kerja &amp; Radius GPS</h4>
+                    <ul class="list-disc list-inside space-y-1 pl-2">
+                        <li><b>Pengaturan Jam Presensi:</b> Atur jam masuk resmi, batas menit toleransi keterlambatan, dan jam buka presensi pulang.</li>
+                        <li><b>Pengaturan Radius GPS:</b> Masukkan titik koordinat sekolah (Latitude, Longitude) dan jarak radius toleransi (misalnya 50 meter). Sistem akan otomatis menolak absensi jika guru berada di luar lingkaran radius ini.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1">4.4 Verifikasi Izin &amp; Cetak Rekap Laporan</h4>
+                    <ul class="list-disc list-inside space-y-1 pl-2">
+                        <li><b>Persetujuan Izin:</b> Buka menu <i>Persetujuan Izin</i> untuk meninjau berkas surat dokter dan memberikan status *Disetujui* atau *Ditolak*.</li>
+                        <li><b>Laporan Bulanan:</b> Buka menu <i>Laporan</i>, filter berdasarkan rentang tanggal atau unit kerja, lalu klik tombol <b>"Export Excel"</b> untuk arsip digital atau <b>"Cetak PDF"</b> untuk dokumen resmi bertanda tangan pimpinan.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== BAB 5 & 6 ==================== -->
+        <section class="mb-8">
+            <h2 class="text-xl font-bold text-emerald-800 border-b border-emerald-200 pb-2 mb-4">
+                BAB 5 &amp; 6: SUPERADMIN &amp; PEMECAHAN MASALAH (TROUBLESHOOTING)
+            </h2>
+            <div class="space-y-4 text-sm text-slate-700 leading-relaxed">
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-1">5.1 Kalender Libur Nasional &amp; Koordinator</h4>
+                    <p>
+                        Superadmin dapat menambahkan kalender hari libur nasional atau cuti bersama sekolah pada menu <i>Hari Libur</i>. Pada tanggal merah yang terdaftar, guru tidak diwajibkan presensi dan tidak akan dihitung sebagai alpa/alpha.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 mb-2">6.1 Tanya Jawab &amp; Pemecahan Masalah</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse border border-slate-300 text-xs text-left">
+                            <thead class="bg-slate-100">
+                                <tr>
+                                    <th class="border border-slate-300 p-2.5 font-bold">Masalah</th>
+                                    <th class="border border-slate-300 p-2.5 font-bold">Penyebab</th>
+                                    <th class="border border-slate-300 p-2.5 font-bold">Solusi Praktis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-slate-300 p-2.5 font-semibold">Pesan: "Di Luar Jangkauan Sekolah" padahal sudah di lokasi.</td>
+                                    <td class="border border-slate-300 p-2.5">Sinyal GPS HP belum mengunci koordinat dengan akurat di dalam gedung.</td>
+                                    <td class="border border-slate-300 p-2.5">Buka aplikasi Google Maps selama 5 detik agar GPS mengunci posisi, aktifkan Wi-Fi HP, atau Admin dapat menaikkan radius dari 50m ke 75m.</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-slate-300 p-2.5 font-semibold">Kamera tidak mau terbuka saat scan/selfie.</td>
+                                    <td class="border border-slate-300 p-2.5">Izin kamera pada browser HP terblokir.</td>
+                                    <td class="border border-slate-300 p-2.5">Ketuk ikon gembok di sebelah kiri alamat web browser ➜ Ubah izin Kamera menjadi "Izinkan" (*Allow*) ➜ Refresh halaman.</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-slate-300 p-2.5 font-semibold">Lupa Password Akun.</td>
+                                    <td class="border border-slate-300 p-2.5">Lupa kata sandi masuk.</td>
+                                    <td class="border border-slate-300 p-2.5">Hubungi Admin sekolah untuk mengatur ulang (*reset*) kata sandi melalui menu data guru.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Note -->
+        <div class="border-t border-slate-200 pt-6 mt-12 text-center text-xs text-slate-500">
+            <p>© 2026 PKBM Ibadurrahman. Buku Panduan Pengguna Sistem Presensi Tenaga Pendidik.</p>
+            <p class="mt-1">Dokumen resmi operasional sistem informasi berbasis cloud.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
